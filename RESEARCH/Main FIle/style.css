@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    padding: 10px 0;
+    width: 100%;
+    background-color: hsla(240, 100%, 50%, 0.433);
+}
+
+header .logo{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+header ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+header ul li{
+    list-style: none;
+    margin-left: 150px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*content*/
+
+.container{
+    height: 95vh;
+    width: 100%;
+    display: flex;
+}
+.conics-container{
+    width: 100%;
+    overflow-y: scroll;
+}
+/**/
+.side-nav{
+    max-width: 500px;
+    min-width: 200px;
+    height: 100%;
+    position: sticky;
+    overflow: hidden;
+    background-color: rgba(128, 128, 128, 0.493);
+}
+.side-nav ul{
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.side-nav ul li{
+    list-style: none;
+    text-align: justify;
+    width: 100%;
+    margin-left: 50px;
+    padding: 10px 0;
+}
+.side-nav ul li a{
+    text-decoration: none;
+    font-size: 25px;
+    color: #333;  
+    background-color: hsla(0, 0%, 100%, 0.515); 
+    padding: 5px 15px;
+}
+.side-nav h1{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+.side-nav p{
+    background-color: hsla(240, 95%, 43%, 0.673);
+    margin: 6px 0;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: #fff;
+}
+/**/
+.introduction, .about-page, .circle-container, .ellipse-container, .parabola-container, .hyperbola-container{
+    width: 100%;
+    border-left: solid 1px #333;
+    padding: 20px;
+    margin-left: 0px;
+    text-align: center;
+    height: 200vh;
+}
+
+
+/*CIRCLE*/
+
+.definition-container img{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    border: solid;
+}
+.definition-container{
+    width: 100%;
+    border: solid;
+    text-align: justify;
+    display: flex;
+    margin: 30px 0;
+}
+.definition-container .definition{
+    background-color: hsla(0, 0%, 50%, 0.337);
+    padding: 20px;
+    width: 100%;
+}
+
+.conic-name{
+    font-size: 70px;
+    text-align: center;
+}
+
+.equations{
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: space-evenly;
+    width: 100%;
+}
+/*STANDARD EXAMPLE*/
+.example{
+    width: 500px;
+    height: 200px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: justify;
+    line-height: 30px;
+    background-color: hsla(0, 0%, 50%, 0.337);
+}
+.bold{
+    font-weight: bold;
+}

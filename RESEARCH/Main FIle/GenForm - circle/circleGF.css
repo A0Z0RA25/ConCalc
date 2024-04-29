@@ -1,0 +1,36 @@
+
+.circleGF-container{
+    max-width: 400px;
+    margin: 50px ;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: hsla(195, 94%, 43%, 0.507);
+    border-radius: 20px;
+    color:#fff;
+
+}
+.circleGF-container input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.transform {
+    padding: 10px 20px;
+    background-color: hsla(122, 60%, 48%, 0.659);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    font-weight: bold;
+}
+.circleGF-answer-container {
+    text-align: justify;
+    width: 300px;
+    
+}
