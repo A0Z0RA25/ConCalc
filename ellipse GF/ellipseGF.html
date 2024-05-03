@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ellipseGF.css">
+</head>
+<body> 
+
+    <div class="container"><br>
+        <label for="">X2</label> 
+        <input class="x2" type="number"> <br>
+        <label for="">Y2</label> 
+        <input class="y2" type="number"> <br>
+        <label for="">coeffX</label>
+        <input class="coeffX" type="number"> <br>
+        <label for="">coeffY</label>
+        <input class="coeffY" type="number"> <br>
+        <label for="">constant</label>
+        <input class="constant" type="number"> <br>
+    </div>
+ 
+
+    
+  <div style="display: none;"  class="parenthesis">
+        
+        
+        <div class="given">
+           <h1>(<div class="numeratorx"></div>)²</h1>
+            <div class="denominatorx"></div>
+        </div>
+
+
+        <div class="sign">+</div>
+
+        
+        <div class="given">
+         <h1>( <div class="numeratory"></div> )²</h1>
+            <div class="denominatory"></div>
+        </div>
+
+    </div>
+    <button onclick="transform()">Click</button>
+    <script src="ellipseGF.js"></script>
+</body>
+</html>

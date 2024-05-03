@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">ConCalc</div>
+
+        <nav class="nav-bar">
+            <ul>
+                <li><a onclick="introduction()" href="#">Home</a></li>
+                <li><a onclick="aboutUs()" href="#">About Us</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </nav>
+    </header> 
+
+    <div class="container">
+<!--SIDE-BAR-->
+        <div class="side-nav">
+            <h1>CONICS SECTION</h1>
+            <ul> 
+<!--FOR TRANSFORMING THE CIRCLE-->
+                <li><a onclick="circle()" href="#">Circle</a></li>
+                <div style="display: none;" class="transformCircle btn">
+                    <button><a href="GenForm - circle/circleGF.html">General - Standard Form</a></button>
+                    <button><a href="SF - circle/circleSF.html">Standard - General Form</a></button>
+                </div>
+                
+
+                <li><a onclick="ellipse()" href="#">Ellipse</a></li>
+                <div style="display: none;" class="transformEllipse btn">
+                    <button><a href="ellipse GF/ellipseGF.html">General - Standard Form</a></button>
+                    <button>Standard - General Form</button>
+                </div>
+
+                <li><a onclick="parabola()" href="#">Parabola</a></li>
+                <div style="display: none;" class="transformParabola btn">
+                    <button>General - Standard Form</button>
+                    <button>Standard - General Form</button>
+                </div>
+
+                <li><a onclick="hyperbola()" href="#">Hyperbola</a></li>
+                <div style="display: none;" class="transformHyperbola btn">
+                    <button>General - Standard Form</button>
+                    <button>Standard - General Form</button>
+                </div>
+            </ul>
+        </div> 
+        <button onclick="sideNavBtn()" class="side-nav-btn">☰</button>
+<!--INTRO-->
+<!--CONICS-CONTAINER-->
+<div class="conics-container">
+        <div class="introduction">
+            <h1>ConCalc</h1>
+            <a href="https://i.pinimg.com/236x/52/bf/c2/52bfc2a44350b697f2c30cb0582c8183.jpg"><img src="https://i.pinimg.com/236x/52/bf/c2/52bfc2a44350b697f2c30cb0582c8183.jpg" alt=""></a>
+            <p style="color: black;">This Website is create for STEM students that are struggling in Conics Section.</p>
+        </div>
+
+    <div style="display: none;" id="about-us" class="about-page">
+            <h2>About Us</h2>
+    </div>    
+ </div>
+</div>
+<!--ABOUT US-->
+
+    <script src="script.js"></script>
+    <script src="GenForm - circle/circleGF.js"></script>
+</body>
+</html>

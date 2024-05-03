@@ -1,0 +1,174 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #C6CFFF;
+}
+
+header .logo{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+header ul{
+    display: flex;
+}
+
+header ul li{
+    list-style: none;
+    margin: 0 50px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*content*/
+
+.container{
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    background-color: F3F8FF;
+}
+/*ALL THE CONIC*/
+.conics-container{
+    width: 100%;
+    overflow-y: scroll;
+}
+/*SIDE NAVIGATION*/
+.side-nav-btn{
+    display: none;
+}
+.side-nav{
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+    background-color: #C6CFFF;
+}
+.side-nav ul{
+    text-align: center;
+}
+.side-nav ul li{
+    padding: 10px 0;
+    
+}
+.side-nav ul li a{
+    text-decoration: none;
+    list-style: none;
+    font-size: 25px;
+    color: #333;  
+    padding: 5px 95px;
+}
+/*TRANSFORM*/
+.btn button{
+    padding: 10px 0;
+    margin-top: 10px;
+    border: none;
+    background-color: #C6CFFF;
+}
+.btn button a{
+    text-decoration: none;
+}
+/*HOVER*/
+.side-nav ul li a:hover{
+    color:red;
+    background-color: #fff;
+}
+.side-nav h1{
+    font-size: 20px;
+    text-align: center;
+    margin: 25px 0;
+}
+.side-nav button a{
+    background-color: hsla(240, 95%, 43%, 0.673);
+    margin: 6px 20px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: #fff;
+    list-style: none;
+}
+
+/*THE CONTENT*/
+.introduction, .about-page, .circle-container, .ellipse-container, .parabola-container, .hyperbola-container{
+    width: 100%;
+    padding: 20px;
+    margin-left: 0px;
+    text-align: center;
+    height: 100vh;
+}
+ 
+
+/*CIRCLE*/
+.circle-container{
+    display: flex;
+}
+/*STANDARD EXAMPLE*/
+.example{
+    width: 500px;
+    height: 200px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: justify;
+    line-height: 30px;
+    background-color: hsla(0, 0%, 50%, 0.337);
+}
+.bold{
+    font-weight: bold;
+}
+
+
+@media only screen and (max-width: 642px) {
+    body {
+      background-color: lightblue;
+    }
+    /*HEADER*/
+    .nav-bar ul li{
+       margin: 15px;
+    }
+    /*SIDENAV*/
+    .side-nav-btn{
+        display: flex;
+        font-size: 20px;
+        border: none;
+        margin: 20px;
+        position: absolute;
+    }
+    .side-nav {
+        text-align: justify;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        transform: translateX(-100%);
+        height: 100%;
+        background-color: #f0f0f0;
+        margin:  auto;
+        transition: transform 0.3s ease;
+    }
+    
+    .side-nav .open {
+        transform: translateX(0); 
+    }
+    
+    .side-nav h1{
+        font-size: 20px;
+    }
+    .side-nav .btn a{
+        font-size: 10px;
+        
+    }
+    .side-nav ul li a{
+        padding: 0;
+        
+    }
+  }

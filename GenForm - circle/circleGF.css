@@ -1,0 +1,60 @@
+.container{
+   display: flex; 
+   flex-wrap: wrap;
+   justify-content: space-around;
+   align-items: center;
+}
+header{
+    text-align: center;
+}
+header .generalForm{
+    background-color: #333;
+    color: #fff;
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+.circleGF-container{
+    width: 400px;
+    margin: 50px ;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: ;
+    border-radius: 20px;
+    color:#333;
+    border: solid;
+ 
+}
+.circleGF-container input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.transform {
+    padding: 10px 20px;
+    background-color: hsla(122, 60%, 48%, 0.659);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    display: flex;
+    text-align: justify;
+    font-weight: bold;
+}
+/*YUNG ANSWERS*/
+.circleGF-answer-container {
+    text-align: justify;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border: solid;
+    display: none;
+}
+.circleGF-answer-container div{
+    line-height: 30px;
+    font-weight: bold;
+}
