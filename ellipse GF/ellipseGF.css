@@ -1,0 +1,71 @@
+.parenthesis{
+    display: flex;
+    width: 600px;
+    color: #fff;
+    background-color: gray;
+    padding: 10px;
+    border: solid;
+    align-items: center;
+    text-align: center;
+    align-content: center; 
+}
+.given{
+    margin: 0 5px;
+}
+h1{
+    display: flex;
+    margin: 0;
+    font-size: 20px;
+}
+.sign{
+    font-size: 40px;
+    font-weight: bold;
+} 
+.numeratorx, .numeratory{
+    border-bottom: solid;
+    font-size: 20px;
+    margin: 0;
+}
+.denominatorx, .denominatory{
+    text-align: center;
+    margin: 0;
+}
+/*HEADER*/
+.header{
+    margin: 0 auto;
+    width: 100%;
+    border: solid;
+    
+}
+/*CONTAINER*/
+.ellipse-calcu{
+    border: solid;
+    width: 300px;
+    text-align: justify;
+    padding: 30px;
+    align-items: center;
+    background-color: hsla(240, 100%, 50%, 0.668);
+    color: #fff; 
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+}
+.container input{
+    display: flex;
+}
+/*STEPS*/
+.steps{
+    border: solid;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.steps h1{
+    font-size: 17px;
+}
+.steps div{
+    background-color: gray;
+    color: #fff;
+    padding: 10px;
+}
