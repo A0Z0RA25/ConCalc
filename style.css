@@ -1,12 +1,13 @@
 *{
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+   margin: 0;
+   padding: 0;
 }
 :root{
     --background-color: hsla(216, 96%, 9%, 0.807);
     --color: #fff;
     --header-background:#333;
+    --gray-background:hsla(0, 0%, 50%, 0.1);
+    --font-family: sans-serif;
 }
 header{
     display: flex;
@@ -42,7 +43,7 @@ header ul li a {
 /*content*/
 
 .container{
-    height: 95vh;
+    height: 100vh;
     width: 100%;
     display: flex;
 }
@@ -50,6 +51,7 @@ header ul li a {
 .conics-container{
     width: 100%;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 /*SIDE NAVIGATION*/
 .side-nav-btn{
@@ -117,19 +119,70 @@ header ul li a {
 .introduction, .about-page, .circle-container, .ellipse-container, .parabola-container, .hyperbola-container{
     width: 100%;
     padding: 0;
-    text-align: center;
     height: 100vh;
-    
 }
- 
- 
-/*CIRCLE*/
-.circle-container{
+
+.conic-sections-img{
+    width: 250px;
+    height: 200px;
+}
+.conic-sections{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
-/*STANDARD EXAMPLE*/
+/*CIRCLE*/
 
+.circle, .ellipse, .parabola, .hyperbola{
 
+    justify-content: center;
+    margin: 30px 0;
+}
+.description{
+    background-color: hsla(0, 1%, 37%, 0.172);
+    word-wrap: break-word;
+    width: 240px;
+    height: 100px;
+    line-height: 20px;
+    padding: 10px 0 35px 10px;
+    font-family: var(--font-family);
+}
+/*INTRODUCTION*/
+.intro-title{
+    text-align: center;
+    margin: 20px 0;
+    font-family: var(--font-family);
+}
+.first-intro{
+    margin: 10px 30px;
+    padding: 10px;
+    font-family: var(--font-family);
+    font-size: 20px;
+    text-align: justify;
+    word-wrap: break-word;
+    background-color: var(--gray-background);
+}
+/*2nd*/
+.degenerate-title{
+    margin: 10px 20px;
+}
+.degenerate-conics{
+    width: 80%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+.degenerate-conics p{
+    font-size: 20px;
+    width: 300px;
+    margin: 50px 0;
+    padding: 20px;
+    background-color: var(--gray-background);
+}
+.degenerate-img{
+    height: 400px;
+    width: 500px;
+}
 
 @media only screen and (max-width: 643px) {
     body {
@@ -147,21 +200,42 @@ header ul li a {
         padding: 0;
         margin: 0;
         overflow: scroll;
+        color: var(--color);
     }
     /*Intro*/
     .introduction{
         color: var(--color);
         margin: 20px 0;
         padding: 0;
+        text-align: center;
     }
     .introduction a img{
-        height: 150px;
         width: 150px;
-        margin: 10px 0;
+        height: 160px;
     }
-    .introduction p{
+    .introduction .intro-title{
+        font-size: 20px;
+        text-align: center;
+    }
+    .introduction .first-intro{
+        font-size: 15px;
+        text-align: justify;
+        line-height: 20px;
+        padding: 10px 10px;
+        margin: 0 0 20px 0;
+    }
+    .circle, .ellipse, .parabola, .hyperbola{
+        margin: 10px;
+        display: flex;
+        color: var(--color);
+    }
+    .description{
+        margin: 0;
+        width: 150px;
+        height: 111px;
         font-size: 13px;
-        padding: 0 20px;
+        word-wrap: break-word;
+        text-align: left;
     }
     /*HEADER*/
     header{
@@ -193,7 +267,7 @@ header ul li a {
         display: flex;
         font-size: 20px;
         border: none;
-        margin: 20px;
+        margin: 10px 15px;
         position: absolute;
         color: var(--color);
     }
