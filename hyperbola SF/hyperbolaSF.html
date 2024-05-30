@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hyperbolaSF.css">
+</head>
+<body>
+
+    <div class="hyperbolaGF-container">
+        <h1>Hyperbola Standard Form Calculator</h1>
+        <form id="hyperbolaForm">
+            <label for="majorValue">Major Value</label>
+            <select class="major" required>
+                <option value="x">x</option>
+                <option value="y">y</option>
+            </select>
+            <input type="number" id="majorValue"required>
+
+            <label for="minorValue">Major Denominator</label>
+            <input type="number" id="majorDenoValue" required>
+
+            <label for="coeffMajor">Minor Value</label>
+            <select class="minor" required>
+                <option value="x">x</option>
+                <option value="y">y</option>
+            </select>
+            <input type="number" id="minorValue" required>
+
+            <label for="coeffMinor">Minor Denominator</label>
+            <input type="number" id="minorDenoValue" required>
+
+            <button type="button" onclick="transform()">Calculate</button>
+        </form>
+        <div class="hyperbolaGF-answer">
+            <h1>Here are the steps:</h1>
+
+                <div class="step1">
+                <h1>Step 1:</h1>  
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mi class="lcmMajor1"></mi>
+                            <mi class="majorIn1"></mi>
+                        </mrow>
+                        <mrow>
+                            <mi class="majorDeno1"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>-</mo>
+                        <mfrac>
+                        <mrow>
+                            <mi class="lcmMinor1"></mi>
+                            <mi class="minorIn1"></mi>
+                        </mrow>
+                        <mrow>
+                            <mi class="minorDeno1"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                        <mo class="constant1">1</mo>
+                    <mrow>
+                        <mi class="lcmInConst">LCM: </mi>
+                    </mrow>
+                </math>
+                </div>
+                
+                <h1>Step 2:</h1>
+                <div class="step2"></div>
+                <h1>Step 3:</h1>
+                <div class="step3"></div>
+            <div class="add-step">
+                <h1>Step 4:</h1>
+                <div class="step4"></div>
+                <h1>Step 5:</h1>
+                <div class="step5"></div>
+                <h1>Step 6:</h1>
+                <div class="step6"></div>
+            </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <script src="hyperbolaSF.js"></script>
+</body>
+</html>

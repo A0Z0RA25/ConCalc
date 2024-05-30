@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.234);
+}
+/*HEADER*/
+header h1{
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+/*CONTAINER*/
+.ellipse-calcu{
+    border: solid;
+    border-radius: 10px;
+    width: 400px;
+    padding: 30px;
+    margin: 0;
+    color: #333; 
+}
+.ellipse-calcu h1{
+    margin: 10px auto;
+    font-size: 20px;
+    text-align: center;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+.ellipse-calcu input{
+    display: flex;
+    padding: 8px;
+    margin: 0 auto;
+    width: 100%;
+}
+.answer-container{
+    border: solid;
+    width: 600px;
+    border-radius: 10px;
+}
+.answer-container .answer-title{
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+/*STEPS*/
+.steps{
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.steps h1{
+    font-size: 17px;
+} 
+.steps div{
+    background-color: var(--answer-bg);
+    padding: 10px;
+}
+button{
+    background-color: hsla(120, 100%, 25%, 0.613);
+    font-weight: bold;
+    padding: 10px 14px;
+} 
+
+@media only screen and (max-width: 643px) {
+    *{
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .ellipse-calcu{
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+    .ellipse-calcu h1{
+        width: 100%;
+    }
+    .ellipse-calcu input{
+        width: 100%;
+        margin: 0;
+        padding: 10px 0px;
+    }
+    .answer-container{
+        width: 100%;
+        margin: 20px 0;
+    }
+}
