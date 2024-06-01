@@ -20,39 +20,39 @@
         </nav>
     </header> 
 
-    <div class="container">
+    <div class="container"> 
 <!--SIDE-BAR-->
         <div class="side-nav">
             <h1>CONICS SECTION</h1>
             <ul> 
 <!--FOR TRANSFORMING THE CIRCLE-->
-                <li><a onclick="circle()" href="#">Circle</a></li>
-                <div style="display: none;" class="transformCircle btn">
+                <li><a onclick="circle()" href="#" class="btn">Circle</a></li>
+                <div style="display: none;" class="transformCircle">
                     <button><a href="GenForm - circle/circleGF.html">General - Standard Form</a></button>
                     <button><a href="SF - circle/circleSF.html">Standard - General Form</a></button>
                 </div>
                  
-
-                <li><a onclick="ellipse()" href="#">Ellipse</a></li>
-                <div style="display: none;" class="transformEllipse btn">
+ 
+                <li><a onclick="ellipse()" href="#" class="btn">Ellipse</a></li>
+                <div style="display: none;" class="transformEllipse">
                     <button><a href="ellipse GF/ellipseGF.html">General - Standard Form</a></button>
                     <button> <a href="ellipse SF/ellipseSF.html">Standard - General Form</a></button>
                 </div>
-  
-                <li><a onclick="parabola()" href="#">Parabola</a></li>
-                <div style="display: none;" class="transformParabola btn">
-                    <button>General - Standard Form</button>
-                    <button>Standard - General Form</button>
+   
+                <li><a onclick="parabola()" href="#" class="btn">Parabola</a></li>
+                <div style="display: none;" class="transformParabola">
+                    <button><a href="parabola GF/parabolaGF.html">General - Standard Form</a></button>
+                    <button> <a href="parabola SF/parabolaSF.html">Standard - General Form</a></button>
                 </div>
 
-                <li><a onclick="hyperbola()" href="#">Hyperbola</a></li>
-                <div style="display: none;" class="transformHyperbola btn">
-                    <button>General - Standard Form</button>
-                    <button>Standard - General Form</button>
+                <li><a onclick="hyperbola()" href="#" class="btn">Hyperbola</a></li>
+                <div style="display: none;" class="transformHyperbola ">
+                    <button><a href="hyperbola GF/hyperbolaGF.html">General - Standard Form</a></button>
+                    <button> <a href="hyperbola SF/hyperbolaSF.html">Standard - General Form</a></button>
                 </div>
             </ul>
         </div> 
-        <button onclick="sideNavBtn()" class="side-nav-btn">☰</button>
+        <button onclick="sideNavBtn()" class="side-nav-btn">></button>
 <!--INTRO-->
 <!--CONICS-CONTAINER-->
 <div class="conics-container">
@@ -98,11 +98,42 @@
                 </p>
                 <a href="https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/3675/2018/09/27183025/CNX_Precalc_Figure_10_04_002n2.jpg"><img class="degenerate-img" src="https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/3675/2018/09/27183025/CNX_Precalc_Figure_10_04_002n2.jpg" alt=""></a>
             </div>
-            
-            <h1>Definition and Equation of a circle</h1>
+        <!---->
             <div class="circle-section">
-                <p>A circle may also be considered a special kind of ellipse (for the special case when
-                    the tilted plane is horizontal).</p>
+                <h1 class="circle-title">Definition and Equation of a circle</h1>
+                <ul class="definition">
+                   <li>A circle may also be considered a special kind of ellipse (for the special case when
+                    the tilted plane is horizontal).</li>
+                    <li>Let C be a given point. The set of all points P having the same
+                        distance from C is called a circle. The point C is called the center of
+                        the circle, and the common distance its radius</li> 
+                </ul>
+                
+                <div class="forms standard-form">
+                    <h1 class="title">Standard Form of a Circle:</h1>
+                    <p class="definition">This is the standard equation of the circle with center C(h, k) and radius r. If
+                        the center is the origin, then h = 0 and k = 0. The standard equation is then x² + y² = 0.
+                    </p>
+
+                    <div class="example-SF">
+
+                    </div>
+                </div>
+
+                <div class="forms">
+                    <h1 class="title">General Form of a Circle:</h1>
+                     <p class="definition">If the equation of a circle is given in the general form</p> 
+                     <p class="general-form">Ax² + Ay² + Cx + Dy + E = 0,  A ≠ 0</p>
+                     <p class="general-form">or x² + y² + Cx + Dy + E = 0</p>
+                    </div>
+                
+            </div>
+
+            <div class="parabola-section">
+                <h1 class="title">Parabola</h1>
+                <h1 class="title">Definition of Parabola:</h1>
+                <p class="definition">A parabola is one of the conic sections. We have already seen parabolas which
+                    open upward or downward, as graphs of quadratic functions.</p>
             </div>
         </div>
 
