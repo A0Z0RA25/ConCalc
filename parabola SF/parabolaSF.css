@@ -1,0 +1,109 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  } 
+
+  :root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.234);
+} 
+
+  /*Header*/
+  header{
+    text-align: center;
+    margin: 20px;
+}
+header a{
+    margin: 0;
+    position: absolute;
+    left: 50px;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px 0;
+  }
+
+  .calcu-container {
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .calcu-container input {
+    margin: 10px 0;
+    padding: 5px 10px;
+    font-size: 15px;
+    display: flex;
+  }
+  
+  .calcu-container label {
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+  button {
+    display: block; 
+    padding: 10px 20px;
+    background-color: green;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+/*ANSWER-CONTAINER*/
+.answer-container{
+    border: solid;
+    padding: 20px;
+    height: 500px;
+    width: 500px;
+    border-radius: 10px;
+}
+.answer-container .answer-title{
+  margin: 15px 0;
+}
+.steps div{
+  background-color: var(--answer-bg);
+  padding: 20px 10px;
+  margin: 10px 0;
+}
+.steps h1{
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 643px) {
+  header h1{
+      font-size: 20px;
+      margin: 30px 0;
+  }
+  header a{
+      top: 5px;
+      left: 10px;
+      padding: 5px 10px;
+      font-size: 10px;
+  }
+  .answer-container{
+    margin: 20px 0;
+  }
+}

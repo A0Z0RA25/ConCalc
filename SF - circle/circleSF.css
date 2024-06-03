@@ -1,0 +1,154 @@
+*{
+    font-family: Arial, sans-serif;
+} 
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.234);
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+} 
+header{
+    text-align: center;
+    font-size: 20px;
+} 
+header a{
+    margin: 0;
+    position: absolute;
+    left: 50px;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+/*GIVEN*/
+.steps .given{
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    border: solid;
+}
+.steps .givenValue{
+    width: 100%;
+    height: 10px;
+    border: solid;
+}
+
+.circleSF-container{
+    border: solid; 
+    border-radius: 10px;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+}
+label{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.circleSF-container input{
+    width: 100%;
+    padding: 10px 5px;
+    margin: 10px 0;
+}
+.transform{
+    margin: 20px;
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #fff;
+    background-color: hsla(120, 100%, 25%, 0.655);
+    margin: 0 auto;
+}
+/*ANSWERS*/
+.circle-answer-container{
+    border: solid;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    width: 700px;
+    height: 100%;
+    text-align: justify;
+    font-weight: bold;
+}
+.title{
+    margin: 0;
+    padding: 10px;
+}
+.steps, .result{
+    margin: 20px 10px;
+}
+.steps div, .result{
+    background-color: var(--answer-bg);
+    padding: 10px;
+}
+.steps h1 {
+    font-size: 20px;
+}
+.final{
+    font-size: 30px;
+}
+
+/*Expand*/
+.expanding{
+    display: none;
+    margin-bottom: 10px;  
+    margin: 0;
+    padding: 0;
+    color: #281c1c;
+    line-height: 13px;
+} 
+.expanding p{
+    margin: 0;
+}
+.expanding h1{
+    font-size: 15px;
+    color: black;
+}
+.expand-btn{
+    padding: 5px;
+    font-weight: bold;
+} 
+
+@media only screen and (max-width: 643px) {
+    .circleSF-container h1{
+        font-size: 18px;
+        text-align: center;
+    }
+    /*ANSWER*/
+    .circle-answer-container h1{
+        font-size: 20px;
+    }
+    /**/
+    .steps{
+        font-size: 15px;
+    }
+    .steps .answer{
+        margin: 10px 0;
+    }
+    .steps h1{
+        font-size: 17px;
+        word-spacing: 1px;
+    }
+    /*EXPANDING*/
+    .expanding{
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+    .expanding h1{
+        word-spacing: normal;
+    }
+    .expanding p{
+        font-size: 14px; 
+    }
+    .final{
+        font-size: 18px;
+    }
+}

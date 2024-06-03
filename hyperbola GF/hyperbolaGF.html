@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hyperbolaGF.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head> 
+<body>
+
+    <header>
+        <a href="/Main FIle/index.html"><i class="fa-solid fa-house"></i></a>
+        <h1>General Form - Standard Form of a Hyperbola</h1>
+    </header>
+
+    <div class="container">
+       <div class="hyperbolaGF-container">
+        <h1>Hyperbola Standard Form Calculator</h1>
+        <form class="hyperbolaForm">
+            <div class="flex">
+                <label for="majorValue">Major</label>
+            <select id="major" required>
+                <option value="x²">x²</option>
+                <option value="y²">y²</option>
+            </select>
+            </div>
+            
+            <input type="number" id="majorValue"required>
+
+            <div class="flex">
+                <label for="minorValue">B:</label>
+            <select id="minor" required>
+                <option value="x²">x²</option>
+                <option value="y²">y²</option>
+            </select>
+            </div>
+            
+            <input type="number" id="minorValue" required>
+
+            <div class="flex">
+               <label for="coeffMajor">Coeff of Major</label>
+            <select id="majorConst" required>
+                <option value="x">x</option>
+                <option value="y">y</option>
+            </select> 
+            </div>
+            
+            <input type="number" id="coeffMajor" required>
+
+            <div class="flex">
+                <label for="coeffMinor">D</label>
+            <select id="minorConst" required>
+                <option value="x">x</option>
+                <option value="y">y</option>
+            </select>
+            </div>
+            
+            <input type="number" id="coeffMinor" required>
+
+            <label for="constant">E:</label>
+            <input type="number" id="constant" required>
+            <button type="button" onclick="transform()">Calculate</button>
+        </form>
+    </div>
+
+    <div class="hyperbolaGF-answer">
+        <h1>Here are the steps:</h1>
+        
+        <div class="steps">
+            <h1>Given:</h1>
+            <div class="given answer">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                      <mi class="givenA"></mi>
+                      <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>-</mo>
+                      <mi class="givenB"></mi>
+                      <msup>
+                        <mi>y</mi>
+                        <mn>2</mn>
+                      </msup>
+                      <mo class="sign1">+</mo>
+                      <mi class="givenC"></mi>
+                      <mi>x</mi>
+                      <mo class="sign2">+</mo>
+                      <mi class="givenD"></mi>
+                      <mi>y</mi>
+                      <mo class="sign3">+</mo>
+                      <mi class="givenE"></mi>
+                      <mo>=</mo>
+                      <mn>0</mn>
+                    </mrow>
+                  </math>
+                  
+            </div>
+            <h1>Step 1:</h1>
+            <div class="step1 answer"></div>
+            <h1>Step 2:</h1>
+            <div class="step2 answer"></div>
+            <h1>Step 3:</h1>
+            <div class="step3 answer"></div>
+            <h1>Step 4:</h1>
+            <div class="step4 answer"></div>
+            <h1>Step 5:</h1>
+            <div class="step5 answer"></div>
+
+            <div class="step6">
+            <h1>Step 6:</h1>  
+              <math class="answer" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mfrac>
+                    <mrow>
+                        <mi class="majorOut"></mi>
+                        <mo>(</mo>
+                        <mi class="majorIn"></mi>
+                        <mo>)²</mo>
+                    </mrow>
+                    <mrow>
+                        <mi class="majorDeno"></mi>
+                    </mrow>
+                </mfrac>
+                <mo>-</mo>
+                    <mfrac>
+                    <mrow>
+                        <mi class="minorOut"></mi>
+                        <mo>(</mo>
+                        <mi class="minorIn"></mi>
+                        <mo>)²</mo>
+                    </mrow>
+                    <mrow>
+                        <mi class="minorDeno"></mi>
+                    </mrow>
+                </mfrac>
+                <mo>=</mo>
+                <mfrac>
+                    <mi class="constNume">0</mi>
+                    <mi class="constDeno">0</mi>
+                </mfrac>
+            </math>
+            </div>
+            
+            <div class="step7">
+                <h1>Step 7:</h1>  
+                  <math class="answer" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac> 
+                        <mrow>
+                            <mi class="finalMajorOut"></mi>
+                            <mo>(</mo>
+                            <mi class="finalMajorIn"></mi>
+                            <mo>)²</mo>
+                        </mrow>
+                        <mrow>
+                            <mi class="finalMajorDeno"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>-</mo>
+                        <mfrac>
+                        <mrow>
+                            <mi class="finalMinorOut"></mi>
+                            <mo>(</mo>
+                            <mi class="finalMinorIn"></mi>
+                            <mo>)²</mo>
+                        </mrow>
+                        <mrow>
+                            <mi class="finalMinorDeno"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mi>1</mi>
+                </math>
+                </div>
+        </div>
+        <div class="graphValue">
+
+            <div class="ABC">
+                <math class="answer" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi class="graphAValue">a = 10</mi>
+                        <mo></mo>
+                        <mi class="graphASqr">a² = 20</mi>
+                        <mo></mo>
+                        <mi class="graphBValue">b = 10</mi>
+                        <mo></mo>
+                        <mi class="graphBSqr">b² = 20</mi>
+                        <mo></mo>
+                        <mi class="graphCValue">c = 10</mi>
+                        <mo></mo>
+                        <mi class="graphCSqr">c² = 20</mi>
+                    </mrow>
+                </math>
+            </div>
+
+            <div class="center-container flex">
+                <h1>Center:</h1>
+                <div class="centerValue"></div>
+            </div>
+
+            <div class="orri-container flex">
+                <h1>Orientation:</h1>
+                <div class="orriValue"></div>
+            </div>
+
+        </div>
+    </div> 
+    </div>
+    
+    
+    <script src="hyperbolaGF.js"></script>
+</body>
+</html>
