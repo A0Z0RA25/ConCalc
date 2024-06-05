@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <button onclick="sideNavBtn()" class="side-nav-btn">></button>
+        <div class="logo">ConCalc</div>
+
+        <nav class="nav-bar">
+            <ul>
+                <li><a onclick="introduction()" href="#">Home</a></li>
+                <li><a onclick="aboutUs()" href="#">About Us</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </nav>
+    </header>  
+
+    <div class="container"> 
+<!--SIDE-BAR-->
+        <div class="side-nav">
+            <h1>CONICS SECTION</h1>
+            <ul> 
+<!--FOR TRANSFORMING THE CIRCLE-->
+                <h1 class="nav-con-title">Circle</h1>
+                <div class="transform-btn">
+                    <button><a href="GenForm - circle/circleGF.html">General - Standard Form</a></button>
+                    <button><a href="SF - circle/circleSF.html">Standard - General Form</a></button>
+                </div>
+                 
+ 
+                <h1 class="nav-con-title">Ellipse</h1>
+                <div class="transform-btn">
+                    <button><a href="ellipse GF/ellipseGF.html">General - Standard Form</a></button>
+                    <button> <a href="ellipse SF/ellipseSF.html">Standard - General Form</a></button>
+                </div>
+   
+                <h1 class="nav-con-title">Parabola</h1>
+                <div class="transform-btn">
+                    <button><a href="parabola GF/parabolaGF.html">General - Standard Form</a></button>
+                    <button> <a href="parabola SF/parabolaSF.html">Standard - General Form</a></button>
+                </div>
+
+                <h1 class="nav-con-title">Hyperbola</h1>
+                <div class="transform-btn">
+                    <button><a href="hyperbola GF/hyperbolaGF.html">General - Standard Form</a></button>
+                    <button> <a href="hyperbola SF/hyperbolaSF.html">Standard - General Form</a></button>
+                </div>
+            </ul>
+        </div> 
+<!--INTRO-->
+<!--CONICS-CONTAINER-->
+<div class="conics-container">
+        <div class="introduction">
+            <div class="table-of-contents">
+                <h1 class="main-title">Table of Contents</h1>
+                <ul>
+                    <li><a href="#circle">Circle</a></li>
+                    <li><a href="#parabola">Parabola</a></li>
+                    <li><a href="#">Ellipse</a></li>
+                    <li><a href="#">Hypebola</a></li>
+                </ul>
+            </div>
+            <h1 class="intro-title">INTRODUCTION TO CONIC SECTIONS</h1>
+            <p class="first-intro">
+                We introduce the <strong>conic sections (or conics)</strong>, a particular type of curve that
+                Frequently appear in nature and have applications in various fields. One
+                A conic is one of the first shapes we learned, along with a circle. When throwing a ball,
+
+                Its trajectory is a <strong>parabola</strong>. The orbit of each planet around the sun.
+                This is an <strong>ellipse</strong>. <strong>Hyperbola</strong> properties were used in the design of several
+                Telescopes and navigation systems. This lesson will focus on circles, leaving
+                In later lectures, we will cover parabolas, ellipses, and hyperbolas.</p>
+            <div class="conic-sections">
+                <div class="circle">
+                    <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162136/Circles.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162136/Circles.png" alt="" srcset=""></a>
+                    <p class="description">It is circle when the plane is <strong>Horizontal.</strong> </p>
+                </div>
+
+                <div class="ellipse">
+                    <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162242/Ellipse.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162242/Ellipse.png" alt="" srcset=""></a>
+                    <p class="description">It is ellipse when the <strong>tilted plane</strong> intersects only one cone to form a bound curve.</p>
+                </div>
+
+                <div class="parabola">
+                    <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162204/Parabolas.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162204/Parabolas.png" alt="" srcset=""></a>
+                    <p class="description">It is parabola when the plane intersects only one cone to form an <strong>unbounded curve.</strong></p>
+                </div>
+
+                <div class="hyperbola">
+                    <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162311/Hyperbolas.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162311/Hyperbolas.png" alt="" srcset=""></a>
+                    <p class="description">It is hyperbola when the plane (not necessarily vertical) intersects both cones to form <strong>two unbounded curves</strong>
+                                           (each called a branch of the hyperbola).</p>
+                </div>
+            </div>
+
+            <h1 class="degenerate-title">Degenerate Conics</h1>
+            <div class="degenerate-conics">
+                <p class="second-paragraph">
+                    There are various ways for a plane and the cones to connect, forming what
+                    Degenerate conics are defined as a point, one line, or two lines.
+                </p>
+                <a href="https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/3675/2018/09/27183025/CNX_Precalc_Figure_10_04_002n2.jpg"><img class="degenerate-img" src="https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/3675/2018/09/27183025/CNX_Precalc_Figure_10_04_002n2.jpg" alt=""></a>
+            </div>
+        <!---->
+            <div class="circle-section" id="circle">
+                <h1 class="main-title">Circle</h1>
+                <ul class="definition">
+                   <li>A circle may also be considered a special kind of ellipse (for the special case when
+                    the tilted plane is horizontal).</li>
+                    <li>Let C be a given point. The set of all points P having the same
+                        distance from C is called a circle. The point C is called the center of
+                        the circle, and the common distance its radius</li> 
+                </ul>
+                
+                <div class="forms standard-form">
+                    <h1 class="sub-title">Standard Form of a Circle:</h1>
+                    <p class="definition">This is the standard equation of the circle with center C(h, k) and radius r. If
+                        the center is the origin, then h = 0 and k = 0. The standard equation is then <strong>x² + y² = 0.</strong>
+                    </p>
+                </div>
+
+                <div class="forms">
+                    <h1 class="sub-title">General Form of a Circle:</h1>
+                     <p class="definition">If the equation of a circle is given in the general form</p> 
+                     <div class="general-form">
+                        <p><strong>Ax² + Ay² + Cx + Dy + E = 0,  A ≠ 0</strong></p>
+                        <p><strong>or x² + y² + Cx + Dy + E = 0</strong></p>
+                     </div>
+                     
+                    </div>
+                
+            </div>
+
+            <div class="parabola-section" id="parabola">
+                <h1 class="main-title">Parabola</h1>
+                <p class="definition">A parabola is one of the conic sections. We have already seen parabolas which
+                    open upward or downward, as graphs of quadratic functions.</p>
+            </div>
+        </div>
+
+    <div style="display: none;" id="about-us" class="about-page">
+            <h2>About Us</h2>
+    </div>    
+ </div>
+</div>
+<!--ABOUT US-->
+
+    <script src="script.js"></script>
+    <script src="GenForm - circle/circleGF.js"></script>
+</body>
+</html>
