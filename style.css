@@ -25,6 +25,12 @@ header{
     width: 100%;
     background-color: var(--blk-color);
 }
+header .nav-bar li a:hover{
+    background: #fff;
+    color: #333;
+    padding: 3px 8px;
+    transition: ease-in 0.3s;
+}
 
 header .logo{
     font-size: 30px;
@@ -109,6 +115,16 @@ header ul li a {
 }
 .transform-btn{
     text-align: center;
+}
+.side-nav .transform-btn button:hover{
+    transform: translate(5px);
+    color: #000;
+}
+.side-nav .transform-btn button a:hover{
+    transition: ease 0.7s;
+    background-color: #fff;
+    color: #333;
+    width: 100%;
 }
 .side-nav h1{
     font-size: 20px;
@@ -370,7 +386,7 @@ header ul li a {
     }
     header .logo{
         font-size: 16px;
-        color: rgba(151, 151, 255, 0.98);
+        color: skyblue;
         margin: 0;
     }
     .nav-bar ul li{
@@ -382,9 +398,6 @@ header ul li a {
         font-weight: bold;
     }
     /*SIDENAV*/
-    .side-nav button{
-        background-color: transparent;
-    }
     .side-nav button a{
         background-color: hsla(240, 2%, 65%, 0.467);
         margin: 0 5px;
@@ -395,13 +408,14 @@ header ul li a {
         display: flex;
         font-size: 15px;
         border: none;
+        margin: 0;
     }
     .side-nav {
         text-align: center;
         width: 100%;
         position: fixed;
         left: 0;
-        top:48px;
+        top:46px;
         transform: translateX(-100%);
         transition: ease 0.5s;
         height: 100%;
