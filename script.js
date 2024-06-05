@@ -7,10 +7,10 @@ function sideNavBtn(){
     sideNav.classList.toggle("open"); 
     if(sideNav.classList.contains("open")) {
         sideNav.style.transform = "translateX(0)";
-        hamburgerBar.textContent = "<"; 
+        hamburgerBar.innerHTML = '<i class="fa-solid fa-square-xmark"></i>'; 
     } else {
         sideNav.style.transform = "translateX(-100%)";
-        hamburgerBar.textContent = ">"; 
+        hamburgerBar.innerHTML = `<i class="fa-solid fa-bars-staggered"></i> `; 
     }
 } 
 
