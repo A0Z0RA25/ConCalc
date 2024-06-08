@@ -1,0 +1,89 @@
+body{
+    font-family: Arial, sans-serif;
+}
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.234);
+}
+header{
+    text-align: center;
+    margin: 20px;
+}
+header a{
+    margin: 0;
+    position: absolute;
+    left: 50px;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+.container{ 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+} 
+.parabolaGF-container{
+    width: 400px;
+    height: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    border-radius: 20px;
+    color:#333;
+    border: solid;
+}
+.parabolaGF-container input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: solid;
+}
+.transform {
+    padding: 10px 20px;
+    background-color: hsla(122, 60%, 48%, 0.659);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    display: flex;
+    text-align: justify; 
+    font-weight: bold;
+}
+/**/
+.parabolaGF-answer-container{
+    padding: 20px;
+    width: 600px;
+    border: solid;
+    border-radius: 10px;
+}
+.steps-container div, .finalAnswer math{
+    background-color: var(--answer-bg);
+    padding: 10px;
+    width: 95%;
+} 
+.parabolaGF-answer-container h1{
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 643px) {
+    header h1{
+        font-size: 20px;
+        margin: 30px 0;
+    }
+    header a{
+        top: 5px;
+        left: 10px;
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+    .parabolaGF-answer-container{
+        margin: 20px 0;
+    }
+}
