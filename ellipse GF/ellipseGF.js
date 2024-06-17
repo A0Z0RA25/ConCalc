@@ -32,9 +32,6 @@ const finalConstValue = document.querySelector(".finalConstValue");
 
 const centerValue = document.querySelector(".centerValue");
 
-//Instruction alert
-window.alert("The equations that you'll put should be in this form: Ax²+Cy²+Dx+Ey+F=0")
-
 function transform() {
     const x2 = parseFloat(document.querySelector(".x2").value);
     const y2 = parseFloat(document.querySelector(".y2").value);
