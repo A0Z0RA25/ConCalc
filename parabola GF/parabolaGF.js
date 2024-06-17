@@ -30,8 +30,7 @@ const finalMinorOut = document.querySelector(".finalMinorOut");
 const finalMinorDeno = document.querySelector(".finalMinorDeno");
 const answerContainer = document.querySelector(".parabolaGF-answer-container");
 
-//Instruction
-window.alert("The value of the Equation that you'll put should be in this form: Ax²+By²+Cx+Dy+3")
+
 
 function transform() { 
     const a = parseFloat(document.getElementById('Ax').value);
