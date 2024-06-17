@@ -1,0 +1,143 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.234);
+}
+/*HEADER*/
+header{
+    text-align: center;
+    background-color: var(--header-background);
+    padding: 10px;
+    color: var(--color);
+}
+header a{
+    margin: 0;
+    position: absolute;
+    left: 50px;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+    color: var(--color);
+}
+/*LCM*/
+.step1{
+    font-size: 15px;
+    font-weight: bold;
+}
+.lcmConst{
+    margin-left: 10px;
+} 
+/**/
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: 10px 0;
+}
+.header{ 
+    width: 100%;
+}
+.header h1{
+    width: 500px;
+    margin: 20px auto;
+} 
+h1 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+    border: solid;
+    border-radius: 10px;
+    width: 300px;
+    height: 100%;
+    padding: 50px;
+}
+
+.input-container label, .input-container input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+} 
+
+.input-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+}
+/*steps*/
+.steps{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: justify;
+}
+.steps div, .answer{
+    background-color: var(--answer-bg);
+    text-align: justify;
+    letter-spacing: 2px;
+    color: #333;
+    margin: 0;
+    padding: 10px 10px;
+}
+/**/
+.result-container{
+    border: solid;
+    border-radius: 10px;
+    visibility: hidden;
+    padding: 20px;
+} 
+
+@media only screen and (max-width: 643px) {
+    header h1{
+        font-size: 20px;
+        margin: 35px 0;
+    }
+    header a{
+        top: 5px;
+        left: 10px;
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+    /*Input container*/
+    .input-container {
+        width: 100%;
+    } 
+    /**/
+    .result-container{
+        font-size: 14px;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+    .steps{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .steps h1{
+        text-align: justify;
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    .steps div{
+        margin: 0;
+        padding: 10px;
+    }
+    
+}
