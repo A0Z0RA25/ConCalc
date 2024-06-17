@@ -35,8 +35,6 @@ const sign3 = document.querySelector(".sign3");
 
 const answerContainer = document.querySelector(".hyperbolaGF-answer");
 answerContainer.style.visibility = "visible";
-//Instruction
-window.alert("The value of the Equation that you'll put should be in this form: Ax²+By²+Cx+Dy+E=0");
 
 function transform(){
     const major = document.querySelector("#major").value;
