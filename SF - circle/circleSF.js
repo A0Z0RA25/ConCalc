@@ -8,10 +8,6 @@ const range = document.querySelector(".range");
 const radiusGiven = document.querySelector(".radiusGiven");
 const sign1 = document.querySelector(".sign1");
 const sign2 = document.querySelector(".sign2");
-
-//Instruction
-window.alert("The value of the equation that you'll put should be in this form: (x-h)² + (y-k)² = r");
-
  
 function transformSF(){
     const xVal = parseFloat(document.querySelector(".h").value);
