@@ -25,9 +25,6 @@ const centerValue = document.querySelector(".centerValue");
 const radiusGraph = document.querySelector(".radius"); 
 const given = document.querySelector(".given");
 
-//Instruction 
-window.alert("The equations that you'll put should be in this form: x²+y²+Dx+Ey+F=0")
-
 function transform() {
     const coeffX = parseFloat(document.getElementById('coeffX').value);
     const coeffY = parseFloat(document.getElementById('coeffY').value);
