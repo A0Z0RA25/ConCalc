@@ -15,9 +15,6 @@ const step6 = document.querySelector(".step6");
 
 const addStep = document.querySelector(".add-step");
 
-//Instruction 
-window.alert("If there is no value of center, put 0");
-
 function transform(){
     const majorValue = parseFloat(document.getElementById("majorValue").value);
     const minorValue = parseFloat(document.getElementById("minorValue").value);
