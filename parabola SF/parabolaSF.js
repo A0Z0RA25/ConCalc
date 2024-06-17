@@ -10,9 +10,6 @@ const givenA = document.querySelector(".givenA");
 const sign1 = document.querySelector(".sign1");
 const sign2 = document.querySelector(".sign2");
 
-//Instruction
-window.alert("The equation that you'll put should be in this form: (y-h) = 4a(x-k) or (x-h) = 4a(y-k)")
-
 
 function xIsA() {
     const a = parseFloat(document.getElementById('a').value);
