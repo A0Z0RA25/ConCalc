@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hyperbolaGF.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>  
+<body> 
+
+    <header>
+        <a href="https://a0z0ra25.github.io/ConCalc/"><i class="fa-solid fa-house"></i></a>
+        <h1 class="example-equation">General Form - Standard Form of a Hyperbola</h1>
+    </header>
+
+    <div class="container">
+       <div class="hyperbolaGF-container">
+        <h1>Input the Value of your Equation:</h1>
+        <h1 class="example-equation">Example: 3x²-y²+18x+4y+35=0</h1><br>
+        <form class="hyperbolaForm">
+            <div class="flex">
+                <label for="majorValue">Coefficient that is positive (Major):</label>
+            <select id="major" required>
+                <option value="x²">x²</option>
+                <option value="y²">y²</option>
+            </select>
+            </div>
+            
+            <input type="number" id="majorValue" placeholder="3" required>
+
+            <div class="flex">
+                <label for="minorValue">Coefficient that is negative (Minor):</label>
+            <select id="minor" required>
+                <option value="y²">y²</option>
+                <option value="x²">x²</option>
+            </select>
+            </div>
+            
+            <input type="number" id="minorValue" placeholder="-1" required>
+
+            <div class="flex">
+               <label for="coeffMajor">Coefficient should have the same variable with the Major:</label>
+            <select id="majorConst" required>
+                <option value="x">x</option>
+                <option value="y">y</option>
+            </select> 
+            </div>
+            
+            <input type="number" id="coeffMajor" placeholder="18" required>
+
+            <div class="flex">
+                <label for="coeffMinor">Coefficient should have the same variable with the Minor:</label>
+            <select id="minorConst" required>
+                <option value="y">y</option>
+                <option value="x">x</option>
+            </select>
+            </div>
+            
+            <input type="number" id="coeffMinor" placeholder="4" required>
+
+            <label for="constant">Constant Term:</label>
+            <input type="number" id="constant" placeholder="35" required>
+            <button type="button" onclick="transform()">Calculate</button>
+        </form>
+    </div>
+
+    <div class="hyperbolaGF-answer">
+        <h1>Here are the steps:</h1>
+        
+        <div class="steps">
+            <h1>Given:</h1>
+            <div class="given answer">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                      <mi class="givenA"></mi>
+                      <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>-</mo>
+                      <mi class="givenB"></mi>
+                      <msup>
+                        <mi>y</mi>
+                        <mn>2</mn>
+                      </msup>
+                      <mo class="sign1">+</mo>
+                      <mi class="givenC"></mi>
+                      <mi>x</mi>
+                      <mo class="sign2">+</mo>
+                      <mi class="givenD"></mi>
+                      <mi>y</mi>
+                      <mo class="sign3">+</mo>
+                      <mi class="givenE"></mi>
+                      <mo>=</mo>
+                      <mn>0</mn>
+                    </mrow>
+                  </math>
+                  
+            </div>
+            <h1>STEP 1: Regroup the Coefficient x and Coefficient y and bring the constant on the right side of the equation and change its sign.</h1>
+            <div class="step1 answer"></div>
+            <h1>STEP 2: Bring out the common factor of the Coefficient x and Coefficient y.</h1>
+            <div class="step2 answer"></div>
+            <h1>STEP 3: By using the completing the square, get the perfect square trinomial of Coefficient x and Coefficient y.</h1>
+            <div class="step3 answer"></div>
+            <h1>STEP 4: Along with the constant on the right side of the equation, put also the common factor to make it balance then multiply it to the square (n²)of the perfect square trinomial of the Coefficient x and Coefficient y.<h1>
+            <div class="step4 answer"></div>
+            <h1>STEP 5: Simplify the right side of the equation and make the perfect square trinomial into square of binomial.</h1>
+            <div class="step5 answer"></div>
+
+            <div class="step6">
+            <h1>STEP6: Divide both sides of the equation by the constant on the right side, then simplify.</h1>  
+              <math class="answer" xmlns="http://www.w3.org/1998/Math/MathML">
+                <mfrac>
+                    <mrow>
+                        <mi class="majorOut"></mi>
+                        <mo>(</mo>
+                        <mi class="majorIn"></mi>
+                        <mo>)²</mo>
+                    </mrow>
+                    <mrow>
+                        <mi class="majorDeno"></mi>
+                    </mrow>
+                </mfrac>
+                <mo>-</mo>
+                    <mfrac>
+                    <mrow>
+                        <mi class="minorOut"></mi>
+                        <mo>(</mo>
+                        <mi class="minorIn"></mi>
+                        <mo>)²</mo>
+                    </mrow>
+                    <mrow>
+                        <mi class="minorDeno"></mi>
+                    </mrow>
+                </mfrac>
+                <mo>=</mo>
+                <mfrac>
+                    <mi class="constNume">0</mi>
+                    <mi class="constDeno">0</mi>
+                </mfrac>
+            </math>
+            </div>
+            
+            <div class="step7">
+                <h1>Final Answer:</h1>  
+                  <math class="answer" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mo class="finalSign1"></mo>
+                    <mfrac> 
+                        <mrow>
+                            <mi class="finalMajorOut"></mi>
+                            <mo>(</mo>
+                            <mi class="finalMajorIn"></mi>
+                            <mo>)²</mo>
+                        </mrow>
+                        <mrow>
+                            <mi class="finalMajorDeno"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo class="finalSign2">-</mo>
+                        <mfrac>
+                        <mrow>
+                            <mi class="finalMinorOut"></mi>
+                            <mo>(</mo>
+                            <mi class="finalMinorIn"></mi>
+                            <mo>)²</mo>
+                        </mrow>
+                        <mrow>
+                            <mi class="finalMinorDeno"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mi>1</mi>
+                </math>
+                </div>
+        </div>
+        <div class="graph-container answer">
+            <ul>
+                <li>a=<span class="graphAValue"></span></li>
+                <li>b=<span class="graphBValue"></span></li>
+                <li>c=<span class="graphCValue"></span></li>
+                <li>a²=<span class="graphASqr"></span></li>
+                <li>b²=<span class="graphBSqr"></span></li>
+                <li>c²=<span class="graphCSqr"></span></li>
+            </ul> 
+
+            <div class="center-container flex">
+                <h1>Center:</h1>
+                <div class="centerValue answer"></div>
+            </div>
+
+            <div class="vertex-container flex">
+                <h1>Vertices:</h1>
+                <div class="vertexValue answer"></div>
+            </div>
+
+            <div class="foci-container flex">
+                <h1>Foci:</h1>
+                <div class="fociValue answer"></div>
+            </div>
+
+            <div class="foci-container flex">
+                <h1>Asymptote:</h1>
+                <div class="asympValue answer"></div>
+            </div>
+
+            <div class="orri-container flex">
+                <h1>Orientation:</h1>
+                <div class="orriValue answer"></div>
+            </div>
+
+        </div>
+    </div> 
+    </div>
+    
+    
+    <script src="hyperbolaGF.js"></script>
+</body>
+</html>
