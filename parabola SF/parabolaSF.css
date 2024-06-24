@@ -1,0 +1,144 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  } 
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.05);
+    --answer-color: #281c1c;
+    --border-color: hsla(180, 0%, 44%, 0.535);
+}
+
+  /*Header*/
+header{
+  text-align: center;
+  margin: 0 0 20px 0;
+  color: #fff;
+  background-color: #333;
+  padding: 15px 0;
+  font-size: 13px;
+}
+header a{
+    margin: 0;
+    position: absolute;
+    left: 50px;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px 0;
+  }
+
+  .calcu-container {
+    width: 350px;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .calcu-container h1{
+    font-size: 24px;
+    
+  }
+  
+  .calcu-container input {
+    margin: 10px auto;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 15px;
+    display: flex;
+  } 
+  
+  .calcu-container label {
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+  button {
+    display: block; 
+    padding: 10px 20px;
+    background-color: hsl(120, 89%, 36%);
+    width: 100%;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+/*ANSWER-CONTAINER*/
+.answer-container{
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    padding: 15px 20px;
+    height: 100%;
+    width: 500px;
+    border-radius: 10px;
+    visibility: hidden;
+}
+.answer-container .answer-title{
+  margin: 15px 0;
+}
+.answer{
+  background-color: var(--answer-bg);
+  padding: 15px 5px;
+  margin: 10px 0;
+  width: 100%;
+  border: solid 1px var(--border-color);
+}
+.steps h1 { 
+  font-size: 20px;
+}
+/*GIVEN*/
+
+
+@media only screen and (max-width: 643px) {
+  header h1{
+      font-size: 15px;
+      margin: 30px 0px;
+      width: 100%;
+  }
+  header a{
+      top: 5px;
+      left: 45%;
+      padding: 5px 10px;
+      font-size: 10px;
+  }
+  /*calcu container*/
+  .calcu-container{
+    width: 100%;
+    margin: 15px 10px;
+  }
+  .calcu-container h1{
+    font-size: 15px;
+  }
+  .calcu-container label{
+    font-size: 15px;
+  }
+  /*answer container*/
+  .answer-container .answer-title{
+    font-size: 20px;
+    text-align: center;
+  }
+  .answer-container{
+    margin: 20px 10px;
+    text-align: left;
+  }
+  .answer-container h1{
+    font-size: 15px;
+  }
+}

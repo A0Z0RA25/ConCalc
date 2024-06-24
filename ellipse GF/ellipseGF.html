@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ellipseGF.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>  
+<body>    
+
+    <header>
+        <a href="https://a0z0ra25.github.io/ConCalc/"><i class="fa-solid fa-house"></i></a>
+        <h1>GENERAL TO STANDARD FORM OF ELLIPSE</h1>
+    </header>
+
+    <div class="container">
+    <div class="ellipse-calcu">
+        <h1>Input the Value of your Equation:</h1>
+        <h1 class="example-equation">Example: 4x²+y²+24x-4y+36=0</h1>
+        <label for=".x2">Coefficient of x²:</label> 
+        <input class="x2" type="number" placeholder="4"> <br>
+        <label for=".y2">Coefficient of y²:</label> 
+        <input class="y2" type="number" placeholder="1"> <br>
+        <label for="">coefficient of x:</label>
+        <input class="coeffX" type="number" placeholder="24"> <br>
+        <label for="">coefficient of y:</label>
+        <input class="coeffY" type="number" placeholder="-4"> <br>
+        <label for="">Constant:</label>
+        <input class="constant" type="number" placeholder="36"> <br> 
+        <button class="transform-btn" onclick="transform()">Transform</button> 
+    </div>
+
+    <div class="answer-container">
+        <h1 class="answer-title">Here are the steps and answer</h1>
+            <div class="steps">
+                <h1>Given:</h1>
+                <div class="given answer">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                          <mi class="givenA"></mi>
+                          <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                          </msup>
+                          <mo>+</mo>
+                          <mi class="givenB"></mi>
+                          <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                          </msup>
+                          <mo class="givenSign1">+</mo>
+                          <mi class="givenC"></mi>
+                          <mi>x</mi>
+                          <mo class="givenSign2">+</mo>
+                          <mi class="givenD"></mi>
+                          <mi>y</mi>
+                          <mo class="givenSign3">+</mo>
+                          <mi class="givenE"></mi>
+                          <mo>=</mo>
+                          <mn>0</mn>
+                        </mrow>
+                      </math>
+                      
+                </div> 
+
+
+                <h1>STEP 1: Regroup the Coefficient x and Coefficient y and bring the constant on the right side of the equation and change its sign.</h1>
+                <div class="step1 answer"></div>
+                <h1>STEP 2: Bring out the common factor of the Coefficient x and Coefficient y.</h1>
+                <div class="step2 answer"></div>
+                <h1>STEP 3: By using the completing the square, get the perfect square trinomial of Coefficient x and Coefficient y.</h1>
+                <div class="step3 answer"></div>
+                <h1>STEP 4: Along with the constant on the right side of the equation, put also the common factor to make it balance then multiply it to the square (n²)of the perfect square trinomial of the Coefficient x and Coefficient y.</h1>
+                <div class="step4 answer"></div>
+                <h1>STEP 5: Simplify the right side of the equation and make the perfect square trinomial into square of binomial.</h1>
+                <div class="step5 answer">  
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mi class="aValue"></mi>
+                            </mrow>
+                            <mrow>
+                                <mi class="aDeno"></mi>
+                            </mrow>
+                        </mfrac>
+    
+                        <mo>+</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mi class="bValue"></mi>
+                                </mrow>
+                                <mrow>
+                                    <mi class="bDeno"></mi>
+                                </mrow>
+                            </mfrac>
+    
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow>
+                                <mi class="constValue"></mi>
+                            </mrow>
+                            <mrow>
+                                <mi class="constDeno"></mi>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </div>
+                <h1>STEP 6: Divide both sides of the equation by the constant on the right side, then simplify.</h1>
+                <div class="step6 answer">  
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow> 
+                                <mi class="finalaValue"></mi>
+                            </mrow>
+                            <mrow>
+                                <mi class="finalaDeno"></mi>
+                            </mrow>
+                        </mfrac>
+    
+                        <mo>+</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mi class="finalbValue"></mi>
+                                </mrow>
+                                <mrow>
+                                    <mi class="finalbDeno"></mi>
+                                </mrow>
+                            </mfrac>
+    
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow>
+                                <mi class="finalConstValue"></mi>
+                            </mrow>
+                        </mfrac>
+                    </math> 
+                </div>
+
+                <div class="graph-container">
+                    <ul>
+                        <li>a=<span class="a"></span></li>
+                        <li>a²=<span class="a2"></span></li>
+                        <li>b=<span class="b"></span></li>
+                        <li>b²=<span class="b2"></span></li>
+                        <li>c=<span class="c"></span></li>
+                        <li>c²=<span class="c2"></span></li>
+                    </ul>
+                    <h1>Center:</h1>
+                    <div class="centerValue  answer"></div>
+                    <h1>Major Vertices:</h1>
+                    <div class="majorVertexValue  answer"></div>
+                    <h1>Minor Vertices:</h1>
+                    <div class="minorVertexValue  answer"></div>
+                    <h1>Foci:</h1>
+                    <div class="fociValue answer"></div>
+                </div>
+
+        </div>
+</div>
+</div>
+
+    <script src="ellipseGF.js"></script>
+</body>
+</html>
