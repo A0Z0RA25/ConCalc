@@ -13,11 +13,10 @@
         <button onclick="sideNavBtn()" class="side-nav-btn"><i class="fa-solid fa-bars-staggered"></i></button>
         <div class="logo">ConCalc</div>
 
-        <nav class="nav-bar">
+        <nav class="nav-bar"> 
             <ul>
-                <li><a onclick="introduction()" href="#">Home</a></li>
+                <li><a onclick="introduction()" href="#home">Home</a></li>
                 <li><a onclick="aboutUs()" href="#">About Us</a></li>
-                <li><a href="#">Help</a></li>
             </ul>
         </nav>
     </header>  
@@ -25,7 +24,7 @@
     <div class="container"> 
 <!--SIDE-BAR-->
         <div class="side-nav">
-            <h1>CONICS SECTION</h1>
+            <h1 class="side-nav-title">CONICS SECTION</h1>
             <ul> 
 <!--FOR TRANSFORMING THE CIRCLE-->
                 <h1 class="nav-con-title">Circle</h1>
@@ -59,16 +58,16 @@
 <div class="conics-container">
         <div class="introduction">
             <div class="table-of-contents">
-                <h1 class="main-title">Table of Contents</h1>
+                <h1 id="home" class="main-title">Contents</h1>
                 <ul>
                     <li><a href="#circle">Circle</a></li>
                     <li><a href="#parabola">Parabola</a></li>
-                    <li><a href="#">Ellipse</a></li>
-                    <li><a href="#">Hypebola</a></li>
+                    <li><a href="#ellipse">Ellipse</a></li>
+                    <li><a href="#hyperbola">Hypebola</a></li>
                 </ul>
             </div>
             <h1 class="intro-title">INTRODUCTION TO CONIC SECTIONS</h1>
-            <p class="first-intro">
+            <p class="first-intro definition">
                 We introduce the <strong>conic sections (or conics)</strong>, a particular type of curve that
                 Frequently appear in nature and have applications in various fields. One
                 A conic is one of the first shapes we learned, along with a circle. When throwing a ball,
@@ -80,44 +79,47 @@
             <div class="conic-sections">
                 <div class="circle">
                     <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162136/Circles.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162136/Circles.png" alt="" srcset=""></a>
-                    <p class="description">It is circle when the plane is <strong>Horizontal.</strong> </p>
+                    <p class="definition">It is circle when the plane is <strong>Horizontal.</strong> </p>
                 </div>
 
                 <div class="ellipse">
                     <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162242/Ellipse.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162242/Ellipse.png" alt="" srcset=""></a>
-                    <p class="description">It is ellipse when the <strong>tilted plane</strong> intersects only one cone to form a bound curve.</p>
+                    <p class="definition">It is ellipse when the <strong>tilted plane</strong> intersects only one cone to form a bound curve.</p>
                 </div>
 
                 <div class="parabola">
                     <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162204/Parabolas.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162204/Parabolas.png" alt="" srcset=""></a>
-                    <p class="description">It is parabola when the plane intersects only one cone to form an <strong>unbounded curve.</strong></p>
+                    <p class="definition">It is parabola when the plane intersects only one cone to form an <strong>unbounded curve.</strong></p>
                 </div>
 
                 <div class="hyperbola">
                     <a href="https://media.geeksforgeeks.org/wp-content/uploads/20231017162311/Hyperbolas.png"><img class="conic-sections-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20231017162311/Hyperbolas.png" alt="" srcset=""></a>
-                    <p class="description">It is hyperbola when the plane (not necessarily vertical) intersects both cones to form <strong>two unbounded curves</strong>
+                    <p class="definition">It is hyperbola when the plane (not necessarily vertical) intersects both cones to form <strong>two unbounded curves</strong>
                                            (each called a branch of the hyperbola).</p>
                 </div>
             </div>
 
             <h1 class="degenerate-title">Degenerate Conics</h1>
             <div class="degenerate-conics">
-                <p class="second-paragraph">
+                <p class="second-paragraph definition">
                     There are various ways for a plane and the cones to connect, forming what
                     Degenerate conics are defined as a point, one line, or two lines.
                 </p>
                 <a href="https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/3675/2018/09/27183025/CNX_Precalc_Figure_10_04_002n2.jpg"><img class="degenerate-img" src="https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/3675/2018/09/27183025/CNX_Precalc_Figure_10_04_002n2.jpg" alt=""></a>
             </div>
-        <!---->
+        <!--CIRCLE SECTION-->
             <div class="circle-section" id="circle">
                 <h1 class="main-title">Circle</h1>
                 <ul class="definition">
                    <li>A circle may also be considered a special kind of ellipse (for the special case when
                     the tilted plane is horizontal).</li>
-                    <li>Let C be a given point. The set of all points P having the same
-                        distance from C is called a circle. The point C is called the center of
-                        the circle, and the common distance its radius</li> 
+                    <li>The plane intersect horizontally to the nappe of the cone, forming a special kind of ellipse where it's point is equidistant to it's radius.</li> 
                 </ul>
+
+                <div class="parts">
+                    <h1 class="sub-title">Part of a Circle:</h1>
+                    <p class="definition">Radius - also known as the center(C), where from it's point to the other bounding surface of the sphere is equal, where r > 0.</p>
+                </div>
                 
                 <div class="forms standard-form">
                     <h1 class="sub-title">Standard Form of a Circle:</h1>
@@ -128,7 +130,6 @@
 
                 <div class="forms">
                     <h1 class="sub-title">General Form of a Circle:</h1>
-                     <p class="definition">If the equation of a circle is given in the general form</p> 
                      <div class="general-form">
                         <p><strong>Ax² + Ay² + Cx + Dy + E = 0,  A ≠ 0</strong></p>
                         <p><strong>or x² + y² + Cx + Dy + E = 0</strong></p>
@@ -138,10 +139,542 @@
                 
             </div>
 
+            <!--PARABOLA SECTION-->
             <div class="parabola-section" id="parabola">
                 <h1 class="main-title">Parabola</h1>
-                <p class="definition">A parabola is one of the conic sections. We have already seen parabolas which
-                    open upward or downward, as graphs of quadratic functions.</p>
+                <ul class="definition">
+                   <li>Parabolas are frequently referred to as quadratic function graphs. They are alternatively defined as the set of all points whose distance from a certain point (the focus) equals their distance from a certain line (the directrix). It formed when a plane cuts one nappe of the double-napped cone parallel to the edge of the cone.</ul> 
+                </ul>
+
+                <div class="parts">
+                    <h1 class="sub-title">Parts of Parabola:</h1>
+                    <p class="definition">Vertex - the sharpest turn point of the parabola (illustrated by V).</p>
+                    <p class="definition">Focus - a point that determines or defines a parabola. (represented by F). The distance from the focus to the vertex is always specified by p.</p>
+                    <p class="definition">Latus Rectum - a line that passes through the focus and is perpendicular to the symmetry axis, with two end points. 4p always determines the distance between the latus rectum endpoints.</p>
+                    <p class="definition">Axis of Symmetry - a line that cuts the parabola in half.</p>
+                    <p class="definition">Directrix - a perpendicular line to the symmetry axis (shown by D).</p>
+                </div>
+
+                <div class="orientation definition">
+                    <h1 class="sub-title">Orientation of Parabola</h1>
+                    <ul>
+                        <li>Upward: If the leading coefficient is more than zero, the parabola opens upwards.</li>
+                        <li>Downward: If the leading coefficient is less than zero, the parabola will open downward.</li>
+                        <li>Right: The equation illustrates a parabola with a single vertex that opens to the right if the constant is positive.</li>
+                        <li>Left: The equation illustrates a parabola with a single vertex that opens to the left if the constant is negative.
+                        </li>
+                    </ul>
+                    <!--Vertex at origin-->
+                    <h1 class="sub-title">Vertex at the origin:</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>VERTEX</th>
+                                <th>EQUATION</th>
+                                <th>OPENING</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(0, 0)</td>
+                                <td>x² = 4py</td>
+                                <td>Upward</td>
+                            </tr>
+                            <tr>
+                                <td>(0, 0)</td>
+                                <td>x² = -4py</td>
+                                <td>Downward</td>
+                            </tr>
+                            <tr>
+                                <td>(0, 0)</td>
+                                <td>y² = 4px</td>
+                                <td>Right</td>
+                            </tr>
+                            <tr>
+                                <td>(0, 0)</td>
+                                <td>y² = -4px</td>
+                                <td>Left</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!--Vertex at h, k-->
+                    <h1 class="sub-title">Vertex at (h, k)</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>VERTEX</th>
+                                <th>EQUATION</th>
+                                <th>OPENING</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(h, k)</td>
+                                <td>(x-h)² = 4p(y-k)</td>
+                                <td>Upward</td>
+                            </tr>
+                            <tr>
+                                <td>(h, k)</td>
+                                <td>(x-h)² = -4p(y-k)</td>
+                                <td>Downward</td>
+                            </tr>
+                            <tr>
+                                <td>(h, k)</td>
+                                <td>(y-k)² = 4p(x-h)</td>
+                                <td>Right</td>
+                            </tr>
+                            <tr>
+                                <td>(h, k)</td>
+                                <td>(y-k)² = -4p(x-h)</td>
+                                <td>Left</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+            </div>
+
+            <!--ELLIPSE SECTION-->
+            <div class="ellipse-section" id="ellipse">
+                <h1 class="main-title">Ellipse</h1>
+                <ul class="definition">
+                   <li>Shaped bounded curve that formed when the(tilted)plane intersects to the nappe of the cone, it is used to determine by a constant and two fixed point named focus point/foci(F1&F2).</li>
+                </ul>
+
+                <div class="parts">
+                    <h1 class="sub-title">Parts of Ellipse:</h1>
+                    <p class="definition">Center - the midpoint of the graph,where (h,k) found.<p>
+                    <p class="definition">Vertex(V1&V2) - the two points on the principal axis, where the length of the two end points of vertex is called major axis.</p>   
+                    <p class="definition">Co-vertex(W1&W2)- few unit/s away from the center,where the length of the two endpoints of co-vertex is called minor axis.</p> 
+                    <p class="definition">Foci(F1&F2) - two points away from center at the x-axis.</p>
+                </div>
+                
+                <div class="forms standard-form">
+                    <h1 class="sub-title">Equation of Ellipse:</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CENTER</th>
+                                <th>EQUATION</th>
+                                <th>GRAPH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(0, 0)</td>
+                                <td>
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>x</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>+</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>y</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                      </math>
+                                </td>
+                                <td>Horizontal</td>
+                            </tr>
+                            <tr>
+                                <td>(0, 0)</td>
+                                <td>
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>x</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>+</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>y</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                      </math>
+                                </td>
+                                <td>Vertical</td>
+                            </tr>
+                            <tr>
+                                <td>(h, k)</td>
+                                <td>
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(x-h)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>+</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(y-k)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                      </math>
+                                </td>
+                                <td>Horizontal</td>
+                            </tr>
+                            <tr>
+                                <td>(h, k)</td>
+                                <td>
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(x-h)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>+</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(y-k)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                      </math>
+                                </td>
+                                <td>Vertical</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="forms standard-form">
+                    <h1 class="sub-title">Standard Form of Ellipse</h1>
+                    <math class="definition" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                          <mfrac>
+                            <msup>
+                              <mi>x</mi>
+                              <mn>2</mn>
+                            </msup>
+                            <msup>
+                              <mi>a</mi>
+                              <mn>2</mn>
+                            </msup>
+                          </mfrac>
+                          <mo>+</mo>
+                          <mfrac>
+                            <msup>
+                              <mi>y</mi>
+                              <mn>2</mn>
+                            </msup>
+                            <msup>
+                              <mi>b</mi>
+                              <mn>2</mn>
+                            </msup>
+                          </mfrac>
+                          <mo>=</mo>
+                          <mn>1</mn>
+                        </mrow>
+
+                        <mo>or</mo>
+
+                        <mrow>
+                            <mfrac>
+                              <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                              </msup>
+                              <msup>
+                                <mi>b</mi>
+                                <mn>2</mn>
+                              </msup>
+                            </mfrac>
+                            <mo>+</mo>
+                            <mfrac>
+                              <msup>
+                                <mi>y</mi>
+                                <mn>2</mn>
+                              </msup>
+                              <msup>
+                                <mi>a</mi>
+                                <mn>2</mn>
+                              </msup>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mn>1</mn>
+                          </mrow>
+                      </math>
+                      
+                </div>
+
+                <div class="forms">
+                    <h1 class="sub-title">General Form of Ellipse:</h1>
+                     <div class="general-form">
+                        <p>Ax² + By² + Cx + Dy + F = 0 <strong>OR</strong> Ay² + Bx² + Cx + Dy + F = 0</p>
+                     </div>
+                    </div>
+                
+            </div>
+
+            <!--HYPERBOLA SECTION-->
+            <div class="hyperbola-section" id="hyperbola">
+                <h1 class="main-title">Hyperbola</h1>
+                <ul class="definition">
+                   <li>A hyperbola is a curve that occurs at the intersertion of a cone and a plane. It is also the set of all points in the plane such that the difference of their distances from two fixed points (foci) is constant.</li>
+                </ul>
+
+                <div class="parts">
+                    <h1 class="sub-title">Parts of Hyperbola:</h1>
+                    <p class="definition">Center - this can be at the origin or (h,k). This middle inner most  part of a hyperbola.<p>
+                    <p class="definition">Vertices (V1&V2) - Each vertex is a units from the center. Moreover, the transverse axis has length 2a.</p>   
+                    <p class="definition">Endpoints of conjugate axis ( W1&W2 ) - Each endpoint of conjugate axis is b units from the center. Moreover, the length of conjugate axis is 2b.</p> 
+                    <p class="definition">Foci ( F1 & F2 ) - each focus is c units from the center and collinear to the vertices.</p>
+                    <p class="definition">Asymtotes - These are the two lines that intersect at the center.</p>
+                </div>
+                
+                <div class="forms standard-form">
+                    <!--VERTEX AT THE ORIGIN HYPERBOLA-->
+                    <h1 class="sub-title">Vertex at the origin: equation / formula</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PARTS</th>
+                                <th>
+                                    <math class="given-hyperbola" xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>x</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>-</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>y</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                    </math>
+                                </th>
+                                <th>
+                                    <math class="given-hyperbola" xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>y</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>-</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>x</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                    </math>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vertices</td>
+                                <td>(a, 0), (-a, 0)</td>
+                                <td>(0, a), (0, -a)</td>
+                            </tr>
+                            <tr>
+                                <td>Endpoints of Conjugate Axis</td>
+                                <td>(0, b), (0, -b)</td>
+                                <td>(b, 0), (-b, 0)</td>
+                            </tr>
+                            <tr>
+                                <td>Foci</td>
+                                <td>(c, 0), (-c, 0)</td>
+                                <td>(0, c), (0, -c)</td>
+                            </tr>
+                            <tr>
+                                <td>Equation of Asymptotes</td>
+                                <td>y = &plusmn;(b/a) * x</td>
+                                <td>y = &plusmn;(a/b) * x</td>
+                            </tr>
+                            <tr>
+                                <td>Orientation</td>
+                                <td>Horizontal</td>
+                                <td>Vertical</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="forms standard-form">
+                    <!--VERTEX AT THE H K HYPERBOLA-->
+                    <h1 class="sub-title">Vertex at (h, k): equation / formula</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PARTS</th>
+                                <th>
+                                    <math class="given-hyperbola" xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(x-h)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>-</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(y-k)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                    </math>
+                                </th>
+                                <th>
+                                    <math class="given-hyperbola" xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(y-k)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>a</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>-</mo>
+                                          <mfrac>
+                                            <msup>
+                                              <mi>(x-h)</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                              <mi>b</mi>
+                                              <mn>2</mn>
+                                            </msup>
+                                          </mfrac>
+                                          <mo>=</mo>
+                                          <mn>1</mn>
+                                        </mrow>
+                                    </math>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vertices</td>
+                                <td>(h &plusmn;a, k)</td>
+                                <td>(h, k &plusmn;a)</td>
+                            </tr>
+                            <tr>
+                                <td>Endpoints of Conjugate Axis</td>
+                                <td>(h, k+b), (h, k-b)</td>
+                                <td>(h+b, k), (h-b, k)</td>
+                            </tr>
+                            <tr>
+                                <td>Foci</td>
+                                <td>(h &plusmn;c, k)</td>
+                                <td>(h, k &plusmn;c)</td>
+                            </tr>
+                            <tr>
+                                <td>Equation of Asymptotes</td>
+                                <td>y = k &plusmn;(b/a) (x-h)</td>
+                                <td>y = k &plusmn;(a/b) (x-h)</td>
+                            </tr>
+                            <tr>
+                                <td>Orientation</td>
+                                <td>Horizontal</td>
+                                <td>Vertical</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
         </div>
 
