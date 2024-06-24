@@ -191,7 +191,7 @@ header ul li a {
     justify-content: center;
     margin: 30px 0;
 }
-.circle-section, .parabola-section, .ellipse-section, .circle-section{
+.circle-section, .parabola-section, .ellipse-section, .hyperbola-section{
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 5px;
     padding: 15px 20px;
@@ -243,11 +243,6 @@ header ul li a {
     justify-content: space-evenly;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
-}
-.degenerate-conics p{
-    width: 300px;
-    margin: 0px 0;
-    padding: 20px;
 }
 .degenerate-img{
     height: 400px;
@@ -315,25 +310,17 @@ th {
         padding: 10px 2px;
         text-align: center;
         font-size: 13px;
+        word-wrap: break-word;
     }
     th {
         background-color: #343a40;
         color: #fff;
         padding: 15px 10px;
     }
-    /*Circle*/
-    .circle-section .circle-title, .title{
-        font-size: var(--header-font);
-        margin: 10px;
-    }
+    /*Conic container*/
     .definition{
         text-align: left;
         margin: 10px 0px;
-    }
-    .circle-section ul li {
-        list-style: circle;
-        margin: 10px 0 0 15px;
-        padding: 10px;
     }
     .main-title{
         font-size: 25px;
@@ -354,14 +341,6 @@ th {
         width: 250px;
         height: 200px;
     }
-    .degenerate-conics .second-paragraph{
-        font-size: 15px;
-        text-align: left;
-        padding:  10px;
-        margin: 5px 0 20px 0;
-        width: 100%;
-        box-shadow: none;
-    }
     /*conics container*/
     .conics-container{
         width: 100%;
@@ -372,7 +351,8 @@ th {
         flex-direction: column;
         padding: 0;
         margin: 0;
-        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: scroll;
         color: var(--color);
     }
     /*Intro*/
