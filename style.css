@@ -6,9 +6,6 @@
 a{
     text-decoration: none;
 }
-body{
-    background-color: hsla(0, 0%, 50%, 0.292);
-}
 :root{
     --background-color: hsla(216, 96%, 9%, 0.807);
     --color: #fff;
@@ -20,7 +17,7 @@ header{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position: sticky;
+    position: fixed;
     padding: 10px 0;
     width: 100%;
     background-color: var(--blk-color);
@@ -29,7 +26,7 @@ header .nav-bar li a:hover{
     background: #fff;
     color: #333;
     padding: 3px 8px;
-    transition: ease-in 0.3s;
+    transition: ease-in 0.3s; 
 }
 
 header .logo{
@@ -45,23 +42,27 @@ header ul{
 
 header ul li{
     list-style: none;
-    margin: 0 50px;
+    margin: 0 10px;
 }
 
 header ul li a {
     text-decoration: none;
     color: #fff;
+    border: solid 1px;
+    border-radius: 10px;
+    padding: 5px 10px ;
 }
 
 /*content*/
-
 .container{
     height: 100vh;
     width: 100%;
     display: flex;
+    
 }
 /*ALL THE CONIC*/
-.conics-container{
+.conics-container, .about-page{
+    margin-top: 30px;
     width: 100%;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -85,6 +86,9 @@ header ul li a {
     -webkit-backdrop-filter: blur(10px);
     color: var(--color);
 }
+.side-nav .side-nav-title{
+    margin-top: 20px;
+}
 .side-nav ul{
     text-align: left;
     text-decoration: none;
@@ -103,9 +107,6 @@ header ul li a {
 .side-nav .btn{
     text-align: center;
 }
-.side-nav .btn:hover{
-    background-color: var(--background-color);
-}
 /*TRANSFORM*/
 .side-nav button{
     padding: 10px 0;
@@ -116,14 +117,10 @@ header ul li a {
 .transform-btn{
     text-align: center;
 }
-.side-nav .transform-btn button:hover{
-    transform: translate(5px);
-    color: #000;
-}
 .side-nav .transform-btn button a:hover{
-    transition: ease 0.7s;
+    transition: ease 0.3s;
     background-color: #fff;
-    color: #333;
+    color: black;
     width: 100%;
 }
 .side-nav h1{
@@ -133,7 +130,7 @@ header ul li a {
     padding: 10px;
 }
 .side-nav button a{
-    background-color: var(--background-color);
+    border: solid 1px #fff;
     margin: 6px 20px;
     padding: 10px;
     border-radius: 10px;
@@ -147,70 +144,75 @@ header ul li a {
 }
 .table-of-contents ul{
     display: flex;
-    flex-direction: column;
     text-align: left;
-    padding: 20px;
-    margin: 0 auto;
-    width: 300px;
+    justify-content: center;
+    padding: 15px 0;
+    width: 100%;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .table-of-contents ul li{
-    text-align: left;
-    margin: 0 auto;
-    list-style: disc;
+    margin: 0 20px;
+    list-style: none;
     text-decoration: underline;
-}
-.table-of-contents ul li a{
-    transition: ease 5s;
 }
 /*THE CONTENT*/
 .introduction, .about-page, .circle-container, .ellipse-container, .parabola-container, .hyperbola-container{
     margin-bottom: 20px;
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 0;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
 }
 
-.conic-sections-img{
+.definition{
+    font-size: 16px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 15px 10px;
+    text-align: left;
+}
+
+.conic-sections-img, .conic-sections p{
     width: 250px;
     height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .conic-sections{
-    display: flex;
+    display: flex; 
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-/*CIRCLE*/
 
+/*CIRCLE*/
 .circle, .ellipse, .parabola, .hyperbola{
     justify-content: center;
     margin: 30px 0;
 }
-.description{
-    word-wrap: break-word;
-    width: 240px;
-    height: 100px;
-    line-height: 20px;
-    padding: 10px 0 35px 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 5px;
-}
-.circle-section{
+.circle-section, .parabola-section, .ellipse-section, .circle-section{
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 5px;
     padding: 15px 20px;
     margin: 20px 0;
 }
-.definition{
-    padding: 20px 0px 20px 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 5px;
+.circle-section ul li, .ellipse-section ul li, .parabola-section ul li, .hyperbola-section ul li{
+    list-style: disc;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 .main-title{
     text-align: center;
     margin: 20px 0;
+}
+/*FORMS*/
+.forms{
+    margin: 20px 0;
+}
+.sub-title {
+    font-size: 24px;
+    margin: 10px 0;
 }
 .general-form{
     display: flex;
@@ -228,17 +230,7 @@ header ul li a {
 .intro-title{
     text-align: center;
     margin: 20px 0;
-    font-family: var(--font-family);
-}
-.first-intro{
-    color: var(--blk-color);
-    margin: 10px 30px;
-    padding: 10px 20px;
-    font-family: var(--font-family);
-    font-size: 18px;
-    text-align: justify;
-    word-wrap: break-word;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-size: 25px;
 }
 /*2nd*/
 .degenerate-title{
@@ -249,13 +241,12 @@ header ul li a {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
 }
 .degenerate-conics p{
-    font-size: 20px;
     width: 300px;
-    margin: 20px 0;
+    margin: 0px 0;
     padding: 20px;
 }
 .degenerate-img{
@@ -266,6 +257,21 @@ header ul li a {
 .parabola-section{
     margin-bottom: 10px;
     padding: 10px;
+}
+/*Tables*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: center;
+}
+th {
+    background-color: #343a40;
+    color: #fff;
 }
 
 @media only screen and (max-width: 643px) {
@@ -286,13 +292,34 @@ header ul li a {
         color: var(--blk-color);
     }
     .table-of-contents ul{
-        margin: 0 auto;
+        margin: 0;
         padding: 10px 0;
         display: flex;
         flex-direction: row;
+        justify-content: center;
     }
     .table-of-contents ul li{
         list-style: none;
+    }
+    .table-of-contents ul li a{
+        font-size: 13px;
+    }
+    /*Tables*/
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #dee2e6;
+        padding: 10px 2px;
+        text-align: center;
+        font-size: 13px;
+    }
+    th {
+        background-color: #343a40;
+        color: #fff;
+        padding: 15px 10px;
     }
     /*Circle*/
     .circle-section .circle-title, .title{
@@ -332,8 +359,10 @@ header ul li a {
         text-align: left;
         padding:  10px;
         margin: 5px 0 20px 0;
+        width: 100%;
+        box-shadow: none;
     }
-    /**/
+    /*conics container*/
     .conics-container{
         width: 100%;
         height: 100%;
@@ -341,7 +370,7 @@ header ul li a {
         justify-content: center;
         display: flex;
         flex-direction: column;
-        padding: 0 ;
+        padding: 0;
         margin: 0;
         overflow: scroll;
         color: var(--color);
@@ -367,16 +396,15 @@ header ul li a {
         margin: 0 0 20px 0;
     }
     .circle, .ellipse, .parabola, .hyperbola{
-        margin: 10px;
+        margin: 10px 8px;
         display: flex;
         color: var(--blk-color)
     }
-    .description{
+    .circle .definition, .ellipse .definition, .parabola .definition, .hyperbola .definition{
         margin: 0;
-        width: 150px;
-        height: 111px;
+        width: 100%;
+        height: 160px;
         font-size: 13px;
-        word-wrap: break-word;
         text-align: left;
     }
     /*HEADER*/
