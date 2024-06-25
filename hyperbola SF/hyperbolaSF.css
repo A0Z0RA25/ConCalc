@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+} 
+
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.05);
+    --answer-color: #281c1c;
+    --border-color: hsla(180, 0%, 44%, 0.535);
+}
+
+header{ 
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+    margin: 0 0 15px 0;
+}
+header a{
+    margin: 0;
+    position: absolute;
+    left: 50px;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.hyperbolaSF-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 300px;
+}
+.hyperbolaForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hyperbolaSF-container h1 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 5px 0;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.hyperbolaSF-container button {
+    padding: 10px;
+    background-color: #333;
+    color: hsl(240, 83%, 67%);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*OPTIONS*/
+select{
+    width: 35px;
+    height: 20px;
+}
+/*ANSWER CONTAINER*/
+.answer{
+    background-color: var(--answer-bg);
+    border: solid 1px var(--border-color);
+    width: 100%;
+    padding: 10px;
+}
+/*HYPERBOLA ANSWER CONTAINER*/
+.hyperbolaSF-answer{
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    padding: 20px 50px;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    visibility: hidden;
+}
+.hyperbolaSF-answer h1{
+    font-size: 20px;
+}
+/*Flex*/
+.center-container h1, .orri-container h1{
+    font-size: 18px;
+    margin: 10px 0;
+}
+.flex{
+    display: flex;
+    align-items: center; 
+} 
+
+@media only screen and (max-width: 643px) {
+    header h1{
+        font-size: 20px;
+        margin: 40px 10px; 
+    }
+    header a{ 
+        top: 10px;
+        left: 45%;
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+    .hyperbolaSF-container{
+        margin: 0 10px;
+    }
+    .hyperbolaSF-container input{
+        text-align: center;
+    }
+    /*ANSWER CONTAINER*/
+    .hyperbolaSF-answer{
+        border: solid #ddd;
+        padding: 10px;
+        margin: 20px 10px;
+        width: 100%;
+        font-size: 14px;
+    }
+    .hyperbolaSF-answer h1{
+        font-size: 14px;
+    }
+    .answer{
+        width: 100%;
+        padding: 10px 0 10px 5px;
+        font-weight: bold;
+    }
+}

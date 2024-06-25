@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="parabolaGF.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>  
+
+    <header>
+        <a href="https://a0z0ra25.github.io/ConCalc/"><i class="fa-solid fa-house"></i></a>
+        <h1>GENERAL TO STANDARD FORM OF PARABOLA</h1>
+    </header>
+
+    <div class="container"> 
+
+        <div class="parabolaGF-container"> 
+            <h1>Input the value of your Equation</h1>
+            <h1 class="example-equation">Example: x²-4x+12y+4=0</h1> <br>
+            <label for="xvalue">Value of A:</label>
+    
+            <select class="major" required>
+                <option value="x²">x²</option>
+                <option value="y²">y²</option>
+            </select>
+    
+            <input type="number" id="Ax" placeholder="1"> 
+            <label for="xvalue">Coefficient of Major:</label>
+            <select class="com" required>
+                <option value="x">x</option>
+                <option value="y">y</option>
+            </select> 
+    
+            <input type="number" id="coeffXMajor" placeholder="-4">
+            <label for="coeffX">Coefficient of Minor:</label>
+    
+            <select class="minor" required>
+                <option value="y">y</option>
+                <option value="x">x</option>
+            </select>
+    
+            <input type="number" id="coeffYMinor" placeholder="12">
+            <label for="constant">Constant Term:</label>
+            <input type="number" id="constantx" placeholder="4">
+            <button class="transform" onclick="transform()">Transform</button> 
+            <div class="invalid"></div>
+         </div>
+    
+         <div class="parabolaGF-answer-container">
+            <h1 class="answer-title">Here's the answer</h1>
+    
+            <div class="form"></div>
+     
+            <div class="steps-container">
+                <h1>Given:</h1>
+                <div class="given answer">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                          <mi class="givenMajor">1</mi>
+                          <msup>
+                            <mi class="givenMajorVar">x</mi>
+                          </msup>
+                          <mo class="sign1">+</mo>
+                          <mi class="givenMajorCoef">2</mi>
+                          <msup>
+                            <mi class="givenMajorCoefVar">y</mi>
+                          </msup>
+                          <mo class="sign2">+</mo>
+                          <mi class="givenMinor">3</mi>
+                          <mi class="givenMinorVar">x</mi>
+                          <mo class="sign3">+</mo>
+                          <mi class="givenConst">4</mi>
+                          <mo>=</mo>
+                          <mn>0</mn>
+                        </mrow>
+                      </math>
+                      
+                </div>
+
+                <h1>STEP 1: Put the coefficient of the minor axis and the constant on the right side of the equation.</h1>
+                <div class="step1 answer"></div>
+                <h1>STEP 2: Make the left side of the equation into a perfect square trinomial by using completing the square.</h1>
+                <div class="step2 answer"></div>
+                <h1>STEP 3: On the left side of the equation, turn the perfect square trinomial into square of binomial.</h1>
+                <div class="step3 answer"></div>
+
+                <div class="step4-container">
+                    <h1>STEP 4: Then, factor the binomial on the right side of the equation.</h1>
+                    <div class="step4 answer"></div>
+                </div>
+                
+                <div class="frac-container answer">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mi class="majorOut"></mi>
+                                <mo>(</mo>
+                                <mi class="majorIn"></mi>
+                                <mo>)²</mo>
+                            </mrow>
+                            <mrow>
+                                <mi class="majorDeno"></mi>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                            <mrow>
+                                <mfrac>
+                                  <mi class="minorOut"></mi>
+                                  <mi class="minorDeno"></mi>  
+                                </mfrac>
+                                
+                                <mo>(</mo>
+                                <mi class="minorIn"></mi>
+                                <mo>)²</mo>
+                            </mrow>
+                    </math>
+                </div>
+            </div>
+            
+            <div class="finalAnswer">
+                <h1>Standard Form: Final answer</h1>  
+                <math class="answer" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mo>(</mo>
+                            <mi class="finalMajorIn"></mi>
+                            <mo>)²</mo>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                        <mrow>
+                            <mfrac>
+                              <mi class="finalMinorOut"></mi>
+                              <mi class="finalMinorDeno"></mi>  
+                            </mfrac>
+                            
+                            <mo>(</mo>
+                            <mi class="finalMinorIn"></mi>
+                            <mo>)²</mo>
+                        </mrow>
+                </math>  
+                </div>
+
+                <div class="graphValue answer">
+                    <h1>Identify the C value by dividing it to 4c:</h1> 
+                    <h1>4c / 4 = <span class="pValue"></span></h1>
+                    <div class="vertex-container">
+                        <h1>Vertex:</h1>
+                        <div class="vertexValue answer"></div>
+                    </div> 
+
+                    <div class="focus-container">
+                        <h1>Focus:</h1>
+                        <div class="fociValue answer"></div>
+                    </div>
+
+                    <div class="directrix-container">
+                        <h1>Directrix:</h1>
+                        <div class="direcValue answer"></div>
+                    </div>
+
+                    <div class="axis-container">
+                        <h1>Axis of symmetry</h1>
+                        <div class="axisValue answer"></div>
+                    </div>
+
+                    <div class="latus-container">
+                        <h1>End points of Latus Rectum:</h1>
+                        <div class="latusValue answer"></div>
+                    </div>
+
+
+                </div>
+            
+        </div>
+
+    </div>
+
+    
+
+    
+    <script src="parabolaGF.js"></script>
+</body>
+</html>
