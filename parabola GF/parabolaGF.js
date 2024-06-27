@@ -68,7 +68,6 @@ function transform() {
     //Parts of graph
     parts(xvalue, yvalue, a, major, minor, ConstNotZero);
     //IF A is 1
-    answerContainer.style.display = "block";
     if(a == 1){
       finalAnswer.style.display = "none";
       fracContainer.style.display = "none";
