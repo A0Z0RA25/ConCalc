@@ -234,19 +234,27 @@ header ul li a {
 }
 /*2nd*/
 .degenerate-title{
-    margin: 10px 20px;
+    margin: 10px 20px; 
     text-align: center;
 }
 .degenerate-conics{
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
 }
+.degenerate-conics p{
+    width: 300px;
+    text-align: center;
+    box-shadow: none;
+    font-size: 20px;
+}
 .degenerate-img{
     height: 400px;
-    width: 500px;
+    width: 600px;
 } 
 /*PARABOLA SECTION*/
 .parabola-section{
