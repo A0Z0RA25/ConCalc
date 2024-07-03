@@ -32,35 +32,3 @@ function aboutUs() {
         about.style.display = "block";
     }
 }
-
-function circle() {
-    if (circleList.style.display === "none") {
-        circleList.style.display = "block";
-    } else {
-        circleList.style.display = "none";
-    }
-}
-
-function ellipse() {
-    if (ellipseList.style.display === "none") {
-        ellipseList.style.display = "block";
-    } else {
-        ellipseList.style.display = "none";
-    }
-}
-
-function parabola() {
-    if (parabolaList.style.display === "none") {
-        parabolaList.style.display = "block";
-    } else {
-        parabolaList.style.display = "none";
-    }
-}
-
-function hyperbola() {
-    if (hyperbolaList.style.display === "none") {
-        hyperbolaList.style.display = "block";
-    } else {
-        hyperbolaList.style.display = "none";
-    }
-}
