@@ -1,0 +1,244 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}  
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.05);
+    --answer-color: #281c1c;
+    --border-color: hsla(180, 0%, 44%, 0.535);
+}
+header{
+    margin: 0 0 15px 0;
+    padding: 15px 0;
+    background-color: #333;
+    color: #fff; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+header a{
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+.content-title{
+    text-align: center;
+    margin: 10px;
+}
+/*OPTIONS*/
+.option-container{
+    display: flex;
+
+}
+.conics-option{
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+.option-btn {
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: solid 3px var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.option-content{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border-radius: 10px;
+}
+.option-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: none;
+    border: solid 1px;
+    display: block;
+    text-align: center;
+}
+.option-content a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.conics-option:hover .option-content {
+    display: block;
+}
+/**/
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 20px 0;
+} 
+
+.hyperbolaGF-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    height: 100%;
+}
+.hyperbolaForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hyperbolaGF-container h1 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 5px 0;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.hyperbolaGF-container button {
+    padding: 10px;
+    background-color: #333;
+    color: hsl(240, 83%, 67%);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*OPTIONS*/
+select{
+    width: 35px;
+    height: 20px;
+}
+/**/
+.steps h1{
+    font-size: 15px; 
+}
+.answer{
+    background-color: var(--answer-bg);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+.graph-container ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 20px; /* Gap between the columns */
+    margin: 0;
+    padding: 0;
+    list-style-type: none; /* Remove default list styling */
+}
+/*HYPERBOLA ANSWER CONTAINER*/
+.hyperbolaGF-answer{
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 10px;
+    padding: 20px 50px;
+    width: 600px;
+    background-color: #fff;
+    visibility: hidden;
+}
+/*Flex*/
+.center-container h1, .orri-container h1, .foci-container h1, .vertex-container h1{
+    font-size: 15px;
+    margin: 10px 0;
+}
+/*Graph*/
+.graph{
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 643px) {
+    header a{
+        padding: 10px;
+        font-size: 10px;
+    }
+    /*Options*/
+    .option-container{
+        display: block;
+    }
+    .option-btn{
+        font-size: 13px;
+        width: 200px;
+        margin: 10px 0; 
+    }
+    .option-content{
+        z-index: 1;
+        width: 200px;
+    }
+    /**/
+    .content-title{
+        font-size: 15px;
+    }
+    /*Hyperbola container*/
+    .hyperbolaGF-container{
+        margin: 15px 8px;
+    }
+    .hyperbolaGF-container input{
+        text-align: center;
+        margin: 5px 0;
+    }
+    .hyperbolaGF-container .example-equation{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    /*Answer Container*/
+    .hyperbolaGF-answer{
+        padding: 10px 5px;
+        margin: 20px 10px;
+        width: 100%;
+        font-size: 13px;
+    }
+    .steps h1{
+        font-size: 13px;
+    }
+    .graph-container ul li{
+        list-style: none;
+    }
+    .flex{
+        display: flex;
+        flex-direction: column;
+    }
+    .answer{
+        width: 100%;
+        padding: 10px 0 10px 0px;
+        font-size: 13px;
+        text-align: center;
+    }
+    .step6 math, .step7 math{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-weight: bold;
+    }
+    /*Graph*/
+    .graph canvas{
+        width: 100%;
+    }
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellipse: Standard to General</title>
+    <link rel="stylesheet" href="ellipseSF.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body> 
+ 
+    <header>
+        <a href="https://a0z0ra25.github.io/ConCalc/"><i class="fa-solid fa-house"></i></a>
+        <div class="option-container">
+            <div class="general-option">
+         <div class="conics-option">
+             <button class="option-btn">General - Standard</button>
+             <div class="option-content">
+                <a href="https://a0z0ra25.github.io/ConCalc/GenForm%20-%20circle/circleGF.html">Circle</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/ellipse%20GF/ellipseGF.html">Ellipse</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/parabola%20GF/parabolaGF.html">Parabola</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/hyperbola%20GF/hyperbolaGF.html">Hyperbola</a>
+            </div>
+         </div>
+     </div>    
+ 
+     <div class="standard-option">
+         <div class="conics-option">
+             <button class="option-btn">Standard - General</button>
+             <div class="option-content">
+                <a href="https://a0z0ra25.github.io/ConCalc/SF%20-%20circle/circleSF.html">Circle</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/ellipse%20SF/ellipseSF.html">Ellipse</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/parabola%20SF/parabolaSF.html">Parabola</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/hyperbola%20SF/hyperbolaSF.html">Hyperbola</a>
+            </div>
+         </div>
+     </div> 
+         </div>
+    </header>
+  <h1 class="content-title">STANDARD TO GENERAL FORM OF ELLIPSE</h1>     
+
+    <div class="container">  
+        <div class="input-container">
+            <h1>Input the Value of your equation:</h1>
+            <div class="example-equation">
+                <h1>Example:</h1>
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mo>(</mo>
+                            <mi>x</mi>
+                            <mo>-</mo>
+                            <mi>4</mi>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mi>9</mi>
+                        </mrow>
+                    </mfrac>
+        
+                    <mo>+</mo>
+                        <mfrac>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>y</mi>
+                                <mo>+</mo>
+                                <mi>2</mi>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mi>25</mi>
+                            </mrow>
+                        </mfrac>
+        
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mi>1</mi>
+                        </mrow>
+                    </mfrac>
+                </math>
+            </div><br>
+            <label for="center-x">Center of x:</label>
+            <input type="number" id="center-x" placeholder="-4">
+            <label for="center-y">Center of y:</label>
+            <input type="number" id="center-y" placeholder="2">
+            <label for="semi-major">Denominator of x:</label>
+            <input type="number" id="semi-major" placeholder="9">
+            <label for="semi-minor">Denominator of y:</label>
+            <input type="number" id="semi-minor" placeholder="25">
+            <button onclick="transform()">Convert to General Form</button>
+        </div> 
+    <div class="result-container">
+            <!---->
+    <div class="steps"> 
+    <div class="given">
+        <h1>Given:</h1>
+        <math class="answer" xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mrow>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo class="givenSignX">+</mo>
+                    <mi class="givenA"></mi>
+                    <mo>)</mo>
+                </mrow>
+                <mrow>
+                    <mi class="givenADeno"></mi>
+                </mrow>
+            </mfrac>
+
+            <mo>+</mo>
+                <mfrac>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>y</mi>
+                        <mo class="givenSignY">+</mo>
+                        <mi class="givenB"></mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mrow>
+                        <mi class="givenBDeno"></mi>
+                    </mrow>
+                </mfrac>
+
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mi class="ConstValue">1</mi>
+                </mrow>
+            </mfrac>
+        </math>
+    </div>
+        <!--LCD--> 
+    <h1>STEP 1: Get the LCD and multiply it on both sides of the equation.</h1>
+    <div class="step1 answer">  
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mrow>
+                    <mi class="aValue"></mi>
+                </mrow>
+                <mrow>
+                    <mi class="aDeno"></mi>
+                </mrow>
+            </mfrac>
+
+            <mo>+</mo>
+                <mfrac>
+                    <mrow>
+                        <mi class="bValue"></mi>
+                    </mrow>
+                    <mrow>
+                        <mi class="bDeno"></mi>
+                    </mrow>
+                </mfrac>
+
+            <mo>=</mo>
+            <mfrac>
+                <mrow>
+                    <mi class="ConstValue">1</mi>
+                </mrow>
+            </mfrac>
+            <mi class="lcmConst"></mi>
+        </math> 
+    </div> 
+
+    <h1>STEP 2: Simplify it by dividing the denominator to the LCD.</h1>
+    <div class="step2 answer"></div>
+    <h1>STEP 3: Expand the square of binomial.</h1>
+    <div class="step3 answer"></div>
+    <h1>STEP 4: Distribute the constant with its respective perfect square trinomial of coefficient x and coefficient y.</h1>
+    <div class="step4 answer"></div>
+    <h1>STEP 5: Rearrange the equation by putting the constant in the left side of the equation and equate it to zero.</h1>
+    <div class="step5 answer"></div>
+    </div>
+<!--FINAL ANSWER-->
+      <h1>Final Answer: General Form</h1>
+      <div class="final answer"></div>
+</div>
+    </div>
+    <script src="ellipseSF.js"></script>
+</body>
+</html>
