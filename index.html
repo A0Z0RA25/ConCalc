@@ -114,7 +114,7 @@
                     the tilted plane is horizontal).</li>
                     <li>The plane intersect horizontally to the nappe of the cone, forming a special kind of ellipse where it's point is equidistant to it's radius.</li> 
                     <li>The A and C have same coefficient and sign.</li>
-                    <li>r > 0 means a normal circle.</li>
+                    <li>r < 0 means a normal circle.</li>
                     <li>r = 0 represents a degenerate circle (a point).</li>
                     <li>r < −1 means that the point lies in the opposite direction from where it would be if r were positive, with a magnitude greater than 1.</li>
                 </ul>
@@ -138,7 +138,7 @@
                 <div class="forms">
                     <h1 class="sub-title">General Form of a Circle:</h1>
                      <div class="general-form">
-                        <p>Ax²+ Bxy + Cy² + Dx + Ey + F = 0</p>
+                        <p>Ax²+ Bxy + Cy² + Dx + Ey + F = 0 <strong>or</strong> x²+ xy + y² + Dx + Ey + F = 0 </p>
                      </div>
                      
                     </div>
@@ -294,7 +294,7 @@
                 <div class="definition">
                   <p>You can rearrange this into:x = ay² + by + cx </p>
                   <li>a, b, and c are constants.</li>
-                  <li>If a > 0, the parabola opens to the right</li>
+                  <li>If a > 0, the parabola opens to the right.</li>
                   <li>If a < 0, the parabola opens to the left.</li>
                 </div>
               </div>
@@ -309,7 +309,7 @@
                   <p class="definition">In this form, (h,k) is the vertex of the parabola, and it determines the direction and "width" of the parabola.</p>
                 </div>
               </div> 
-            </div>
+            </div> 
             <!--ELLIPSE SECTION-->
             <div class="ellipse-section" id="ellipse">
                 <h1 class="main-title">Ellipse</h1>
@@ -320,7 +320,7 @@
                 <div class="parts">
                     <h1 class="sub-title">Parts of Ellipse:</h1>
                     <p class="definition"><strong>Center</strong> - The midpoint of the graph,where (h,k) found.<p>
-                    <p class="definition"><strong>Major axis</strong>- The longest diameter of ellipse that run to center and foci,where it's length is 2a.</p>
+                    <p class="definition"><strong>Major axis / Principal Axis</strong>- The longest diameter of ellipse that run to center and foci,where it's length is 2a.</p>
                     <p class="definition"><strong>Minor axis</strong> -The shortest diameter of ellipse that passes to the center and perpendicular to the major axis,where its length is 2b.</p>
                     <p class="definition"><strong>Vertex (V1&V2)</strong> - The two points on the principal axis, where the length of the two end points of vertex is called major axis.</p>   
                     <p class="definition"><strong>Co-vertex (W1&W2)</strong> - It is the end points of minor axis that is equidistant from the center.The coordinates of co-vertex can be denoted as C = ( 0, ±b).</p> 
@@ -493,14 +493,82 @@
 
                 <div class="forms standard-form">
                     <h1 class="sub-title">Standard Form of Ellipse</h1>      
-                    <li class="definition">Center (0,0): <sup>x²</sup>&frasl;<sub>a²</sub> + <sup>y²</sup>&frasl;<sub>b²</sub> = 1</li>
-                    <li class="definition">Center (h,k): <sup>(x-h)²</sup>&frasl;<sub>a²</sub> + <sup>(y-k)²</sup>&frasl;<sub>b²</sub> = 1</li>
+                    <li class="definition">Center (0, 0):
+                      <!--MathML of center-->
+                      <math style="font-weight: bold;" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                          <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                          </msup>
+                          <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                          </msup>
+                        </mfrac>
+                        <mo>+</mo>
+                        <mfrac>
+                          <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                          </msup>
+                          <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                          </msup>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mn>1</mn>
+                      </math>
+                      
+                    </li>
+                    <li class="definition">Center (h,k): 
+                      <!--MathML of h k-->
+                      <math style="font-weight: bold;" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                          <msup>
+                            <mfenced>
+                              <mrow>
+                                <mi>x</mi>
+                                <mo>-</mo>
+                                <mi>h</mi>
+                              </mrow>
+                            </mfenced>
+                            <mn>2</mn>
+                          </msup>
+                          <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                          </msup>
+                        </mfrac>
+                        <mo>+</mo>
+                        <mfrac>
+                          <msup>
+                            <mfenced>
+                              <mrow>
+                                <mi>y</mi>
+                                <mo>-</mo>
+                                <mi>k</mi>
+                              </mrow>
+                            </mfenced>
+                            <mn>2</mn>
+                          </msup>
+                          <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                          </msup>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mn>1</mn>
+                      </math>
+                      
+                    </li>
                 </div>
 
                 <div class="forms">
                     <h1 class="sub-title">General Form of Ellipse:</h1>
                      <div class="general-form">
-                        <p>Ax² + Cy² + F = 0</p>
+                        <p>Ax² + Bxy + Cy² + Dx + Ey + F = 0</p>
                      </div>
                     </div>  
                 
@@ -524,9 +592,9 @@
                   </div>
                   <div class="definition">
                     <p>Step 4: 2a, 2b, 2c</p>
-                    <li>2a = 2 × a, where a is the length of the major axis.</li>
-                    <li>2b = 2 × b, where b is the length of the minor axis.</li>
-                    <li>2c = 2 × c, where c the the distance foci.</li>
+                    <li>2a = 2 × a, where a is the length of the semi-major axis.</li>
+                    <li>2b = 2 × b, where b is the length of the semi-minor axis.</li>
+                    <li>2c = 2 × c, where c is the the distance of the foci.</li>
                   </div>
                 </div>
             </div>
@@ -563,7 +631,7 @@
                 <h1 class="main-title">Standard Form of Hyperbola</h1>
                 <div class="definition">
                   <h2 class="sub-title">Relation of A and C</h2>
-                  <ul class="definition">A and C have opposite sign where xy = c and c≠ 0</ul>
+                  <ul class="definition">A and C have opposite sign.</ul>
                 </div>  
                 <div class="forms standard-form">
                     <!--VERTEX AT THE ORIGIN HYPERBOLA-->
