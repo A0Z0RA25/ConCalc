@@ -1,17 +1,17 @@
-body {
+*{
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     margin: 0;
-}  
+}
 :root{
     --background-color: hsla(216, 96%, 9%, 0.807);
     --color: #fff;
     --header-background:#333;
-    --answer-bg:hsla(0, 0%, 50%, 0.05);
+    --answer-bg:hsla(0, 19%, 86%, 0.389);
     --answer-color: #281c1c;
     --border-color: hsla(180, 0%, 44%, 0.535);
 }
-header{
+/*HEADER*/ 
+header{ 
     margin: 0 0 15px 0;
     padding: 15px 0;
     background-color: #333;
@@ -41,7 +41,7 @@ header a{
 }
 .conics-option{
     position: relative;
-    display: inline-block;
+    display: inline-block; 
     margin: 0 10px;
 }
 .option-btn {
@@ -78,113 +78,93 @@ header a{
     display: block;
 }
 /**/
-.container{
+/*LCM*/
+.step1{
+    font-size: 15px;
+    font-weight: bold;
+}
+.lcmConst{
+    margin-left: 10px;
+} 
+/**/
+.container {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    text-align: center;
+    margin: 10px 0;
+}
+.header{ 
     width: 100%;
-    margin: 20px 0;
+}
+.header h1{
+    width: 500px;
+    margin: 20px auto;
 } 
-
-.hyperbolaGF-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgb(113, 113, 113);
-    height: 100%;
-}
-.hyperbolaForm{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.hyperbolaGF-container h1 {
+h1 {
     margin-bottom: 20px;
     font-size: 20px;
-    text-align: center;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+.input-container {
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 10px;
+    width: 300px;
+    height: 100%;
+    padding: 50px;
 }
 
-label {
-    margin: 5px 0;
-}
-
-input {
+.input-container label, .input-container input {
+    display: block;
     margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
-.hyperbolaGF-container button {
-    padding: 10px;
+.input-container input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+} 
+
+.input-container button {
+    padding: 10px 20px;
     background-color: #333;
     color: hsl(240, 83%, 67%);
     font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
-/*OPTIONS*/
-select{
-    width: 35px;
-    height: 20px;
+/*steps*/
+.steps{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: justify;
+}
+.steps .answer, .final{
+    background-color: var(--answer-bg);
+    text-align: left;
+    letter-spacing: 2px;
+    color: #333;
+    margin: 0;
+    padding: 10px 5px;
+    width: 100%;
+    font-size: 15px;
 }
 /**/
-.steps h1{
-    font-size: 15px; 
-}
-.answer{
-    background-color: var(--answer-bg);
-    border: 1px solid var(--border-color);
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-}
-.graph-container ul{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
-    gap: 20px; /* Gap between the columns */
-    margin: 0;
-    padding: 0;
-    list-style-type: none; /* Remove default list styling */
-} 
-/*HYPERBOLA ANSWER CONTAINER*/
-.hyperbolaGF-answer{
+.result-container{
     box-shadow: 0 0 10px rgb(113, 113, 113);
     border-radius: 10px;
-    padding: 20px 50px;
-    width: 600px;
-    background-color: #fff;
     visibility: hidden;
-}
-/*Flex*/
-.center-container h1, .orri-container h1, .foci-container h1, .vertex-container h1{
-    font-size: 15px;
-    margin: 10px 0;
-}
-.step6{
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-}
-/*Graph*/
-.graph{ 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+    padding: 20px;
+    width: 800px;
+} 
 /*Reminder*/
 .reminderContainer{
     display: none;
     background-color: #333;
     position: fixed; 
-    left: 25%;
+    left: 35%;
     top: 30%;
     padding: 20px;
     height: 300px;
@@ -209,7 +189,12 @@ select{
  .finalAnswerBgColor{
     background-color: hsl(60, 78%, 75%);
 }
+
 @media only screen and (max-width: 643px) {
+    header h1{
+        font-size: 20px;
+        margin: 35px 0;
+    }
     header a{
         padding: 10px;
         font-size: 10px;
@@ -221,7 +206,7 @@ select{
     .option-btn{
         font-size: 13px;
         width: 200px;
-        margin: 10px 0; 
+        margin: 10px 0;
     }
     .option-content{
         z-index: 1;
@@ -231,83 +216,69 @@ select{
     .content-title{
         font-size: 15px;
     }
-    /*Hyperbola container*/
-    .hyperbolaGF-container{
-        margin: 15px 8px;
-    }
-    .hyperbolaGF-container input{
+    /*Input container*/
+    .input-container {
+        width: 100%;
+        margin: 15px 10px;
+        padding: 20px 30px; 
+    } 
+    .input-container input{ 
         text-align: center;
-        margin: 5px 0;
+        width: 200px;
+        margin: 10px auto;
     }
-    .hyperbolaGF-container .example-equation{
+    .input-container h1{
+        margin: 10px 0;
+        width: 100%;
+    }
+    .input-container button{
+        width: 100%;
+        margin: 0 auto;
+        border: none;
+        border-radius: 10px;
+    }
+    /**/
+    .result-container{
+        font-size: 14px; 
+        width: 100%;
+        margin: 15px 10px;
+        padding: 10px;
+    }
+    .steps{
+        width: 100%;
         margin: 0;
         padding: 0;
-        width: 100%;
-    }
-    /*Answer Container*/
-    .hyperbolaGF-answer{
-        padding: 10px 5px;
-        margin: 20px 10px;
-        width: 100%;
-        font-size: 13px;
     }
     .steps h1{
-        font-size: 13px;
-    }
-    .graph-container ul li{
-        list-style: none;
-    }
-    .flex{
-        display: flex;
-        flex-direction: column;
-    }
-    .answer{
-        width: 100%;
-        padding: 10px 0 10px 0px;
-        font-size: 13px;
-        text-align: center;
-    }
-    .step6 math, .step7 math{
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        display: flex;
-        font-weight: bold;
-    }
-    /*Graph*/
-    .graph canvas{
-        width: 100%;
-    }
-     /*Graph*/
-     .graph #canvas{
-        width: 100%;
+        text-align: left;
+        font-size: 16px;
+        margin: 20px 0;
     }
     /*Reminder*/
-    .reminderContainer{
+.reminderContainer{
     display: none;
     background-color: #333;
     position: fixed;
-    left: 20px;
-    top: 30%;
+    left: 10px;
+    top: 20%;
     padding: 20px;
     margin: 0;
     height: 350px;
     width: 250px;
-    font-size: 13px;
     text-align: center;
     border-radius: 10px;
-    }
-    #message {
-        margin-top: 10px;
-        font-size: 25px;
-        color: #ffff;
-        margin: 40px 0;
-    }
-    #showMessageBtn{
-        margin: 30px 0;
-        padding: 10px 10px;
-        border-radius: 10px;
-        width: 150px;
-        font-size: 15px;
-    }
+ }
+ #message {
+     margin-top: 10px;
+     font-size: 25px;
+     color: #ffff;
+     margin: 40px 0;
+ }
+ #showMessageBtn{
+     margin: 30px 0;
+     padding: 10px 10px;
+     border-radius: 10px;
+     width: 150px;
+     font-size: 15px;
+ }
 }
