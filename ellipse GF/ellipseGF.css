@@ -252,7 +252,8 @@ header a{
     display: none;
     background-color: #333;
     position: fixed;
-    left: 10px;
+    left: 20px;
+    top: 30%;
     padding: 20px;
     height: 350px;
     width: 250px;
