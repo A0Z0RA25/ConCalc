@@ -293,11 +293,12 @@ header a{
     background-color: #333;
     position: fixed;
     left: 10px;
-    top: 20%;
+    top: 30%;
     padding: 20px;
     margin: 0;
     height: 350px;
-    width: 350px;
+    width: 250px;
+    font-size: 13px;
     text-align: center;
     border-radius: 10px;
     color: #fff;
