@@ -1,0 +1,259 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  } 
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.05);
+    --answer-color: #281c1c;
+    --border-color: hsla(180, 0%, 44%, 0.535);
+}
+
+  /*Header*/
+  header{
+    margin: 0 0 15px 0;
+    padding: 15px 0;
+    background-color: #333;
+    color: #fff; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+header a{
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+.content-title{
+    text-align: center;
+    margin: 10px;
+}
+/*OPTIONS*/
+.option-container{
+    display: flex;
+
+}
+.conics-option{
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+.option-btn {
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: solid 3px var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.option-content{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border-radius: 10px;
+}
+.option-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: none;
+    border: solid 1px;
+    display: block;
+    text-align: center;
+}
+.option-content a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.conics-option:hover .option-content {
+    display: block;
+}
+/**/
+
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px 0;
+  }
+
+  .calcu-container {
+    width: 350px;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  .calcu-container h1{
+    font-size: 24px;
+    
+  }
+  
+  .calcu-container input {
+    margin: 10px auto;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 15px;
+    display: flex;
+  } 
+  
+  .calcu-container label {
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+  button {
+    display: block; 
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #333;
+    color: hsl(240, 83%, 67%);
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer;
+  } 
+/*ANSWER-CONTAINER*/
+.answer-container{
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    padding: 15px 20px;
+    height: 100%;
+    width: 500px;
+    border-radius: 10px;
+    visibility: hidden;
+}
+.answer-container .answer-title{
+  margin: 15px 0;
+}
+.answer{
+  background-color: var(--answer-bg);
+  padding: 15px 5px;
+  margin: 10px 0;
+  width: 100%;
+  border: solid 1px var(--border-color);
+}
+.steps h1 { 
+  font-size: 20px;
+}
+/*Reminder*/
+.reminderContainer{
+  display: none;
+  background-color: #333;
+  position: fixed; 
+  left: 30%;
+  top: 30%;
+  padding: 20px;
+  height: 300px;
+  width: 350px;
+  text-align: center;
+  border-radius: 10px;
+  color: #fff;
+}
+#message {
+   margin-top: 10px;
+   font-size: 25px;
+   color: #ffff;
+   margin: 40px 0;
+}
+#showMessageBtn{
+   margin: 30px auto;
+   padding: 10px 10px;
+   border-radius: 10px;
+   width: 150px;
+   font-size: 15px;
+   color: #333;
+   background: #fff;
+}
+.finalAnswerBgColor{
+  background-color: hsl(60, 78%, 75%);
+}
+/*GIVEN*/
+
+
+@media only screen and (max-width: 643px) {
+  header a{
+    padding: 10px;
+    font-size: 10px;
+}
+/*Options*/
+.option-container{
+    display: block;
+}
+.option-btn{
+    font-size: 13px;
+    width: 200px;
+    margin: 10px 0;
+}
+.option-content{
+    z-index: 1;
+    width: 200px;
+}
+/**/
+.content-title{
+    font-size: 15px;
+}
+  /*calcu container*/
+  .calcu-container{
+    width: 100%;
+    margin: 15px 10px;
+  }
+  .calcu-container h1{
+    font-size: 15px;
+  }
+  .calcu-container label{
+    font-size: 15px;
+  }
+  /*answer container*/
+  .answer-container .answer-title{
+    font-size: 20px;
+    text-align: center;
+  }
+  .answer-container{
+    margin: 20px 10px;
+    text-align: left;
+  }
+  .answer-container h1{
+    font-size: 15px;
+  }
+  /*Reminder*/
+.reminderContainer{
+  display: none;
+  background-color: #333;
+  position: fixed;
+  left: 20px;
+  top: 20%;
+  padding: 20px;
+  margin: 0;
+  height: 350px;
+  width: 350px;
+  text-align: center;
+  border-radius: 10px;
+}
+.reminderContainer #message {
+   margin-top: 10px;
+   font-size: 25px;
+   color: #ffff;
+   margin: 40px 0;
+}
+.reminderContainer #showMessageBtn{
+   margin: 90px 50px;
+   padding: 10px 10px;
+   border-radius: 10px;
+   width: 250px;
+   font-size: 15px;
+}
+}

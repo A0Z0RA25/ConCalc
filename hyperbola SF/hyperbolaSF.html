@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperbola: Standard to General</title>
+    <link rel="stylesheet" href="hyperbolaSF.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>    
+ 
+    <header>
+        <a href="https://a0z0ra25.github.io/ConCalc/"><i class="fa-solid fa-house"></i></a>
+        <div class="option-container">
+            <div class="general-option">
+         <div class="conics-option">
+             <button class="option-btn">General - Standard</button>
+             <div class="option-content">
+                <a href="https://a0z0ra25.github.io/ConCalc/GenForm%20-%20circle/circleGF.html">Circle</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/ellipse%20GF/ellipseGF.html">Ellipse</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/parabola%20GF/parabolaGF.html">Parabola</a>
+                <a href="https://a0z0ra25.github.io/ConCalc/hyperbola%20GF/hyperbolaGF.html">Hyperbola</a>
+            </div>
+         </div>
+     </div>    
+ 
+     <div class="standard-option">
+         <div class="conics-option">
+             <button class="option-btn">Standard - General</button>
+             <div class="option-content">
+                 <a href="https://a0z0ra25.github.io/ConCalc/SF%20-%20circle/circleSF.html">Circle</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/ellipse%20SF/ellipseSF.html">Ellipse</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/parabola%20SF/parabolaSF.html">Parabola</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/hyperbola%20SF/hyperbolaSF.html">Hyperbola</a>
+             </div>
+         </div>
+     </div> 
+         </div>
+    </header> 
+
+<h1 class="content-title">STANDARD TO GENERAL FORM OF HYPERBOLA</h1>
+
+<div class="reminderContainer">
+    <h1>REMINDER:</h1>
+    <div id="message">Prepare your pen and a piece of paper for writing your answers.</div>
+    <button id="showMessageBtn">Let's begin!</button>
+</div>
+
+    <div class="container">
+    <div class="hyperbolaSF-container">
+        <h1>Input the value of your Equation:</h1>
+        <div class="example-equation flex">
+            <h1>Example:</h1>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mfrac>
+                    <mrow>
+                        <mi>(y+1)²</mi>
+                    </mrow>
+                    <mrow>
+                        <mi>9</mi>
+                    </mrow>
+                </mfrac>
+                <mo>-</mo>
+                    <mfrac>
+                    <mrow>
+                        <mi>(x-2)²</mi>
+                    </mrow>
+                    <mrow>
+                        <mi>16</mi>
+                    </mrow>
+                </mfrac>
+                <mo>=</mo>
+                    <mo class="constant1">1</mo>
+            </math>
+        </div> <br>
+
+        <form id="hyperbolaForm">
+            <div class="flex">
+                <label for="majorValue">Major Value of center:</label>
+            <select class="major" required>
+                <option value="y">y</option>
+                <option value="x">x</option>
+            </select>
+            </div>
+            
+            <input type="number" id="majorValue" placeholder="1" required>
+
+            <label for="minorValue">Major Denominator value:</label>
+            <input type="number" id="majorDenoValue" placeholder="9" required>
+
+            <div class="flex">
+                <label for="coeffMajor">Minor Value of center:</label>
+            <select class="minor" required>
+                <option value="x">x</option>
+                <option value="y">y</option>
+            </select>
+            </div> 
+            
+            <input type="number" id="minorValue" placeholder="-2" required>
+
+            <label for="coeffMinor">Minor Denominator value:</label>
+            <input type="number" id="minorDenoValue" placeholder="16" required>
+
+            <button type="button" onclick="transform()">Convert to General Form</button>
+        </form> 
+        </div> 
+
+        <div class="hyperbolaSF-answer">
+            <h1>Here are the steps:</h1>
+
+            <div class="step1">
+                <h1>STEP 1: Get the LCM and multiply it on both sides of the equation.</h1>  
+                  <math class="answer step1-answer" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                        <mrow>
+                            <mi class="lcmMajor1"></mi>
+                            <mi class="majorIn1"></mi>
+                        </mrow>
+                        <mrow>
+                            <mi class="majorDeno1"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>-</mo>
+                        <mfrac>
+                        <mrow>
+                            <mi class="lcmMinor1"></mi>
+                            <mi class="minorIn1"></mi>
+                        </mrow>
+                        <mrow>
+                            <mi class="minorDeno1"></mi>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                        <mo class="constant1">1</mo>
+                    <mrow>
+                        <mi class="lcmInConst">LCM: </mi>
+                    </mrow>
+                </math>
+            </div>
+            <button class="step1Btn" onclick="showStep1()">Show Answer</button>
+            <div class="step2-container">
+                <h1>STEP 2: Simplify it by dividing the denominator to the LCD.</h1>
+                <div class="step2 answer"></div>
+                <button class="step2Btn" onclick="showStep2()">Show Answer</button>
+            </div>
+            <div class="step3-container">
+                <h1>STEP 3: Expand the square of binomial.</h1>
+                <div class="step3 answer"></div>
+                <button class="step3Btn" onclick="showStep3()">Show Answer</button>
+            </div> 
+                
+            <div class="add-step">
+            <div class="step4-container">
+                <h1>STEP 4: Distribute the constant with its respective perfect square trinomial of coefficient x and coefficient y.</h1>
+                <div class="step4 answer"></div>
+                <button class="step4Btn" onclick="showStep4()">Show Answer</button>
+            </div>
+            <div class="step5-container">
+                <h1> STEP 5: Put the constant in the left side of the equation and equate it to zero </h1>
+                <div class="step5 answer"></div>
+                <button class="step5Btn" onclick="showStep5()">Show Answer</button>
+            </div>
+            <div class="step6-container">
+                <h1>STEP 6: Simplify by combining like terms and rearrange the equation.</h1>
+                <div class="step6 answer"></div>
+            </div>
+            </div>
+                
+            </div>
+    </div>
+    
+    <script src="hyperbolaSF.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</body>
+</html>
