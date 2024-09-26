@@ -244,7 +244,8 @@ select{
     display: none;
     background-color: #333;
     position: fixed;
-    left: 70px;
+    left: 10px;
+    font-size: 13px;
     top: 30%;
     padding: 20px;
     margin: 0;
