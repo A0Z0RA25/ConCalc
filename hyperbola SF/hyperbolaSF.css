@@ -1,0 +1,258 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+} 
+
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.05);
+    --answer-color: #281c1c;
+    --border-color: hsla(180, 0%, 44%, 0.535);
+}
+/*HEADER*/
+header{
+    margin: 0 0 15px 0;
+    padding: 15px 0;
+    background-color: #333;
+    color: #fff; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+header a{
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+.content-title{
+    text-align: center;
+    margin: 10px;
+}
+/*OPTIONS*/
+.option-container{
+    display: flex;
+
+}
+.conics-option{
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+.option-btn {
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: solid 3px var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.option-content{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border-radius: 10px;
+}
+.option-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: none;
+    border: solid 1px;
+    display: block;
+    text-align: center;
+}
+.option-content a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.conics-option:hover .option-content {
+    display: block;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.hyperbolaSF-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 300px;
+}
+.hyperbolaForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hyperbolaSF-container h1 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 5px 0;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.hyperbolaSF-container button {
+    padding: 10px;
+    background-color: #333;
+    color: hsl(240, 83%, 67%);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*OPTIONS*/
+select{
+    width: 35px;
+    height: 20px;
+}
+/*ANSWER CONTAINER*/
+.answer{
+    background-color: var(--answer-bg);
+    border: solid 1px var(--border-color);
+    width: 100%; 
+    padding: 10px;
+}
+/*HYPERBOLA ANSWER CONTAINER*/
+.hyperbolaSF-answer{
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    padding: 20px 50px;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    visibility: hidden;
+}
+.hyperbolaSF-answer h1{
+    font-size: 20px;
+}
+/*Flex*/
+.center-container h1, .orri-container h1{
+    font-size: 18px;
+    margin: 10px 0;
+}
+.flex{
+    display: flex;
+    align-items: center; 
+}  
+/*Reminder*/
+.reminderContainer{
+    display: none;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: solid;
+    width: 250px;
+    margin: 0 auto;
+ }
+ #message {
+     margin-top: 10px;
+     font-size: 20px;
+     margin: 40px 0;
+     text-align: center;
+ }
+ #showMessageBtn{
+     margin: 30px auto;
+     padding: 8px 5px;
+     background-color: hsla(120, 97%, 61%, 0.658);
+     border-radius: 10px;
+     width: 150px;
+     font-size: 15px;
+ }
+ .finalAnswerBgColor{
+    background-color: hsl(60, 78%, 75%);
+}
+
+@media only screen and (max-width: 643px) {
+    /*Options*/
+    .option-container{
+        display: block;
+    }
+    .option-btn{
+        font-size: 13px;
+        width: 200px;
+        margin: 10px 0;
+    }
+    .option-content{
+        z-index: 1;
+        width: 200px;
+    }
+    /**/
+    .content-title{
+        font-size: 15px;
+    }
+    .hyperbolaSF-container{
+        margin: 0 10px;
+    }
+    .hyperbolaSF-container input{
+        text-align: center;
+    } 
+    /*ANSWER CONTAINER*/
+    .hyperbolaSF-answer{
+        border: solid #ddd;
+        padding: 10px;
+        margin: 20px 10px;
+        width: 100%;
+        font-size: 14px;
+    }
+    .hyperbolaSF-answer h1{
+        font-size: 14px;
+    }
+    .answer{
+        width: 100%;
+        padding: 10px 0 10px 5px;
+        font-weight: bold;
+    }
+     /*Graph*/
+     .graph #canvas{
+        width: 100%;
+    }
+    /*Reminder*/
+    .reminderContainer{
+    font-size: 13px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    }
+    #message {
+    margin-top: 10px;
+    font-size: 20px;
+    margin: 40px 0;
+    }
+    #showMessageBtn{
+    margin: 30px 0;
+    padding: 10px 10px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 15px;
+    }
+}

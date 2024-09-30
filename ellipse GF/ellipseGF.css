@@ -1,0 +1,315 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+} 
+:root{
+    --background-color: hsla(216, 96%, 9%, 0.807);
+    --color: #fff;
+    --header-background:#333;
+    --answer-bg:hsla(0, 0%, 50%, 0.05);
+    --answer-color: #281c1c;
+    --border-color: hsla(180, 0%, 44%, 0.535);
+}
+/*HEADER*/ 
+header{
+    margin: 0 0 15px 0;
+    padding: 15px 0;
+    background-color: #333;
+    color: #fff; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+header a{
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 12px;
+    border: solid;
+    color: #fff;
+    box-shadow: 0 0 10px rgb(113, 113, 113);
+    border-radius: 5px;
+}
+.content-title{
+    text-align: center;
+    margin: 10px;
+}
+/*OPTIONS*/
+.option-container{
+    display: flex;
+
+}
+.conics-option{
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+.option-btn {
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: solid 3px var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.option-content{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border-radius: 10px;
+}
+.option-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: none;
+    border: solid 1px;
+    display: block;
+    text-align: center;
+}
+.option-content a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.conics-option:hover .option-content {
+    display: block;
+}
+/**/
+/*CONTAINER*/
+.ellipse-calcu{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    width: 300px;
+    height: 100%;
+    padding: 30px;
+    margin: 0;
+    color: #333; 
+}
+.ellipse-calcu h1{
+    margin: 10px auto;
+    font-size: 20px; 
+    text-align: center; 
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+.ellipse-calcu input{
+    display: flex;
+    padding: 8px;
+    margin: 0 auto;
+    width: 100%;
+}
+.answer-container{
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    visibility: hidden;
+}
+.answer-container .answer-title{
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+/*STEPS*/
+.steps{
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.steps h1{
+    font-size: 17px; 
+}  
+.answer{
+    background-color: var(--answer-bg);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+}
+.transform-btn{
+    background-color: #333;
+    color: hsl(240, 83%, 67%);
+    font-weight: bold;
+    padding: 10px 14px;
+    width: 100%;
+} 
+/*Graph Container*/
+
+.graph canvas{
+    margin: 10px;
+}
+.graph-container ul li{
+    display: inline;
+    margin: 0 15px; 
+    text-align: center; 
+    align-items: center;
+}
+/*Reminder*/
+.reminderContainer{
+   display: none;
+   padding: 20px;
+   text-align: center;
+   border-radius: 10px;
+   border: solid;
+   width: 250px;
+   margin: 0 auto;
+}
+#message {
+    margin-top: 10px;
+    font-size: 20px;
+    margin: 40px 0;
+    text-align: center;
+}
+#showMessageBtn{
+    margin: 30px auto;
+    padding: 8px 5px;
+    background-color: hsla(120, 97%, 61%, 0.658);
+    border-radius: 10px;
+    width: 150px;
+    font-size: 15px;
+}
+/*allsteps*/
+
+.finalAnswerBgColor{
+    background-color: hsl(60, 78%, 75%);
+}
+.users-answer-container{
+    height: 100%;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px 10px;
+}
+.users-answer-container h1{
+    font-size: 20px;
+}
+.users-answer-container input{
+    display: inline;
+    width: 150px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: solid 1px;
+}
+.user-btn{
+    margin: auto auto;
+    padding: 5px 10px;
+    background-color: hsla(120, 97%, 61%, 0.658);
+    border: solid 1px;
+    border-radius: 8px;
+}
+.correct{
+    color: green;
+}
+.wrong{
+    color: red;
+}
+.answer-each-parts{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    width: 400px;
+    padding: 10px 20px;
+}
+.users-answer-container input{
+    margin: 10px 0;
+}
+@media only screen and (max-width: 643px) {
+    header a{
+        padding: 10px;
+        font-size: 10px;
+    }
+    /*Options*/
+    .option-container{ 
+        display: block;
+    }
+    .option-btn{
+        font-size: 13px;
+        width: 200px;
+        margin: 10px 0;
+    }
+    .option-content{
+        z-index: 1;
+        width: 200px;
+    }
+    /**/
+    .content-title{
+        font-size: 15px;
+    }
+    .ellipse-calcu{
+        width: 100%;
+        margin: 10px 8px;
+        padding: 15px;
+        text-align: center; 
+    }
+    .transform-btn{
+        width: 100%; 
+        font-weight: 600;
+        border-radius: 10px;
+    }
+    .ellipse-calcu h1{
+        width: 100%;
+    }
+    .ellipse-calcu label{
+        margin: 0;
+        font-size: 14px;
+    }
+    .ellipse-calcu input{
+        width: 200px;
+        margin: 0 auto;
+        padding: 8px 5px;
+        text-align: center;
+    }
+    .answer-container{
+        width: 100%;
+        margin: 20px 0;
+    }
+    /*Steps*/
+    .answer-container{
+        margin: 10px 8px;
+        width: 100%;
+    }
+    .answer-container .steps{
+        padding: 5px 10px;
+    }
+    .steps h1{
+        font-size: 14px;
+        color: #333; 
+    }
+    /*Graph*/
+    .graph #canvas{
+        width: 100%;
+    } 
+    /*Reminder*/
+.reminderContainer{
+    font-size: 13px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    }
+    #message {
+    margin-top: 10px;
+    font-size: 20px;
+    margin: 40px 0;
+    }
+    #showMessageBtn{
+    margin: 30px 0;
+    padding: 10px 10px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 15px;
+    }
+} 
