@@ -227,7 +227,7 @@ function transform() {
     const majorCenterSign = divideCenter > 0 ? "+" : "-";
     const majorSign = (xvalue > 0) ? "+" : "-";
     const minorSign = yvalue > 0 ? "-" : "+";
-    const contantSign = constant > 0 ? "-" : "+";
+    const constantSign = constant > 0 ? "-" : "+";
     let step3ConstSign = fconst > 0 ? "+" : "-";
     let finalConstSign = yvalue > 0 && fconst > 0 ? "-" : "+";
 
@@ -258,10 +258,10 @@ if(fconst == 0){
       });
       
       // ALL POSITIVE
-           step1.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${minorSign} ${Math.abs(constant)}`;  
-           step2.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} + ${xConst} = ${yvalue / -1}${minor} ${minorSign} ${Math.abs(constant)} + ${xConst}`;
-           step3.textContent = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}${minor} ${step3ConstSign} ${finalK}`; 
-           step4.innerHTML = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}(${minor} ${finalConstSign} ${finalFrac})`;  
+           step1.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)}`;  
+           step2.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} + ${xConst} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)} + ${xConst}`;
+           step3.textContent = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}${minor} ${step3ConstSign} ${Math.abs(finalK)}`; 
+           step4.innerHTML = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}(${minor} ${step3ConstSign} ${finalFrac})`;  
     } 
     else if(a > 1){
          step3.classList.remove('finalAnswerBgColor');
@@ -418,10 +418,10 @@ function checkCenter(e) {
     const userX = document.querySelector('.user-x-answer').value;
     const userY = document.querySelector('.user-y-answer').value;
     
-    if(major = "x²" && xMajorfinalX == userX && xoryMinor == userY){
+    if(major = "x²" && xMajorfinalX == userX && xMajorFinalY == userY){
         answerEach.classList.add('correct');
         correctSound();
-    } else if (major = "y²" && xoryMinor == userX && xMajorfinalX == userY){
+    } else if (major = "y²" && xMajorFinalY == userX && xMajorfinalX == userY){
         answerEach.classList.add('correct');
         correctSound();
     } else {
@@ -562,7 +562,7 @@ function checkLatus(e) {
 
 //Parts of Graph
 let xoryMajor, xoryMinor, xMajorfinalX, xMajorFinalDirec, xMajorFinalFocusXY, xMajorFinalLatusX1, 
-    xMajorFinalLatusY1, xMajorFinalLatusX2, xMajorFinalLatusY2;
+    xMajorFinalLatusY1, xMajorFinalLatusX2, xMajorFinalLatusY2, xMajorFinalY;
 function parts(a, xvalue, yvalue, major, ConstNotZero){
    const center = document.querySelector(".centerValue");
    const focus = document.querySelector(".fociValue");
@@ -573,15 +573,16 @@ function parts(a, xvalue, yvalue, major, ConstNotZero){
      //center
     xoryMajor = (xvalue == 1) ? 0 : xvalue / -2;
     xoryMinor = (ConstNotZero == 0) ? 0 :  ConstNotZero / yvalue ;
-    xMajorfinalX = xoryMajor / a;
-    xMajorFinalFocusXY = xoryMinor + yvalue / -4;
-    xMajorFinalDirec = xoryMinor + yvalue / 4;
-    xMajorFinalLatusX1 = xoryMajor + 2 * (yvalue / -4);
-    xMajorFinalLatusY1 = xoryMinor + yvalue / -4;
-    xMajorFinalLatusX2 = xoryMajor - 2 * (yvalue / -4);
-    xMajorFinalLatusY2 = xoryMinor + yvalue / -4;
+    xMajorFinalY = Number.isInteger(xoryMinor) ? xoryMinor : xoryMinor.toFixed(2);
+    xMajorfinalX = Number.isInteger(xoryMajor / a) ? xoryMajor / a : (xoryMajor / a).toFixed(2);
+    xMajorFinalFocusXY = Number.isInteger(xoryMinor + yvalue / -4) ? xoryMinor + yvalue / -4 : (xoryMinor + yvalue / -4).toFixed(2);
+    xMajorFinalDirec = Number.isInteger(xoryMinor + yvalue / 4) ? xoryMinor + yvalue / 4 : (xoryMinor + yvalue / 4).toFixed(2);
+    xMajorFinalLatusX1 = Number.isInteger(xoryMajor + 2 * (yvalue / -4)) ? xoryMajor + 2 * (yvalue / -4) : (xoryMajor + 2 * (yvalue / -4)).toFixed(2);
+    xMajorFinalLatusY1 = Number.isInteger(xoryMinor + yvalue / -4) ? xoryMinor + yvalue / -4 : (xoryMinor + yvalue / -4).toFixed(2);
+    xMajorFinalLatusX2 = Number.isInteger(xoryMajor - 2 * (yvalue / -4)) ? xoryMajor - 2 * (yvalue / -4) : (xoryMajor - 2 * (yvalue / -4)).toFixed(2);
+    xMajorFinalLatusY2 = Number.isInteger(xoryMinor + yvalue / -4) ? xoryMinor + yvalue / -4 : (xoryMinor + yvalue / -4).toFixed(2);
 
-    const centerGraph = (major == "x²") ? `(${xMajorfinalX}, ${xoryMinor})` : `(${xoryMinor}, ${xMajorfinalX})`;
+    const centerGraph = (major == "x²") ? `(${xMajorfinalX}, ${xMajorFinalY})` : `(${xMajorFinalY}, ${xMajorfinalX})`;
     //focus
     const focusValue = (major == "x²") ? `(${xoryMajor}, ${xMajorFinalFocusXY})` : `(${xMajorFinalFocusXY}, ${xoryMajor})`;
     //directrix
