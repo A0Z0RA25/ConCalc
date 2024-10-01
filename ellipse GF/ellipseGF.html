@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellipse: General to Standard</title>
+    <link rel="stylesheet" href="ellipseGF.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>    
+<body>     
+
+    <header>
+        <a href="https://a0z0ra25.github.io/ConCalc/"><i class="fa-solid fa-house"></i></a>
+        <div class="option-container">
+            <div class="general-option"> 
+         <div class="conics-option">
+             <button class="option-btn">General - Standard</button>
+             <div class="option-content">
+                 <a href="https://a0z0ra25.github.io/ConCalc/GenForm%20-%20circle/circleGF.html">Circle</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/ellipse%20GF/ellipseGF.html">Ellipse</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/parabola%20GF/parabolaGF.html">Parabola</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/hyperbola%20GF/hyperbolaGF.html">Hyperbola</a>
+             </div>
+         </div>
+     </div>     
+ 
+     <div class="standard-option">
+         <div class="conics-option">
+             <button class="option-btn">Standard - General</button>
+             <div class="option-content">
+                 <a href="https://a0z0ra25.github.io/ConCalc/SF%20-%20circle/circleSF.html">Circle</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/ellipse%20SF/ellipseSF.html">Ellipse</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/parabola%20SF/parabolaSF.html">Parabola</a>
+                 <a href="https://a0z0ra25.github.io/ConCalc/hyperbola%20SF/hyperbolaSF.html">Hyperbola</a>
+             </div>
+         </div>
+     </div> 
+         </div> 
+    </header>
+
+<h1 class="content-title">GENERAL TO STANDARD FORM OF ELLIPSE</h1>
+
+<div class="container">
+    <div class="ellipse-calcu">
+        <h1>Input the Value of your Equation:</h1>
+        <h1 class="example-equation">Example: 4x²+y²+24x-4y+36=0</h1>
+        <label for=".x2">Coefficient of x²:</label> 
+        <input class="x2" type="number" placeholder="4"> <br>
+        <label for=".y2">Coefficient of y²:</label> 
+        <input class="y2" type="number" placeholder="1"> <br>
+        <label for="">coefficient of x:</label>
+        <input class="coeffX" type="number" placeholder="24"> <br>
+        <label for="">coefficient of y:</label>
+        <input class="coeffY" type="number" placeholder="-4"> <br>
+        <label for="">Constant:</label>
+        <input class="constant" type="number" placeholder="36"> <br> 
+        <button class="transform-btn" onclick="transform()">Convert to Standard Form</button> 
+    </div> 
+
+    <div class="answer-container"> 
+        <h1 class="answer-title">Here are the steps and answers:</h1>
+        <div class="reminderContainer">
+            <h1>REMINDER:</h1>
+            <div id="message">Prepare your pen and a piece of paper for writing your answers.</div>
+            <button id="showMessageBtn">Let's begin!</button>
+        </div>
+            <div class="steps">
+                <h1>Given:</h1>
+                <div class="given answer"></div> 
+ 
+                <div class="step1-container">
+                    <h1>STEP 1: Regroup the coefficients of x and y with their numerical coefficient, and move the constant to the right side of the equation, changing its sign.</h1>
+                    <div class="step1 answer"></div> 
+                    <button class="step1Btn showAnswerBtn">Show Answer</button> 
+                </div>
+                <div class="step2-container">
+                    <h1>STEP 2: Factor out the common factor from the numerical coefficients of x and y."</h1>
+                    <div class="step2 answer"></div>
+                    <button class="step2Btn showAnswerBtn">Show Answer</button>
+                </div>
+                <div class="step3-container">
+                    <h1>STEP 3: Apply the completing the square method to turn the x and y terms into perfect square trinomials.</h1>
+                    <div class="step3 answer"></div>  
+                    <button class="step3Btn showAnswerBtn">Show Answer</button>
+                </div>
+                <div class="step4-container">
+                    <h1>STEP 4: Along with the constant on the right side of the equation, put also the common factor to make it balance then multiply it to the square (n²)of the perfect square trinomial of the numerical coefficient of x and y.</h1>
+                    <div class="step4 answer"></div> 
+                    <button class="step4Btn showAnswerBtn">Show Answer</button>
+                </div>
+                <div class="step5-container">
+                   <h1>STEP 5: Simplify the right side of the equation and make the perfect square trinomial into square of binomial.</h1>
+                    <div class="step5 answer">  
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow>
+                                <mi class="aValue"></mi>
+                            </mrow>
+                            <mrow>
+                                <mi class="aDeno"></mi>
+                            </mrow>
+                        </mfrac>
+    
+                        <mo>+</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mi class="bValue"></mi>
+                                </mrow>
+                                <mrow>
+                                    <mi class="bDeno"></mi>
+                                </mrow>
+                            </mfrac>
+    
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow>
+                                <mi class="constValue"></mi>
+                            </mrow>
+                            <mrow>
+                                <mi class="constDeno"></mi>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                    </div> 
+                    <button class="step5Btn showAnswerBtn">Show Answer</button>
+                </div>
+                <div class="step6-container">
+                    <h1>STEP 6: Divide both sides of the equation by the constant on the right side, then simplify.</h1>
+                    <div class="step6 answer">  
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mfrac>
+                            <mrow> 
+                                <mi class="finalaValue"></mi>
+                            </mrow>
+                            <mrow>
+                                <mi class="finalaDeno"></mi>
+                            </mrow>
+                        </mfrac>
+    
+                        <mo>+</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mi class="finalbValue"></mi>
+                                </mrow>
+                                <mrow>
+                                    <mi class="finalbDeno"></mi>
+                                </mrow>
+                            </mfrac>
+    
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow>
+                                <mi class="finalConstValue"></mi>
+                            </mrow>
+                        </mfrac>
+                    </math> 
+                    </div>  
+                    <button class="step6Btn showAnswerBtn">Show Answer</button>
+                </div>  
+ 
+                <div class="graph-container answer">
+                    <p>The formula for getting the c value is c² = a² - b².</p>
+                    <ul> 
+                        <li>a=<span class="a"></span></li>
+                        <li>a²=<span class="a2"></span></li>
+                        <li>b=<span class="b"></span></li>
+                        <li>b²=<span class="b2"></span></li>
+                        <li>c=<span class="c"></span></li>
+                        <li>c²=<span class="c2"></span></li>
+                    </ul>
+                    <!--Parts-->
+                    <div class="users-answer-container">
+                        <h1>Your Answers:</h1>
+                            <div class="user-center-value">
+                                <label for="">Center(x ,y):</label>
+                                <div class="user-center-value"></div>
+                                <input class="user-x-answer" type="number">
+                                <input class="user-y-answer" type="number">
+                                <button class="submitBtn-center user-btn">Submit Answer</button>
+                            </div>
+                            <div class="user-minorvertex-value">
+                            <div class="minorvertex1">
+                                <label for="">Minor vertex 1:</label>
+                                <div class="user-minor1-value"></div>
+                                <input class="user-minorvertex-x1-answer" type="number">
+                                <input class="user-minorvertex-y1-answer" type="number">
+                            </div>
+                            <div class="minorvertex2">
+                                <label for="">Minor vertex 2:</label>
+                                <div class="user-minor2-value"></div>
+                                <input class="user-minorvertex-x2-answer" type="number">
+                                <input class="user-minorvertex-y2-answer" type="number">
+                            </div> 
+                            <button class="submitBtn-minor user-btn">Submit Answer</button>    
+                            </div>
+                            <div class="user-majorvertex-value">
+                            <div class="majorvertex2">
+                                <label for="">Major vertex 1(x, y):</label>
+                                <div class="user-major1-value"></div>
+                                <input class="user-majorvertex-x1-answer" type="number">
+                                <input class="user-majorvertex-y1-answer" type="number">
+                            </div>
+                            <div class="majorvertex2">
+                                <label for="">Major vertex 2(x, y):</label>
+                                <div class="user-major2-value"></div>
+                                <input class="user-majorvertex-x2-answer" type="number">
+                                <input class="user-majorvertex-y2-answer" type="number">
+                            </div>
+                            <button class="submitBtn-major user-btn">Submit Answer</button>    
+                            </div>
+                            <div class="user-foci-value">
+                            <div class="fociValue1">
+                                <label for="">Foci 1(x, y):</label>
+                                <div class="user-major1-value"></div>
+                                <input class="user-foci-x1-answer" type="number">
+                                <input class="user-foci-y1-answer" type="number">
+                            </div>
+                            <div class="fociValue2">
+                                <label for="">Foci 2(x, y):</label>
+                                <div class="user-major2-value"></div>
+                                <input class="user-foci-x2-answer" type="number">
+                                <input class="user-foci-y2-answer" type="number">
+                            </div>
+                                <button class="submitBtn-foci user-btn">Submit Answer</button>    
+                            </div>
+                            <div class="user-orrientation">
+                                <label for="">Orrientation(Horizontal, Vertical):</label>
+                                <div class="user-orrientation-value"></div>
+                                <input class="user-orrientation-answer" type="text">
+                                <button class="submitBtn-orrientation user-btn">Submit Answer</button>
+                            </div>   
+                        </div>
+                    <div class="answer-each-parts"></div>
+                    <div class="graph-parts-container">
+                        <div class="centerValue-container">
+                            <h1>Center:</h1>
+                            <div class="centerValue  answer"></div>
+                        </div>
+                        <div class="minorValue-container">
+                            <h1>Minor Vertices: (h&plusmn;b, k) / (h, k&plusmn;b)</h1>
+                            <div class="minorVertexValue  answer"></div>
+                        </div>
+                        <div class="majorValue-container">
+                            <h1>Major Vertices: (h&plusmn;a, k) / (h, k&plusmn;a)</h1>
+                            <div class="majorVertexValue  answer"></div>
+                        </div>
+                        <div class="fociValue-container">
+                            <h1>Foci: (h&plusmn;c, k) / (h, k&plusmn;c)</h1>
+                            <div class="fociValue answer"></div>
+                        </div>
+                        <div class="orriValue-container">
+                           <h1>Orrientation</h1>
+                            <div class="orriValue answer"></div> 
+                        </div> 
+                    </div>
+                    <audio id="wrongSound" src="https://a0z0ra25.github.io/ConCalc/conics-images/wrong.mp3"></audio>
+                    <audio id="correctSound" src="https://a0z0ra25.github.io/ConCalc/conics-images/correct.mp3"></audio>
+                </div>
+        </div>
+</div>
+
+<div class="graph">
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+</div>
+
+</div>
+
+    <script src="ellipseGF.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+</body>
+</html>
