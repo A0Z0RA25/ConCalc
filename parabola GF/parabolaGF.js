@@ -228,6 +228,7 @@ function transform() {
     const majorSign = (xvalue > 0) ? "+" : "-";
     const minorSign = yvalue > 0 ? "-" : "+";
     const contantSign = constant > 0 ? "-" : "+";
+    let step3ConstSign = fconst > 0 ? "+" : "-";
     let finalConstSign = yvalue > 0 && fconst > 0 ? "-" : "+";
 
     let finalFrac = Number.isInteger(finalK / yvalue) ? Math.abs(finalK / yvalue) : `
@@ -259,7 +260,7 @@ if(fconst == 0){
       // ALL POSITIVE
            step1.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${minorSign} ${Math.abs(constant)}`;  
            step2.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} + ${xConst} = ${yvalue / -1}${minor} ${minorSign} ${Math.abs(constant)} + ${xConst}`;
-           step3.textContent = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}${minor} ${finalConstSign} ${finalK}`; 
+           step3.textContent = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}${minor} ${step3ConstSign} ${finalK}`; 
            step4.innerHTML = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}(${minor} ${finalConstSign} ${finalFrac})`;  
     } 
     else if(a > 1){
