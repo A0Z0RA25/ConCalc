@@ -126,10 +126,12 @@ function transform() {
     </math>` :
     `<math xmlns="http://www.w3.org/1998/Math/MathML">
     <msqrt>
+        <mo>(</mo>
             <mfrac>
                 <mi>${(Math.pow(coeffX / xvalue, 2) + Math.pow(coeffY / yvalue, 2) - ((constant / xvalue) * 4))}</mi>
                 <mi>4</mi>
             </mfrac>
+            <mo>)</mo>
         </msqrt>
     </math>`;
     const xpow = Number.isInteger(Math.pow(centerX, 2)) ? Math.pow(centerX, 2) : Math.pow(centerX, 2).toFixed(2);
@@ -306,7 +308,7 @@ function checkCenter(e) {
         answerEach.innerHTML = `Your Answer: (${userX}, ${userY})`;
         
     } else {
-        answerEach.innerHTML = "Please put your center values first.";
+        answerEach.innerHTML = "Put your answer first.";
     }
 };
    
@@ -334,7 +336,7 @@ function checkRadius(e) {
         answerEach.innerHTML = `Your Answer: ${radius}`;
         
     } else {
-        answerEach.innerHTML = "Please put your center values first.";
+        answerEach.innerHTML = "Put your answer first.";
     }
 };
   
