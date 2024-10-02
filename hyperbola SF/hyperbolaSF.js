@@ -301,7 +301,7 @@ answerContainer.style.visibility = "visible";
          lcmMinor1.textContent = lcmValue;
          majorIn1.textContent = `(${major} ${majorValueSign} ${Math.abs(majorValue)})²`;
          majorDeno1.textContent = `${majorDenoValue}`;
-         minorIn1.textContent = `(${minor} ${minorValueSign} ${minorValue})²`;
+         minorIn1.textContent = `(${minor} ${minorValueSign} ${Math.abs(minorValue)})²`;
          minorDeno1.textContent = `${minorDenoValue}`; 
          lcmInConst.textContent = `LCM:(${majorDenoValue})(${minorDenoValue}) = ${lcmValue}`;
          // STEP 2
