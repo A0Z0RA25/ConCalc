@@ -209,8 +209,9 @@ function transform() {
     const constant = parseFloat(document.querySelector(".constant").value);
 
     zerozero(coeffX, coeffY);
-    const centerX = coeffX / x2;
-    const centerY = coeffY / y2;
+    const centerX = Number.isInteger(coeffX / x2) ? coeffX / x2 : parseFloat((coeffX / x2).toFixed(2));
+    const centerY = Number.isInteger(coeffY / y2) ? coeffY / y2 : parseFloat((coeffY / y2).toFixed(2));
+    const finalConstX = Math.pow(centerX / 2, 2);
     const constX =  Number.isInteger(Math.pow(centerX / 2, 2)) ? Math.pow(centerX / 2, 2) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
@@ -226,6 +227,7 @@ function transform() {
     </msup>
     </math>
     `;
+    const finalConstY = Math.pow(centerY / 2, 2);
     const constY = Number.isInteger(Math.pow(centerY / 2, 2)) ? Math.pow(centerY / 2, 2) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
@@ -241,7 +243,9 @@ function transform() {
     </msup>
     </math>
     `;
-    const radius = ((constX * x2) + (constY * y2)) + (constant / -1);
+    console.log(constX, x2, constY, y2, constant);
+    console.log(constX)
+    const radius = parseFloat(((finalConstX * x2) + (finalConstY * y2)) + (constant / -1));
 
     numeX = Number.isInteger(radius / x2) ? radius / x2 : (radius / x2).toFixed(2);
     numeY = Number.isInteger(radius / y2) ? radius / y2 : (radius / y2).toFixed(2);
