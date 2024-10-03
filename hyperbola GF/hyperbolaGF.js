@@ -343,7 +343,7 @@ const minorExpandedFraction = `
         majorDeno.textContent = `${radius}`;
 
         minorOut.textContent = B / -1;
-        minorIn.textContent = `${mnc} ${Dsign} ${minorCenter / 2}`;
+        minorIn.textContent = `${mnc} ${Dsign} ${Math.abs(minorCenter / 2)}`;
         minorDeno.textContent = `${radius}`;
 
         constNume.textContent = `${radius}`;
@@ -352,7 +352,7 @@ const minorExpandedFraction = `
         finalMajorIn.textContent = `${mjc} ${Csign} ${Math.abs(majorCenter / 2)}`;
         finalMajorDeno.textContent = `${majorFinalDeno}`;
 
-        finalMinorIn.textContent = `${mnc} ${Dsign} ${minorCenter / 2}`;
+        finalMinorIn.textContent = `${mnc} ${Dsign} ${Math.abs(minorCenter / 2)}`;
         finalMinorDeno.textContent = `${minorFinalDeno}`;
     } 
     else if(C == 0 || D == 0){
