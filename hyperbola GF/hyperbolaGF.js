@@ -299,10 +299,10 @@ const minorExpandedFraction = `
         constNume.textContent = `${radius}`;
         constDeno.textContent = `${radius}`;
         //
-        finalMajorIn.textContent = `${major} ${Csign} ${Math.abs(C / 2)}`;
+        finalMajorIn.textContent = `${mjc} ${Csign} ${Math.abs(C / 2)}`;
         finalMajorDeno.textContent = majorFinalDeno;
 
-        finalMinorIn.textContent = `${minor} ${minorCenter / 2}`;
+        finalMinorIn.textContent = `${mnc} ${minorCenter / 2}`;
         finalMinorDeno.textContent = minorFinalDeno;
     } 
     // B -------------------------------------------------------
