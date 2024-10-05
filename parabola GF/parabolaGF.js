@@ -235,7 +235,7 @@ function transform() {
     const minorSign = yvalue > 0 ? "-" : "+";
     const constantSign = constant > 0 ? "-" : "+";
     let step3ConstSign = fconst > 0 ? "+" : "-";
-    let finalConstSign = yvalue > 0 && fconst > 0 ? "-" : "+";
+    let finalConstSign = yvalue < 0 && finalK > 0 || finalK < 0 && yvalue > 0 ? "+" : "-";
 
     let finalFrac = Number.isInteger(finalK / yvalue) ? Math.abs(finalK / yvalue) : `
 <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -267,7 +267,7 @@ if(fconst == 0){
            step1.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)}`;  
            step2.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} + ${xConst} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)} + ${xConst}`;
            step3.textContent = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}${minor} ${step3ConstSign} ${Math.abs(finalK)}`; 
-           step4.innerHTML = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}(${minor} ${step3ConstSign} ${finalFrac})`;  
+           step4.innerHTML = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}(${minor} ${finalConstSign} ${finalFrac})`;  
     } 
     else if(a > 1){
          step3.classList.remove('finalAnswerBgColor');
