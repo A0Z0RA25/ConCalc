@@ -117,7 +117,7 @@ function startSound(){
 };
 //---------
 
-let finalXCenter, finalYCenter, major, opening;
+let finalXCenter, finalYCenter, major, opening, radius;
 function transform(){
     allStep.style.display = "none";
     const reminderContainer = document.querySelector(".reminderContainer");
@@ -167,7 +167,7 @@ function transform(){
     const minorExpanded = Number.isInteger(Math.pow(minorCenter / 2, 2)) ? Math.abs(Math.pow(minorCenter / 2, 2)) : Math.abs((Math.pow(minorCenter / 2, 2))).toFixed(2);
     const majorFinalDeno = Number.isInteger(Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / A)) ? Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / A) : (Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / A)).toFixed(2);
     const minorFinalDeno = Number.isInteger(Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / B)) ? Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / B) : (Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / B)).toFixed(2);
-    const radius = Number.isInteger((E / -1) + majorExpanded * A + minorExpanded * B) ? ((E / -1) + majorExpanded * A + minorExpanded * B) : ((E / -1) + majorExpanded * A + minorExpanded * B).toFixed(2);
+    const radius = Number.isInteger((E / -1) + majorExpanded * A + minorExpanded * B) ? ((E / -1) + majorExpanded * A + minorExpanded * B) : parseFloat(((E / -1) + majorExpanded * A + minorExpanded * B).toFixed(2));
 
     finalSign1.textContent = (radius > 0) ? " " : "-";
     finalSign2.textContent = (radius > 0) ? "-" : "+";
@@ -196,10 +196,11 @@ function transform(){
     finalXCenter = (major == "x²") ? majorCenter / -2 : minorCenter / -2;
     finalYCenter = (major == "x²") ? minorCenter / -2 : majorCenter / -2;
     const centerGraph = (major == "x²") ? `(${majorCenter / -2}, ${minorCenter / -2})` : `(${minorCenter / -2}, ${majorCenter / -2})`;
+    centerValue.style.color = 'green';
     centerValue.textContent = centerGraph;
     // Orientation
     const orri = document.querySelector(".orriValue");
-    opening = (major == "x²") ? "Left and Right" : "Up and Down";
+    opening = (major == "x²" && radius > 0) ? "Left and Right" : "Up and Down";
     orri.innerHTML = opening;
 
     const majorFraction = `
@@ -451,7 +452,6 @@ function checkMajor(e) {
     const majorY1 = document.querySelector('.user-vertex-y1-answer').value;
     const majorX2 = document.querySelector('.user-vertex-x2-answer').value;
     const majorY2 = document.querySelector('.user-vertex-y2-answer').value;
-
     if(major = "x²" && majorX1 == majorAddDecimal && majorY1 == xMajorfinalVertY && majorX2 == majorSubDecimal && majorY2 == xMajorfinalVertY){
         answerEach.classList.add('correct');
         answerEach.classList.remove('wrong');
@@ -460,7 +460,15 @@ function checkMajor(e) {
         answerEach.classList.add('correct');
         answerEach.classList.remove('wrong');
         correctSound();
-    } 
+    } else if(major = "x²" && radius < 0 && majorX1 == yMajorfinalVertX && majorY1 == majorAddDecimal && majorX2 == yMajorfinalVertX && majorY2 == majorSubDecimal){
+        answerEach.classList.add('correct');
+        answerEach.classList.remove('wrong');
+        correctSound();
+    } else if(major = "y²" && radius < 0 && majorX1 == majorAddDecimal && majorY1 == xMajorfinalVertY && majorX2 == majorSubDecimal && majorY2 == xMajorfinalVertY){
+        answerEach.classList.add('correct');
+        answerEach.classList.remove('wrong');
+        correctSound();
+    }
     else {
         answerEach.classList.add('wrong');
         wrongSound();
@@ -491,6 +499,14 @@ function checkFoci(e) {
         answerEach.classList.remove('wrong');
         correctSound();
     } else if(major = "y²" && focix1 == yMajorfinalVertX && fociy1 == fociAddMajorDec && focix2 == yMajorfinalVertX && fociy2 == fociSubMajorDec){
+        answerEach.classList.add('correct');
+        answerEach.classList.remove('wrong');
+        correctSound();
+    } else if(major = "x²" && radius < 0 && focix1 == yMajorfinalVertX && fociy1 == fociAddMajorDec && focix2 == yMajorfinalVertX && fociy2 == fociSubMajorDec){
+        answerEach.classList.add('correct');
+        answerEach.classList.remove('wrong');
+        correctSound();
+    } else if(major = "y²" && radius < 0 && focix1 == fociAddMajorDec && fociy1 == xMajorfinalVertY && focix2 == fociSubMajorDec && fociy2 == xMajorfinalVertY){
         answerEach.classList.add('correct');
         answerEach.classList.remove('wrong');
         correctSound();
@@ -532,6 +548,14 @@ function checkAsymp(e) {
         answerEach.classList.add('correct');
         answerEach.classList.remove('wrong');
         correctSound();
+    } else if(major = "x²" && radius < 0 && asympx == asympValueXMajor && asympy == asympValueYMajor && asympnume == vertexOfADec && asympdeno == vertexOfBDec){
+        answerEach.classList.add('correct');
+        answerEach.classList.remove('wrong');
+        correctSound();
+    } else if(major = "y²" && radius < 0 && asympx == asympValueYMajor && asympy == asympValueXMajor && asympnume == vertexOfBDec && asympdeno == vertexOfADec){
+        answerEach.classList.add('correct');
+        answerEach.classList.remove('wrong');
+        correctSound();
     } else {
         answerEach.classList.add('wrong');
         answerEach.classList.remove('correct');
@@ -564,6 +588,30 @@ function checkAsymp(e) {
             </mfrac>
             </math> 
             (y ${asympySign} ${Math.abs(asympy)})`;
+    } else if(major = "x²" && radius < 0 && asympx && asympy && asympnume && asympdeno){
+        showNextSection(".user-asymp-value", ".user-orrientation");
+        document.querySelector(".asymp-container").style.display = "block";
+        answerEach.innerHTML = `Your Answer: 
+            x ${asympxSign} ${Math.abs(asympx)} = &plusmn;
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mi>${Math.abs(asympnume)}</mi>
+                <mi>${Math.abs(asympdeno)}</mi> 
+            </mfrac>
+            </math> 
+            (y ${asympySign} ${Math.abs(asympy)})`;
+    } else if(major = "y²" && radius < 0 && asympx && asympy && asympnume && asympdeno){
+        showNextSection(".user-asymp-value", ".user-orrientation");
+        document.querySelector(".asymp-container").style.display = "block";
+            answerEach.innerHTML = `Your Answer: 
+            y ${asympySign} ${Math.abs(asympy)} = &plusmn;
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mi>${Math.abs(asympnume)}</mi>
+                <mi>${Math.abs(asympdeno)}</mi> 
+        </mfrac>
+        </math> 
+        (x ${asympxSign} ${Math.abs(asympx)})`; 
     }
     else {
         answerEach.innerHTML = 'Put your answers first.';
@@ -649,7 +697,11 @@ function parts(majorFinalDeno, minorFinalDeno, radius, majorCenter, minorCenter,
 
     xMajorfinalVertY = minorCenter / -2;
     yMajorfinalVertX = minorCenter / -2;
-    if(major == "x²"){
+
+    vertexValue.style.color = 'orange';
+    fociValue.style.color = 'purple';
+    asymp.style.color = 'red';
+    if(major == "x²" && radius > 0){
         vertexValue.textContent = `(${majorAddDecimal}, ${xMajorfinalVertY}), (${majorSubDecimal}, ${xMajorfinalVertY})`;
         fociValue.textContent =  `(${fociAddMajorDec}, ${xMajorfinalVertY}), (${fociSubMajorDec}, ${xMajorfinalVertY})`;
         asymp.innerHTML = `y ${minorSign} ${Math.abs(asympValueXMajor)} = &plusmn;
@@ -660,7 +712,7 @@ function parts(majorFinalDeno, minorFinalDeno, radius, majorCenter, minorCenter,
         </mfrac>
         </math> 
          (x ${majorSign} ${Math.abs(asympValueYMajor)})`;
-    } else if(major == "y²"){
+    } else if(major == "y²" && radius > 0){
         vertexValue.textContent = `(${yMajorfinalVertX}, ${majorAddDecimal}), (${yMajorfinalVertX}, ${majorSubDecimal})`;
         fociValue.textContent = `(${yMajorfinalVertX}, ${fociAddMajorDec}), (${yMajorfinalVertX}, ${fociSubMajorDec})`;
         asymp.innerHTML = `y ${majorSign} ${Math.abs(asympValueYMajor)} = &plusmn; 
@@ -671,6 +723,28 @@ function parts(majorFinalDeno, minorFinalDeno, radius, majorCenter, minorCenter,
         </mfrac>
         </math> 
          (x ${minorSign} ${Math.abs(asympValueXMajor)})`;
+    } else if(major == "x²" && radius < 0){
+        vertexValue.textContent = `(${yMajorfinalVertX}, ${majorAddDecimal}), (${yMajorfinalVertX}, ${majorSubDecimal})`;
+        fociValue.textContent = `(${yMajorfinalVertX}, ${fociAddMajorDec}), (${yMajorfinalVertX}, ${fociSubMajorDec})`;
+        asymp.innerHTML = `y ${majorSign} ${Math.abs(asympValueYMajor)} = &plusmn; 
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac>
+            <mi>${vertexOfADec}</mi>
+            <mi>${vertexOfBDec}</mi>
+        </mfrac>
+        </math> 
+         (x ${minorSign} ${Math.abs(asympValueXMajor)})`;
+    } else if(major == "y²" && radius < 0){
+        vertexValue.textContent = `(${majorAddDecimal}, ${xMajorfinalVertY}), (${majorSubDecimal}, ${xMajorfinalVertY})`;
+        fociValue.textContent =  `(${fociAddMajorDec}, ${xMajorfinalVertY}), (${fociSubMajorDec}, ${xMajorfinalVertY})`;
+        asymp.innerHTML = `y ${minorSign} ${Math.abs(asympValueXMajor)} = &plusmn;
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac>
+            <mi>${vertexOfBDec}</mi>
+            <mi>${vertexOfADec}</mi> 
+        </mfrac>
+        </math> 
+         (x ${majorSign} ${Math.abs(asympValueYMajor)})`;
     }
    
 }
@@ -854,7 +928,7 @@ function drawHyperbola(majorFinalDeno, minorFinalDeno, radius, major, majorCente
 
 const arcRange = 30;  // For range of x and y
 
-if (major == "x²") {
+if (major == "x²" && radius > 0) {
 // For drawing hyperbola
 ctx.beginPath();
 for (let x = h + a; x <= h + arcRange; x += 0.1) {
@@ -925,7 +999,7 @@ ctx.beginPath();
 ctx.arc(centerX + (h - c) * scale, centerY - k * scale, 5, 0, 2 * Math.PI);
 ctx.fill();
 
-} else {
+} else if(major == "y²" && radius > 0){
 // Draw Hyperbola branches
 ctx.beginPath();
 for (let y = k + a; y <= k + arcRange; y += 0.1) {
@@ -993,6 +1067,144 @@ ctx.fill();
  
 ctx.beginPath();
 ctx.arc(centerX + h * scale, centerY - (k - c) * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+} else if(major == "x²" && radius < 0){
+    ctx.beginPath();
+for (let y = k + a; y <= k + arcRange; y += 0.1) {
+    const x = h + b * Math.sqrt((y - k) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+ctx.beginPath();
+for (let y = k + a; y <= k + arcRange; y += 0.1) {
+    const x = h - b * Math.sqrt((y - k) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+ctx.beginPath();
+for (let y = k - a; y >= k - arcRange; y -= 0.1) {
+    const x = h + b * Math.sqrt((y - k) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+ctx.beginPath();
+for (let y = k - a; y >= k - arcRange; y -= 0.1) {
+    const x = h - b * Math.sqrt((y - k) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+// Draw Asymptotes
+ctx.strokeStyle = 'red';
+ctx.setLineDash([5, 5]);
+ctx.beginPath();
+ctx.moveTo(centerX + (h - arcRange) * scale, centerY - (a / b) * arcRange * scale - k * scale);
+ctx.lineTo(centerX + (h + arcRange) * scale, centerY + (a / b) * arcRange * scale - k * scale);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(centerX + (h - arcRange) * scale, centerY + (a / b) * arcRange * scale - k * scale);
+ctx.lineTo(centerX + (h + arcRange) * scale, centerY - (a / b) * arcRange * scale - k * scale);
+ctx.stroke();
+
+// Draw center
+ctx.fillStyle = 'green';
+ctx.beginPath();
+ctx.arc(centerX + h * scale, centerY - k * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+
+// Draw vertices
+ctx.fillStyle = 'orange';
+ctx.beginPath();
+ctx.arc(centerX + h * scale, centerY - (k + a) * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(centerX + h * scale, centerY - (k - a) * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+
+// Draw foci
+const c = Math.sqrt(a ** 2 + b ** 2);
+ctx.fillStyle = 'purple';
+ctx.beginPath();
+ctx.arc(centerX + h * scale, centerY - (k + c) * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+ 
+ctx.beginPath();
+ctx.arc(centerX + h * scale, centerY - (k - c) * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+} else if(major == "y²" && radius < 0){
+// For drawing hyperbola
+ctx.beginPath();
+for (let x = h + a; x <= h + arcRange; x += 0.1) {
+    const y = k + b * Math.sqrt((x - h) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+ctx.beginPath();
+for (let x = h + a; x <= h + arcRange; x += 0.1) {
+    const y = k - b * Math.sqrt((x - h) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+ctx.beginPath();
+for (let x = h - a; x >= h - arcRange; x -= 0.1) {
+    const y = k + b * Math.sqrt((x - h) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+ctx.beginPath();
+for (let x = h - a; x >= h - arcRange; x -= 0.1) {
+    const y = k - b * Math.sqrt((x - h) ** 2 / a ** 2 - 1);
+    ctx.lineTo(centerX + x * scale, centerY - y * scale);
+}
+ctx.stroke();
+
+// Draw Asymptotes
+ctx.strokeStyle = 'red';
+ctx.setLineDash([5, 5]);
+ctx.beginPath();
+ctx.moveTo(centerX + (h - arcRange) * scale, centerY - (b / a) * arcRange * scale - k * scale);
+ctx.lineTo(centerX + (h + arcRange) * scale, centerY + (b / a) * arcRange * scale - k * scale);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(centerX + (h - arcRange) * scale, centerY + (b / a) * arcRange * scale - k * scale);
+ctx.lineTo(centerX + (h + arcRange) * scale, centerY - (b / a) * arcRange * scale - k * scale);
+ctx.stroke();
+
+// Draw center
+ctx.fillStyle = "green"
+ctx.beginPath();
+ctx.arc(centerX + h * scale, centerY - k * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+
+// Draw vertices
+ctx.fillStyle = 'orange';
+ctx.beginPath();
+ctx.arc(centerX + (h + a) * scale, centerY - k * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(centerX + (h - a) * scale, centerY - k * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+
+// Draw foci
+const c = Math.sqrt(a ** 2 + b ** 2);
+console.log(c)
+ctx.fillStyle = 'purple';
+ctx.beginPath();
+ctx.arc(centerX + (h + c) * scale, centerY - k * scale, 5, 0, 2 * Math.PI);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(centerX + (h - c) * scale, centerY - k * scale, 5, 0, 2 * Math.PI);
 ctx.fill();
 }
 }
