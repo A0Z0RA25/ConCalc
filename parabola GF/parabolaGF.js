@@ -160,7 +160,7 @@ function startSound(){
         audio.play();
 };
 
-let major;
+let major, a;
 function transform() {
     allSteps.style.display = "none"; 
     userContainer.style.display = "none";
