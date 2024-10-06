@@ -202,7 +202,7 @@ function transform() {
 
     noneCoeff1.style.display = "none";
     noneCoeff2.style.display = "none";
-    noneCoeff3.style.display = "none";
+    noneCoeff3.style.display = "none"; 
     noneCoeff4.style.display = "none";
     noneCoeff5.style.display = "none";
     graph.style.display = "none";
@@ -249,8 +249,7 @@ function transform() {
     </msup>
     </math>
     `;
-    console.log(constX, x2, constY, y2, constant);
-    console.log(constX)
+   
     const radius = parseFloat(((finalConstX * x2) + (finalConstY * y2)) + (constant / -1));
 
     numeX = Number.isInteger(radius / x2) ? radius / x2 : (radius / x2).toFixed(2);
@@ -262,6 +261,7 @@ function transform() {
     //Center and radius value
     finalCenterX = (centerX / 2) / -1;
     finalCenterY = (centerY / 2) / -1;
+    centerValue.style.color = 'red';
     centerValue.textContent = `(${finalCenterX}, ${finalCenterY})`;
     // 
     if(isNaN(x2) || isNaN(y2)){
@@ -468,6 +468,10 @@ function vertex(centerX, centerY, numeX, numeY){
     minorXValSub = Number.isInteger(centerXInVertex - bValue) ? centerXInVertex - bValue : (centerXInVertex - bValue).toFixed(2);
 
     orriUser = (numeX > numeY) ? "Horizontal" : "Vertical";
+
+    majorVertexValue.style.color = 'blue';
+    minorVertexValue.style.color = 'orange';
+    fociValue.style.color = 'purple';
     if (numeX > numeY) {
         majorVertexValue.textContent = `(${xCenterValueFirst}, ${centerYInVertex}), (${xCenterValueSecond}, ${centerYInVertex})`;
         minorVertexValue.textContent = `(${centerXInVertex}, ${minorYValAdd}), (${centerXInVertex}, ${minorYValSub})`;
