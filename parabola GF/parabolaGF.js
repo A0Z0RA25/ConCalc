@@ -203,9 +203,9 @@ function transform() {
     }
 
     //Given
-    sign1.textContent = (xvalue > 0) ? "+" : "-";
-    sign2.textContent = (yvalue > 0) ? "+" : "-";
-    sign3.textContent = (constant > 0) ? "+" : "-";
+    sign1.innerHTML = (xvalue > 0) ? "+" : "-";
+    sign2.innerHTML = (yvalue > 0) ? "+" : "-";
+    sign3.innerHTML = (constant > 0) ? "+" : "-";
     givenMajor.textContent = (a == 1) ? "" : a;
     givenMajorVar.textContent = major;
     givenMajorCoef.textContent = (xvalue > 0) ? xvalue : xvalue / -1;
@@ -264,9 +264,9 @@ if(fconst == 0){
       });
       
       // ALL POSITIVE
-           step1.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)}`;  
-           step2.textContent = `${major} ${majorSign} ${Math.abs(xvalue)}${com} + ${xConst} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)} + ${xConst}`;
-           step3.textContent = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}${minor} ${step3ConstSign} ${Math.abs(finalK)}`; 
+           step1.innerHTML = `${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)}`;  
+           step2.innerHTML = `${major} ${majorSign} ${Math.abs(xvalue)}${com} + ${xConst} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)} + ${xConst}`;
+           step3.innerHTML = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}${minor} ${step3ConstSign} ${Math.abs(finalK)}`; 
            step4.innerHTML = `(${com} ${majorSign} ${Math.abs(xvalue / 2)})² = ${yvalue / -1}(${minor} ${finalConstSign} ${finalFrac})`;  
     } 
     else if(a > 1){
@@ -274,9 +274,9 @@ if(fconst == 0){
          step3.classList.add('normalBgColor');
          step4.style.display = "none";
       // All positive
-         step1.textContent = `${a}${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${contantSign} ${Math.abs(constant)}`; 
-         step2.textContent = `${a} (${major} ${majorCenterSign} ${Math.abs(divideCenter)}${com} + ${divideConstant}) = ${yvalue / -1}${minor} ${contantSign} ${Math.abs(constant)} + ${divideConstant} (${a})`;
-         step3.textContent = `${a} (${major} ${majorCenterSign} ${Math.abs(divideCenter)}${com} + ${divideConstant}) = ${yvalue / -1}${minor} ${constNotZeroSign} ${Math.abs(ConstNotZero)}`;
+         step1.innerHTML = `${a}${major} ${majorSign} ${Math.abs(xvalue)}${com} = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)}`; 
+         step2.innerHTML = `${a} (${major} ${majorCenterSign} ${Math.abs(divideCenter)}${com} + ${divideConstant}) = ${yvalue / -1}${minor} ${constantSign} ${Math.abs(constant)} + ${divideConstant} (${a})`;
+         step3.innerHTML = `${a} (${major} ${majorCenterSign} ${Math.abs(divideCenter)}${com} + ${divideConstant}) = ${yvalue / -1}${minor} ${constNotZeroSign} ${Math.abs(ConstNotZero)}`;
          // FRACTION
          fracContainer.innerHTML = `
          <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -360,9 +360,9 @@ if(fconst == 0){
         givenMinorVar.textContent = minor;
         givenConst.textContent = (constant > 0) ? constant : constant / -1;
      
-        step1.textContent = `${major} ${coeffMinorSign} ${Math.abs(yvalue)}${minor} ${constantSign} ${Math.abs(constant)} = 0`;
-        step2.textContent = `${major} = ${minorOppSign}${Math.abs(yvalue)}${minor} ${constantOppSign} ${Math.abs(constant)}`;
-        step3.textContent = `${major} = ${minorOppSign}${Math.abs(yvalue)} (${minor} ${finalConstSign} ${Math.abs((constant / -1) / (yvalue / -1))})`;
+        step1.innerHTML = `${major} ${coeffMinorSign} ${Math.abs(yvalue)}${minor} ${constantSign} ${Math.abs(constant)} = 0`;
+        step2.innerHTML = `${major} = ${minorOppSign}${Math.abs(yvalue)}${minor} ${constantOppSign} ${Math.abs(constant)}`;
+        step3.innerHTML = `${major} = ${minorOppSign}${Math.abs(yvalue)} (${minor} ${finalConstSign} ${Math.abs((constant / -1) / (yvalue / -1))})`;
         step4Container.style.display = "none";
         finalAnswer.style.display = "none";
         fracContainer.style.display = "none";
@@ -536,7 +536,12 @@ document.querySelector(".submitBtn-latus").addEventListener('click', checkLatus)
 function checkLatus(e) {
     e.preventDefault();
 
-    graph.style.display = "block";
+    
+    if(a > 1){
+        graph.style.display = "none";
+    } else {
+        graph.style.display = "block";
+    }
     // Get values from the center input fields
     const latusx1 = document.querySelector('.user-latus-x1-answer').value;
     const latusy1 = document.querySelector('.user-latus-y1-answer').value;
