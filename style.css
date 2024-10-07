@@ -334,6 +334,10 @@ th {
     background-color: #343a40;
     color: #fff;
 }
+.centerHk, .centerOri{
+    text-align: center;
+}
+
 
 @media only screen and (max-width: 643px) {
     body {
@@ -518,6 +522,7 @@ th {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 .circle-section .partsImageCircle .circleGraphImg{
     width: 250px;
@@ -526,6 +531,7 @@ th {
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+
  
     /*Parabola*/ 
 .parabola-section .parabola-parts-images{
