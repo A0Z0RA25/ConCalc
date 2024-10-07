@@ -119,7 +119,7 @@ function showAnswers(a) {
             document.querySelector(".step3Btn").style.display = "none";
         });
         document.querySelector(".step4Btn").addEventListener('click', () => {
-            graphContainer.innerHTML = "Sorry, we can't provide the parts and graph for this equation. The Graph and Parts only appear if the value of a is 1.";
+            graphContainer.innerHTML = "Sorry, we can't provide the parts and graph for this equation. The Graph and Parts only appear if the value of a is 1.(If a problem or error occurs, try refreshing the page)";
             graph.style.display = "none";
             step4.style.display = "none";
             fracContainer.style.display = "block";
