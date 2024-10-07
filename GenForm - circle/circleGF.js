@@ -126,19 +126,13 @@ function transform() {
     const radius = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? (Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)).toFixed(2) : (Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue));
     const radiusFrac = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? 
     `<math xmlns="http://www.w3.org/1998/Math/MathML">
-    <msqrt>
             <mi>${(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue))}</mi>
-        </msqrt>
     </math>` :
     `<math xmlns="http://www.w3.org/1998/Math/MathML">
-    <msqrt>
-        <mo>(</mo>
             <mfrac>
                 <mi>${(Math.pow(coeffX / xvalue, 2) + Math.pow(coeffY / yvalue, 2) - ((constant / xvalue) * 4))}</mi>
                 <mi>4</mi>
             </mfrac>
-            <mo>)</mo>
-        </msqrt>
     </math>`;
     const xpow = Number.isInteger(Math.pow(centerX, 2)) ? Math.pow(centerX, 2) : Math.pow(centerX, 2).toFixed(2);
     const ypow = Number.isInteger(Math.pow(centerY, 2)) ? Math.pow(centerY, 2) : Math.pow(centerY, 2).toFixed(2);
@@ -247,7 +241,7 @@ if(coeffX !== 0 && coeffY !== 0) {
     step1Container.innerHTML = `x² ${coeffXSign} ${Math.abs((coeffX / xvalue))}x ${yvalueSign} y² ${coeffYSign} ${Math.abs((coeffY / yvalue))}y = ${constantDecimal}`;
     step2Container.innerHTML = `(x² ${coeffXSign} ${Math.abs(coeffX / xvalue)}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${Math.abs(coeffY / yvalue)}y + ${yExpanded}) = ${constantDecimal}`;
     step3Container.innerHTML = `(x² ${coeffXSign} ${Math.abs((coeffX / xvalue))}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${Math.abs((coeffY / yvalue))}y + ${yExpanded}) = ${constantDecimal} + ${xExpanded} + ${yExpanded}`;
-    resultDiv.innerHTML = `(x ${coeffXSign} ${Math.abs(centerX)})² + (y ${coeffYSign} ${Math.abs(centerY)})² = ${radiusFrac} or ${finalRadius}`;  
+    resultDiv.innerHTML = `(x ${coeffXSign} ${Math.abs(centerX)})² + (y ${coeffYSign} ${Math.abs(centerY)})² = ${radiusFrac}`;  
 } else if(coeffX == 0){
     step1Container.innerHTML = `x² ${yvalueSign} y² ${coeffYSign} ${Math.abs(coeffY)}y = ${constantDecimal}`;
     step2Container.innerHTML = `x² ${yvalueSign} (y² ${coeffYSign} ${Math.abs(centerY * 2)}y + ${yExpanded}) = ${constantDecimal}`;
