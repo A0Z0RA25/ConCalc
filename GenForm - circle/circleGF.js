@@ -123,7 +123,8 @@ function transform() {
     // Transforming general form to standard form
     const centerX = Number.isInteger((coeffX / xvalue) / 2) ? (coeffX / xvalue) / 2 : ((coeffX / xvalue) / 2).toFixed(2);
     const centerY = Number.isInteger(coeffY / yvalue) ? (coeffY / yvalue) / 2 : ((coeffY / yvalue) / 2).toFixed(2);
-    const radius = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? (Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)).toFixed(2) : (Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue));
+    const radius = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? (Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) : parseFloat((Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)).toFixed(2));
+    console.log(radius)
     const radiusFrac = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? 
     `<math xmlns="http://www.w3.org/1998/Math/MathML">
             <mi>${(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue))}</mi>
@@ -150,7 +151,7 @@ function transform() {
     givenA.textContent = (xvalue !== 1) ? xvalue : "";
     givenB.textContent = (yvalue !== 1) ? yvalue : "";
     givenSign1.textContent = (coeffX > 0) ? "+" : "-"; 
-    givenSign2.textContent = (coeffY > 0) ? "+" : "-"; 
+    givenSign2.textContent = (coeffY > 0) ? "+" : "-";  
     givenSign3.textContent = (constant > 0) ? "+" : "-"; 
     givenC.textContent = (coeffX < 0) ? `${coeffX / -1}` : `${coeffX}`;
     givenD.textContent = (coeffY < 0) ? `${coeffY / -1}` : `${coeffY}`;
@@ -158,9 +159,10 @@ function transform() {
     // Output the result
     finalCenterX = centerX / -1;
     finalCenterY = centerY / -1;
-    finalRadius = Number.isInteger(Math.sqrt(radius)) ? Math.sqrt(radius) : Math.sqrt(radius).toFixed(2);
+    finalRadius = Number.isInteger(Math.sqrt(radius)) ? Math.sqrt(radius) : parseFloat(Math.sqrt(radius).toFixed(2));
     centerValue.innerHTML = `(${finalCenterX}, ${finalCenterY})`;
     radiusGraph.innerHTML = finalRadius;
+    console.log(finalRadius)
     //Graph
     drawCoordinatePlane();
     drawCircle(centerX, centerY, radius);
@@ -234,6 +236,22 @@ function transform() {
         </msup>
     </math>`;
 
+    const finalCenterXFrac = Number.isInteger(centerX) ? Math.abs(centerX) : `
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mi>${Math.abs((coeffX / xvalue))}</mi>
+                <mi>2</mi>
+            </mfrac>
+    </math>`;
+
+    const finalCenterYFrac = Number.isInteger(centerY) ? Math.abs(centerY) : `
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mi>${Math.abs((coeffY / yvalue))}</mi>
+                <mi>2</mi>
+            </mfrac>
+    </math>`;
+
 
 
 
@@ -241,17 +259,17 @@ if(coeffX !== 0 && coeffY !== 0) {
     step1Container.innerHTML = `x² ${coeffXSign} ${Math.abs((coeffX / xvalue))}x ${yvalueSign} y² ${coeffYSign} ${Math.abs((coeffY / yvalue))}y = ${constantDecimal}`;
     step2Container.innerHTML = `(x² ${coeffXSign} ${Math.abs(coeffX / xvalue)}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${Math.abs(coeffY / yvalue)}y + ${yExpanded}) = ${constantDecimal}`;
     step3Container.innerHTML = `(x² ${coeffXSign} ${Math.abs((coeffX / xvalue))}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${Math.abs((coeffY / yvalue))}y + ${yExpanded}) = ${constantDecimal} + ${xExpanded} + ${yExpanded}`;
-    resultDiv.innerHTML = `(x ${coeffXSign} ${Math.abs(centerX)})² + (y ${coeffYSign} ${Math.abs(centerY)})² = ${radiusFrac}`;  
+    resultDiv.innerHTML = `(x ${coeffXSign} ${finalCenterXFrac})² + (y ${coeffYSign} ${finalCenterYFrac})² = ${radiusFrac}`;  
 } else if(coeffX == 0){
     step1Container.innerHTML = `x² ${yvalueSign} y² ${coeffYSign} ${Math.abs(coeffY)}y = ${constantDecimal}`;
     step2Container.innerHTML = `x² ${yvalueSign} (y² ${coeffYSign} ${Math.abs(centerY * 2)}y + ${yExpanded}) = ${constantDecimal}`;
     step3Container.innerHTML = `x² ${yvalueSign} (y² ${coeffYSign} ${Math.abs(centerY * 2)}y + ${ypow}) = ${constantDecimal} + ${ypow}`;
-    resultDiv.innerHTML = `x² + (y ${coeffYSign} ${Math.abs(centerY)})² = ${radius}`;  
+    resultDiv.innerHTML = `x² + (y ${coeffYSign} ${finalCenterYFrac})² = ${radius}`;  
 } else if(coeffY == 0) {
     step1Container.innerHTML = `x² ${coeffXSign} ${Math.abs(coeffX)}x ${yvalueSign} y² = ${constantDecimal}`;
     step2Container.innerHTML = `(x² ${coeffXSign} ${Math.abs(centerX * 2)}x + ${xExpanded}) ${yvalueSign} y² = ${constantDecimal}`;
     step3Container.innerHTML = `(x² ${coeffXSign} ${Math.abs(centerX * 2)}x + ${xpow}) ${yvalueSign} y² = ${constantDecimal} + ${xpow}`;
-    resultDiv.innerHTML = `(x ${coeffXSign} ${Math.abs(centerX)})² + y² = ${-constant / xvalue + xpow}`;  
+    resultDiv.innerHTML = `(x ${coeffXSign} ${finalCenterXFrac})² + y² = ${-constant / xvalue + xpow}`;  
 } 
     }  
 };
