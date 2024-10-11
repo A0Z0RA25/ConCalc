@@ -118,23 +118,13 @@ function transform() {
     const yvalue = parseFloat(document.getElementById('yvalue').value);
     //Signs
     const yvalueSign = (yvalue > 0) ? "+" : "-";
-    const coeffXSign = (coeffX > 0) ? "+" : "-"; 
+    const coeffXSign = (coeffX > 0) ? "+" : "-";  
     const coeffYSign = (coeffY > 0) ? "+" : "-";
     // Transforming general form to standard form
     const centerX = Number.isInteger((coeffX / xvalue) / 2) ? (coeffX / xvalue) / 2 : ((coeffX / xvalue) / 2).toFixed(2);
     const centerY = Number.isInteger(coeffY / yvalue) ? (coeffY / yvalue) / 2 : ((coeffY / yvalue) / 2).toFixed(2);
     const radius = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? (Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) : parseFloat((Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)).toFixed(2));
     console.log(radius)
-    const radiusFrac = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? 
-    `<math xmlns="http://www.w3.org/1998/Math/MathML">
-            <mi>${(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue))}</mi>
-    </math>` :
-    `<math xmlns="http://www.w3.org/1998/Math/MathML">
-            <mfrac>
-                <mi>${(Math.pow(coeffX / xvalue, 2) + Math.pow(coeffY / yvalue, 2) - ((constant / xvalue) * 4))}</mi>
-                <mi>4</mi>
-            </mfrac>
-    </math>`;
     const xpow = Number.isInteger(Math.pow(centerX, 2)) ? Math.pow(centerX, 2) : Math.pow(centerX, 2).toFixed(2);
     const ypow = Number.isInteger(Math.pow(centerY, 2)) ? Math.pow(centerY, 2) : Math.pow(centerY, 2).toFixed(2);
     //Given 
@@ -167,7 +157,95 @@ function transform() {
     drawCoordinatePlane();
     drawCircle(centerX, centerY, radius);
     initiate();
+
+    //LCM
+function divideFraction(numerator, yvalue, divisor) {
+   
+    let newDenominator = yvalue * divisor;
     
+    return newDenominator;
+}
+let XYexpanded = divideFraction(coeffX, yvalue, 2);
+console.log(XYexpanded); 
+
+//sum of constant
+
+// Helper function to find the greatest common divisor (GCD)
+function gcd(a, b) {
+    while (b !== 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+//finding lcm
+function lcd(a, b) {
+    return (a * b) / gcd(a, b);
+}
+
+// Function to square a fraction (numerator^2 / denominator^2)
+function squareFraction(coeffX, xvalue) {
+    return [coeffX * coeffX, xvalue * xvalue];
+}
+
+// Function to add fractions
+function addFractions(fractions) {
+    // Find the least common denominator for all fractions
+    let commonDenominator = fractions[0][1]; // Start with the first denominator
+    for (let i = 1; i < fractions.length; i++) {
+        commonDenominator = lcd(commonDenominator, fractions[i][1]);
+    }
+
+    // Convert fractions to have the same denominator
+    let numeratorsSum = 0;
+    for (let i = 0; i < fractions.length; i++) {
+        let numerator = fractions[i][0];
+        let denominator = fractions[i][1];
+        numeratorsSum += numerator * (commonDenominator / denominator);
+    }
+
+    // Simplify the resulting fraction if possible
+    let commonGcd = gcd(numeratorsSum, commonDenominator);
+    return [numeratorsSum / commonGcd, commonDenominator / commonGcd];
+}
+
+// Main function to handle the specific case (-21/2 + (17/4)^2 + (23/4)^2)
+function calculateExpression() {
+    // Fractions in the format [numerator, denominator]
+    let fractions = [
+        [-constant, 2], // -21/2
+        squareFraction(coeffX, XYexpanded), // (17/4)^2 = 289/16
+        squareFraction(coeffY, XYexpanded)  // (23/4)^2 = 529/16
+    ];
+
+    // Add the fractions
+    let result = addFractions(fractions);
+
+    // Return the result as a simplified fraction
+    return `
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msup>
+            <mrow>
+                <mfrac>
+                    <mn>${result[0]}</mn>
+                    <mn>${result[1]}</mn>
+                </mfrac>
+            </mrow>
+        </msup>
+    </math>`;
+}
+
+// Example usage
+console.log(calculateExpression());  // Output: "325/8"
+
+    
+const radiusFrac = Number.isInteger(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue)) ? 
+`<math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>${(Math.pow(centerX, 2) + Math.pow(centerY, 2) - (constant / xvalue))}</mi>
+</math>` :
+calculateExpression();
  
     if (xvalue === yvalue) { 
     //FINAL ANSWER WILL DISPLAY
@@ -187,7 +265,33 @@ function transform() {
     cDeno.textContent = xvalue;
     dDeno.textContent = xvalue;
     constDeno.textContent = xvalue;
-//Center frac
+
+    //center xvalue yvalue
+    const centerXFraction = Number.isInteger((coeffX / xvalue)) ? Math.abs((coeffX / xvalue)) : `
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msup>
+            <mrow>
+                <mfrac>
+                    <mn>${Math.abs(coeffX)}</mn>
+                    <mn>${xvalue}</mn>
+                </mfrac>
+            </mrow>
+        </msup>
+    </math>`;
+
+    const centerYFraction = Number.isInteger((coeffY / yvalue)) ? Math.abs((coeffY / yvalue)) : `
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msup>
+            <mrow>
+                <mfrac>
+                    <mn>${Math.abs(coeffY)}</mn>
+                    <mn>${yvalue}</mn>
+                </mfrac>
+            </mrow>
+        </msup>
+    </math>`;
+    
+
 
 //constantDec
     const constantDecimal = Number.isInteger(constant / xvalue) ? (-constant / xvalue) : 
@@ -210,8 +314,8 @@ function transform() {
             <mrow>
                 <mo>(</mo>
                 <mfrac>
-                    <mn>${Math.abs(centerX * 2)}</mn>
-                    <mn>2</mn>
+                    <mn>${Math.abs(coeffX)}</mn>
+                    <mn>${XYexpanded}</mn>
                 </mfrac>
                 <mo>)</mo>
             </mrow>
@@ -227,38 +331,40 @@ function transform() {
             <mrow>
                 <mo>(</mo>
                 <mfrac>
-                    <mn>${Math.abs(centerY * 2)}</mn>
-                    <mn>2</mn>
+                    <mn>${Math.abs(coeffY)}</mn>
+                    <mn>${XYexpanded}</mn>
                 </mfrac>
                 <mo>)</mo>
             </mrow>
-            <mn>2</mn>
+            <mn>2</mn> 
         </msup>
     </math>`;
 
     const finalCenterXFrac = Number.isInteger(centerX) ? Math.abs(centerX) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
             <mfrac>
-                <mi>${Math.abs((coeffX / xvalue))}</mi>
-                <mi>2</mi>
+                <mi>${Math.abs(coeffX )}</mi>
+                <mi>${XYexpanded}</mi>
             </mfrac>
     </math>`;
 
     const finalCenterYFrac = Number.isInteger(centerY) ? Math.abs(centerY) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
             <mfrac>
-                <mi>${Math.abs((coeffY / yvalue))}</mi>
-                <mi>2</mi>
+                <mi>${Math.abs(coeffY)}</mi>
+                <mi>${XYexpanded}</mi>
             </mfrac>
     </math>`;
+
+    
 
 
 
 
 if(coeffX !== 0 && coeffY !== 0) {
-    step1Container.innerHTML = `x² ${coeffXSign} ${Math.abs((coeffX / xvalue))}x ${yvalueSign} y² ${coeffYSign} ${Math.abs((coeffY / yvalue))}y = ${constantDecimal}`;
-    step2Container.innerHTML = `(x² ${coeffXSign} ${Math.abs(coeffX / xvalue)}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${Math.abs(coeffY / yvalue)}y + ${yExpanded}) = ${constantDecimal}`;
-    step3Container.innerHTML = `(x² ${coeffXSign} ${Math.abs((coeffX / xvalue))}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${Math.abs((coeffY / yvalue))}y + ${yExpanded}) = ${constantDecimal} + ${xExpanded} + ${yExpanded}`;
+    step1Container.innerHTML = `x² ${coeffXSign} ${centerXFraction}x ${yvalueSign} y² ${coeffYSign} ${centerYFraction}y = ${constantDecimal}`;
+    step2Container.innerHTML = `(x² ${coeffXSign} ${centerXFraction}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${centerYFraction}y + ${yExpanded}) = ${constantDecimal}`;
+    step3Container.innerHTML = `(x² ${coeffXSign} ${centerXFraction}x + ${xExpanded}) ${yvalueSign} (y² ${coeffYSign} ${centerYFraction}y + ${yExpanded}) = ${constantDecimal} + ${xExpanded} + ${yExpanded}`;
     resultDiv.innerHTML = `(x ${coeffXSign} ${finalCenterXFrac})² + (y ${coeffYSign} ${finalCenterYFrac})² = ${radiusFrac}`;  
 } else if(coeffX == 0){
     step1Container.innerHTML = `x² ${yvalueSign} y² ${coeffYSign} ${Math.abs(coeffY)}y = ${constantDecimal}`;
