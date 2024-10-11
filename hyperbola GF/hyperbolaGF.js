@@ -169,6 +169,85 @@ function transform(){
     const minorFinalDeno = Number.isInteger(Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / B)) ? Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / B) : (Math.abs(((E / -1) + majorExpanded * A + minorExpanded * B) / B)).toFixed(2);
     const radius = Number.isInteger((E / -1) + majorExpanded * A + minorExpanded * B) ? ((E / -1) + majorExpanded * A + minorExpanded * B) : parseFloat(((E / -1) + majorExpanded * A + minorExpanded * B).toFixed(2));
 
+    //Lcm--------------
+    function divideFraction(numerator, A, divisor) {
+   
+        let newDenominator = A * divisor;
+        
+        return newDenominator;
+    }
+    let xExpanded = divideFraction(C, A, 2);
+    let yExpanded = divideFraction(D, B, 2);
+
+    // sum of constant
+    // Helper function to find the greatest common divisor (GCD)
+function gcd(a, b) {
+    while (b !== 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+//finding lcm
+function lcd(a, b) {
+    return (a * b) / gcd(a, b);
+}
+
+// Function to square a fraction (numerator^2 / denominator^2)
+function squareFraction(C, A, xExpanded) {
+    return [(C * C) * A, xExpanded * xExpanded];
+}
+
+// Function to add fractions
+function addFractions(fractions) {
+    // Find the least common denominator for all fractions
+    let commonDenominator = fractions[0][1]; // Start with the first denominator
+    for (let i = 1; i < fractions.length; i++) {
+        commonDenominator = lcd(commonDenominator, fractions[i][1]);
+    }
+
+    // Convert fractions to have the same denominator
+    let numeratorsSum = 0;
+    for (let i = 0; i < fractions.length; i++) {
+        let numerator = fractions[i][0];
+        let denominator = fractions[i][1];
+        numeratorsSum += numerator * (commonDenominator / denominator);
+    }
+
+    // Simplify the resulting fraction if possible
+    let commonGcd = gcd(numeratorsSum, commonDenominator);
+    return [numeratorsSum / commonGcd, commonDenominator / commonGcd];
+}
+
+// Main function to handle the specific case (-21/2 + (17/4)^2 + (23/4)^2)
+let fractions, result;
+function calculateExpression() {
+    // Fractions in the format [numerator, denominator]
+    fractions = [
+        [-E, 1], // -21/2
+        squareFraction(C, A ,xExpanded), // (17/4)^2 = 289/16
+        squareFraction(D, B ,yExpanded)  // (23/4)^2 = 529/16
+    ];
+
+    // Add the fractions
+    result = addFractions(fractions);
+
+    // Return the result as a simplified fraction
+    return `
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msup>
+            <mrow>
+                <mfrac>
+                    <mn>${result[0]}</mn>
+                    <mn>${result[1]}</mn>
+                </mfrac>
+            </mrow>
+        </msup>
+    </math>`;
+}
+
     finalSign1.textContent = (radius > 0) ? " " : "-";
     finalSign2.textContent = (radius > 0) ? "-" : "+";
     //Given
@@ -215,7 +294,7 @@ function transform(){
     <mo>)</mo>
 </math>
 `;
-const majorDecFrac = Number.isInteger(C / A) ? C / A : `
+const majorDecFrac = Number.isInteger(C / A) ? Math.abs(C / A) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mo>(</mo>
     <mfrac>
@@ -238,7 +317,7 @@ const majorDecFrac = Number.isInteger(C / A) ? C / A : `
 </math>
 `;
 
-const minorDecFrac = Number.isInteger(D / B) ? D / B : `
+const minorDecFrac = Number.isInteger(D / B) ? Math.abs(D / B) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mo>(</mo>
     <mfrac>
@@ -249,14 +328,14 @@ const minorDecFrac = Number.isInteger(D / B) ? D / B : `
 </math>
 `;
 
-const majorExpandedFraction = `
+const majorExpandedFraction = Number.isInteger(C / A) ? Math.abs(C / A) :  `
 <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
         <mrow>
             <mo>(</mo>
             <mfrac>
-                <mi>${Math.abs(majorCenter)}</mi>
-                <mn>2</mn>
+                <mi>${Math.abs(C)}</mi>
+                <mn>${Math.abs(xExpanded)}</mn>
             </mfrac>
             <mo>)</mo>
         </mrow>
@@ -265,14 +344,14 @@ const majorExpandedFraction = `
 </math>
 `;
 
-const minorExpandedFraction = `
+const minorExpandedFraction = Number.isInteger(D / B) ? Math.abs(D / B) : `
 <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
         <mrow>
             <mo>(</mo>
             <mfrac>
-                <mi>${Math.abs(minorCenter)}</mi>
-                <mn>2</mn>
+                <mi>${Math.abs(D)}</mi>
+                <mn>${Math.abs(yExpanded)}</mn>
             </mfrac>
             <mo>)</mo>
         </mrow>
@@ -280,6 +359,8 @@ const minorExpandedFraction = `
     </msup>
 </math>
 `;
+
+const constantSum = Number.isInteger(radius) ? radius : calculateExpression();
 
 
     if(A == 1){
@@ -335,26 +416,169 @@ const minorExpandedFraction = `
     else if(A !== 1 && B !== 1){
         step1.innerHTML = `${A}${major} ${Csign} ${Math.abs(C)}${mjc} ${B}${minor} ${Bsign} ${Math.abs(D)}${mnc} = ${E / -1}`;
         step2.innerHTML = `${A}(${major} ${Csign} ${majorFraction}${mjc}) ${B}(${minor} ${Dsign} ${minorFraction}${mnc}) = ${E / -1}`;
-        step3.innerHTML = `${A}(${major} ${Csign} ${Math.abs(majorDecFrac)}${mjc} + ${majorExpandedFraction}) ${B}(${minor} ${Dsign} ${Math.abs(minorDecFrac)}${mnc} + ${minorExpandedFraction}) = ${E / -1}`;
-        step4.innerHTML = `${A}(${major} ${Csign} ${Math.abs(majorCenter)}${mjc} + ${majorExpanded}) ${B}(${minor} ${Dsign} ${Math.abs(minorCenter)}${mnc} + ${minorExpanded}) = ${E / -1} + ${majorExpanded}(${A}) + ${minorExpanded}(${B})`;
-        step5.textContent = `${A}(${major} ${Csign} ${Math.abs(majorCenter)}${mjc} + ${majorExpanded}) ${B}(${minor} ${Dsign} ${Math.abs(minorCenter)}${mnc} + ${minorExpanded}) = ${radius}`;
-        //
-        majorOut.textContent = A;
-        majorIn.textContent = `${mjc} ${Csign} ${Math.abs(majorCenter / 2)}`;
-        majorDeno.textContent = `${radius}`;
-
-        minorOut.textContent = B / -1;
-        minorIn.textContent = `${mnc} ${Dsign} ${Math.abs(minorCenter / 2)}`;
-        minorDeno.textContent = `${radius}`;
-
-        constNume.textContent = `${radius}`;
-        constDeno.textContent = `${radius}`;
-        //
-        finalMajorIn.textContent = `${mjc} ${Csign} ${Math.abs(majorCenter / 2)}`;
-        finalMajorDeno.textContent = `${majorFinalDeno}`;
-
-        finalMinorIn.textContent = `${mnc} ${Dsign} ${Math.abs(minorCenter / 2)}`;
-        finalMinorDeno.textContent = `${minorFinalDeno}`;
+        step3.innerHTML = `${A}(${major} ${Csign} ${majorDecFrac}${mjc} + ${majorExpandedFraction}) ${B}(${minor} ${Dsign} ${minorDecFrac}${mnc} + ${minorExpandedFraction}) = ${E / -1}`;
+        step4.innerHTML = `${A}(${major} ${Csign} ${majorDecFrac}${mjc} + ${majorExpandedFraction}) ${B}(${minor} ${Dsign} ${minorDecFrac}${mnc} + ${minorExpandedFraction}) = ${E / -1} + ${majorExpandedFraction}(${A}) + ${minorExpandedFraction}(${B})`;
+        step5.innerHTML = `${A}(${major} ${Csign} ${majorDecFrac}${mjc} + ${majorExpandedFraction}) ${B}(${minor} ${Dsign} ${minorDecFrac}${mnc} + ${minorExpandedFraction}) = ${constantSum}`;
+        // 
+        //STEP 5
+        step6.innerHTML = Number.isInteger(radius) ? 
+        `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${A}</mn>
+                <mo>(</mo>
+                <mi>${mjc}</mi>
+                <mo>${Csign}</mo>
+                <mn>${Math.abs((C / A) / 2)}</mn>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>-</mo>
+        <mfrac>
+            <mrow>
+                <mn>${B}</mn>
+                <mo>(</mo>
+                <mi>${mnc}</mi>
+                <mo>${Dsign}</mo>
+                <mn>${Math.abs((D / B) / 2)}</mn>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${radius}</mn>
+            </mrow>
+            <mn>${radius}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`
+        : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${A}</mn>
+                <mo>(</mo>
+                <mi>${mjc}</mi>
+                <mo>${Csign}</mo>
+                <mfrac>
+                    <mn>${Math.abs(C)}</mn>
+                    <mn>${Math.abs(xExpanded)}</mn>
+                </mfrac>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>-</mo>
+        <mfrac>
+            <mrow>
+                <mn>${B}</mn>
+                <mo>(</mo>
+                <mi>${mnc}</mi>
+                <mo>${Dsign}</mo>
+                <mfrac>
+                    <mn>${Math.abs(D)}</mn>
+                    <mn>${Math.abs(yExpanded)}</mn>
+                </mfrac>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${calculateExpression()}</mn>
+            </mrow>
+            <mn>${calculateExpression()}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`;
+   // FINAL
+   step7.innerHTML = Number.isInteger(radius) ? 
+   `<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+   <mrow>
+       <mfrac>
+           <mrow>
+               <mo>(</mo>
+               <mi>${mjc}</mi>
+               <mo>${Csign}</mo>
+               <mn>${Math.abs((C / A) / 2)}</mn>
+               <mo>)²</mo>
+           </mrow>
+               <mn>${majorFinalDeno}</mn>
+       </mfrac>
+       <mo>-</mo>
+       <mfrac>
+           <mrow>
+               <mo>(</mo>
+               <mi>${mnc}</mi>
+               <mo>${Dsign}</mo>
+               <mn>${Math.abs((D / B) / 2)}</mn>
+               <mo>)²</mo>
+               
+           </mrow>
+               <mn>${minorFinalDeno}</mn>
+       </mfrac>
+       <mo>=</mo>
+       <mn>1</mn>
+   </mrow>
+   </msup>
+</math>
+`
+   : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+   <mrow>
+       <mfrac>
+           <mrow>
+               <mn>${result[1] * A}</mn>
+               <mo>(</mo>
+               <mi>x</mi>
+               <mo>${Csign}</mo>
+               <mfrac>
+                   <mn>${Math.abs(C)}</mn>
+                   <mn>${Math.abs(xExpanded)}</mn>
+               </mfrac>
+               <mo>)²</mo>
+           </mrow>
+               <mn>${result[0]}</mn>
+       </mfrac>
+       <mo>-</mo>
+       <mfrac>
+           <mrow>
+               <mn>${result[1] * B}</mn>
+               <mo>(</mo>
+               <mi>y</mi>
+               <mo>${Dsign}</mo>
+               <mfrac>
+                   <mn>${Math.abs(D)}</mn>
+                   <mn>${Math.abs(yExpanded)}</mn>
+               </mfrac>
+               <mo>)²</mo>
+               
+           </mrow>
+               <mn>${result[0]}</mn>
+       </mfrac>
+       <mo>=</mo>
+       <mn>1</mn>
+   </mrow>
+   </msup>
+</math>
+`;
     } 
     else if(C == 0 || D == 0){
         noneCoeff(A, B, C, D, E, major, minor, mjc, mnc, majorCenter, minorCenter, majorExpanded, minorExpanded, majorFinalDeno, minorFinalDeno);
