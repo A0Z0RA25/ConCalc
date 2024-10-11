@@ -215,17 +215,103 @@ function transform() {
     const constant = parseFloat(document.querySelector(".constant").value);
 
     zerozero(coeffX, coeffY);
+
+    //Lcm
+    function divideFraction(numerator, yvalue, divisor) {
+   
+        let newDenominator = yvalue * divisor;
+        
+        return newDenominator;
+    }
+    let xExpanded = divideFraction(coeffX, x2, 2);
+    let yExpanded = divideFraction(coeffY, y2, 2);
+
+    // sum of constant
+    // Helper function to find the greatest common divisor (GCD)
+function gcd(a, b) {
+    while (b !== 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+//finding lcm
+function lcd(a, b) {
+    return (a * b) / gcd(a, b);
+}
+
+// Function to square a fraction (numerator^2 / denominator^2)
+function squareFraction(coeffX, x2, xExpanded) {
+    return [(coeffX * coeffX) * x2, xExpanded * xExpanded];
+}
+
+// Function to add fractions
+function addFractions(fractions) {
+    // Find the least common denominator for all fractions
+    let commonDenominator = fractions[0][1]; // Start with the first denominator
+    for (let i = 1; i < fractions.length; i++) {
+        commonDenominator = lcd(commonDenominator, fractions[i][1]);
+    }
+
+    // Convert fractions to have the same denominator
+    let numeratorsSum = 0;
+    for (let i = 0; i < fractions.length; i++) {
+        let numerator = fractions[i][0];
+        let denominator = fractions[i][1];
+        numeratorsSum += numerator * (commonDenominator / denominator);
+    }
+
+    // Simplify the resulting fraction if possible
+    let commonGcd = gcd(numeratorsSum, commonDenominator);
+    return [numeratorsSum / commonGcd, commonDenominator / commonGcd];
+}
+
+// Main function to handle the specific case (-21/2 + (17/4)^2 + (23/4)^2)
+let fractions, result;
+function calculateExpression() {
+    // Fractions in the format [numerator, denominator]
+    fractions = [
+        [-constant, 1], // -21/2
+        squareFraction(coeffX, x2 ,xExpanded), // (17/4)^2 = 289/16
+        squareFraction(coeffY, y2 ,yExpanded)  // (23/4)^2 = 529/16
+    ];
+
+    // Add the fractions
+    result = addFractions(fractions);
+
+    // Return the result as a simplified fraction
+    return `
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msup>
+            <mrow>
+                <mfrac>
+                    <mn>${result[0]}</mn>
+                    <mn>${result[1]}</mn>
+                </mfrac>
+            </mrow>
+        </msup>
+    </math>`;
+}
+
+// Example usage
+console.log(calculateExpression());  // Output: "325/8"
+console.log(xExpanded, x2)
+console.log(yExpanded, y2)
+console.log(result[0])
+
     const centerX = Number.isInteger(coeffX / x2) ? coeffX / x2 : parseFloat((coeffX / x2).toFixed(2));
     const centerY = Number.isInteger(coeffY / y2) ? coeffY / y2 : parseFloat((coeffY / y2).toFixed(2));
     const finalConstX = Math.pow(centerX / 2, 2);
-    const constX =  Number.isInteger(Math.pow(centerX / 2, 2)) ? Math.pow(centerX / 2, 2) : `
+    const constX =  Number.isInteger(Math.pow(centerX / 2, 2)) ? Math.abs(Math.pow(centerX / 2, 2)) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
         <mrow>
         <mo>(</mo> 
         <mfrac>
-            <mn>${Math.abs(centerX)}</mn>
-            <mn>2</mn>
+            <mn>${coeffX}</mn>
+            <mn>${xExpanded}</mn>
         </mfrac>
         <mo>)</mo>
         </mrow>
@@ -234,14 +320,14 @@ function transform() {
     </math>
     `;
     const finalConstY = Math.pow(centerY / 2, 2);
-    const constY = Number.isInteger(Math.pow(centerY / 2, 2)) ? Math.pow(centerY / 2, 2) : `
+    const constY = Number.isInteger(Math.pow(centerY / 2, 2)) ? Math.abs(Math.pow(centerY / 2, 2)) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
     <msup>
         <mrow>
         <mo>(</mo>
         <mfrac>
-            <mn>${Math.abs(centerY)}</mn>
-            <mn>2</mn>
+            <mn>${coeffY}</mn>
+            <mn>${yExpanded}</mn>
         </mfrac>
         <mo>)</mo> 
         </mrow>
@@ -259,7 +345,7 @@ function transform() {
     //Vertex
     vertex(centerX, centerY, numeX, numeY);
     //Center and radius value
-    finalCenterX = (centerX / 2) / -1;
+    finalCenterX = (centerX / 2) / -1; 
     finalCenterY = (centerY / 2) / -1;
     centerValue.style.color = 'red';
     centerValue.textContent = `(${finalCenterX}, ${finalCenterY})`;
@@ -283,7 +369,7 @@ function transform() {
     drawEllipse(centerX, centerY, numeX, numeY);
     initiate();
     //Fraction
-    const xCenterFraction = `
+    const xCenterFraction = Number.isInteger(coeffX / x2) ? Math.abs(coeffX / x2) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mfrac>
     <mn>${Math.abs(coeffX)}</mn>
@@ -291,43 +377,12 @@ function transform() {
   </mfrac>
 </math>
 `;
-    const yCenterFraction = `
+    const yCenterFraction = Number.isInteger(coeffY / y2) ? Math.abs(coeffY / y2) : `
     <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mfrac>
     <mn>${Math.abs(coeffY)}</mn>
     <mn>${Math.abs(y2)}</mn>
   </mfrac>
-</math>
-`;
-    const xExpandedFraction = `
-    <math xmlns="http://www.w3.org/1998/Math/MathML">
-    <msup>
-        <mrow>
-        <mo>(</mo> <!-- Left parenthesis -->
-        <mfrac>
-            <mn>${Math.abs(centerX)}</mn>
-            <mn>2</mn>
-        </mfrac>
-        <mo>)</mo> <!-- Right parenthesis -->
-        </mrow>
-        <mn>2</mn>
-    </msup>
-    </math>
-    `;
-
-    const yExpandedFraction = `
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <msup>
-    <mrow>
-      <mo>(</mo> <!-- Left parenthesis -->
-      <mfrac>
-        <mn>${Math.abs(centerY)}</mn>
-        <mn>2</mn>
-      </mfrac>
-      <mo>)</mo> <!-- Right parenthesis -->
-    </mrow>
-    <mn>2</mn>
-  </msup>
 </math>
 `;
 
@@ -343,21 +398,168 @@ if(radius < 0){
     if(coeffX !== 0 && coeffY !== 0){
         step1Container.innerHTML = `(${x2}x² ${coeffXSign} ${Math.abs(coeffX)}x) + (${y2}y² ${coeffYSign} ${Math.abs(coeffY)}y) = ${constant / -1}`;
         step2Container.innerHTML = `${x2} (x² ${coeffXSign} ${xCenterFraction}x) + ${y2} (y² ${coeffYSign} ${yCenterFraction}y) = ${constant / -1}`;
-        step3Container.innerHTML = `${x2} (x² ${coeffXSign} ${Math.abs(centerX)}x +${xExpandedFraction}) + ${y2} (y² ${coeffYSign} ${Math.abs(centerY)}y +${yExpandedFraction}) = ${constant / -1}`;
-        step4Container.innerHTML = `${x2} (x² ${coeffXSign} ${Math.abs(centerX)}x +${constX}) + ${y2} (y² ${coeffYSign} ${Math.abs(centerY)}y +${constY}) = ${constant / -1} + ${constX}(${x2}) + ${constY}(${y2})`;
+        step3Container.innerHTML = `${x2} (x² ${coeffXSign} ${xCenterFraction}x +${constX}) + ${y2} (y² ${coeffYSign} ${yCenterFraction}y +${constY}) = ${constant / -1}`;
+        step4Container.innerHTML = `${x2} (x² ${coeffXSign} ${xCenterFraction}x +${constX}) + ${y2} (y² ${coeffYSign} ${yCenterFraction}y +${constY}) = ${constant / -1} + ${constX}(${x2}) + ${constY}(${y2})`;
         //STEP 5
-        aValue.innerHTML = `${x2} (x ${coeffXSign} ${Math.abs(centerX / 2)})²`;
-        aDeno.innerHTML = `${radius}`;
-        bValue.innerHTML = `${y2} (y ${coeffYSign} ${Math.abs(centerY / 2)})²`;
-        bDeno.innerHTML = `${radius}`;
-        constValue.innerHTML = `${radius}`;
-        constDeno.innerHTML = `${radius}`;
+        step5Container.innerHTML = Number.isInteger(radius) ? 
+        `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${x2}</mn>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mn>${Math.abs((coeffX / x2) / 2)}</mn>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${y2}</mn>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mn>${Math.abs((coeffY / y2) / 2)}</mn>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${radius}</mn>
+            </mrow>
+            <mn>${radius}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`
+        : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${x2}</mn>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mfrac>
+                    <mn>${coeffX}</mn>
+                    <mn>${xExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${y2}</mn>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mfrac>
+                    <mn>${coeffY}</mn>
+                    <mn>${yExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${calculateExpression()}</mn>
+            </mrow>
+            <mn>${calculateExpression()}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`;
+
         // FINAL
-        finalaValue.innerHTML = `(x ${coeffXSign} ${Math.abs(centerX / 2)})²`;
-        finalaDeno.innerHTML = `${numeX}`;
-        finalbValue.innerHTML = `(y ${coeffYSign} ${Math.abs(centerY / 2)})²`;
-        finalbDeno.innerHTML = `${numeY}`; 
-        finalConstValue.innerHTML = radius / radius;
+    step6Container.innerHTML = Number.isInteger(radius) ? 
+    `<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mn>${Math.abs((coeffX / x2) / 2)}</mn>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${numeX}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mn>${Math.abs((coeffY / y2) / 2)}</mn>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${numeY}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mn>1</mn>
+    </mrow>
+    </msup>
+</math>
+`
+    : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${result[1] * x2}</mn>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mfrac>
+                    <mn>${Math.abs(coeffX)}</mn>
+                    <mn>${xExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${result[0]}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${result[1] * y2}</mn>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mfrac>
+                    <mn>${Math.abs(coeffY)}</mn>
+                    <mn>${yExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${result[0]}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mn>1</mn>
+    </mrow>
+    </msup>
+</math>
+`;
     }
     else if(coeffX == 0 && coeffY == 0){
         noneCoeff1.style.display = "none";
@@ -388,41 +590,283 @@ if(radius < 0){
     else if(coeffX == 0){
         given.textContent = `${x2}x² + ${y2}y² ${coeffYSign} ${Math.abs(coeffY)}y ${constantSign} ${Math.abs(constant)} = 0`;
         step1Container.innerHTML = `${x2}x² + (${y2}y² ${coeffYSign} ${Math.abs(coeffY)}y) = ${constant / -1}`;
-        step2Container.innerHTML = `${x2}x² + ${y2} (y² ${coeffYSign} ${Math.abs(centerY)}y) = ${constant / -1}`;
-        step3Container.innerHTML = `${x2}x² + ${y2} (y² ${coeffYSign} ${Math.abs(centerY)}y + ${yExpandedFraction}) = ${constant / -1}`;
-        step4Container.innerHTML = `${x2}x² + ${y2} (y² ${coeffYSign} ${Math.abs(centerY)}y + ${constY}) = ${constant / -1} + ${constY}(${y2})`;
+        step2Container.innerHTML = `${x2}x² + ${y2} (y² ${coeffYSign} ${yCenterFraction}y) = ${constant / -1}`;
+        step3Container.innerHTML = `${x2}x² + ${y2} (y² ${coeffYSign} ${yCenterFraction}y + ${constY}) = ${constant / -1}`;
+        step4Container.innerHTML = `${x2}x² + ${y2} (y² ${coeffYSign} ${yCenterFraction}y + ${constY}) = ${constant / -1} + ${constY}(${y2})`;
         //STEP 5
-        aValue.innerHTML = `${x2}x²`;
-        aDeno.innerHTML = `${radiusX}`;
-        bValue.innerHTML = `${y2} (y ${coeffYSign} ${Math.abs(centerY / 2)})²`;
-        bDeno.innerHTML = `${radiusX}`;
-        constValue.innerHTML = `${radius}`;
-        constDeno.innerHTML = `${radius}`;
+        step5Container.innerHTML = Number.isInteger(radius) ? 
+        `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${x2}</mn>
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${y2}</mn>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mn>${Math.abs((coeffY / y2) / 2)}</mn>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${radius}</mn>
+            </mrow>
+            <mn>${radius}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`
+        : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${x2}x²</mn>
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${y2}</mn>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mfrac>
+                    <mn>${coeffY}</mn>
+                    <mn>${yExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${calculateExpression()}</mn>
+            </mrow>
+            <mn>${calculateExpression()}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`;
         // FINAL
-        finalaValue.textContent = `x²`;
-        finalaDeno.innerHTML = Number.isInteger(radiusX / x2) ? `${radiusX / x2}` : (radiusX / x2).toFixed(2);
-        finalbValue.innerHTML = `(y ${coeffYSign} ${Math.abs(centerY / 2)})²`;
-        finalbDeno.innerHTML = Number.isInteger(radiusX / y2) ? `${radiusX / y2}` : (radiusX / y2).toFixed(2); 
-        finalConstValue.innerHTML = radiusX / radiusX;
+        step6Container.innerHTML = Number.isInteger(radius) ? 
+    `<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>x²</mn>
+            </mrow>
+                <mn>${numeX}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mn>${Math.abs((coeffY / y2) / 2)}</mn>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${numeY}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mn>1</mn>
+    </mrow>
+    </msup>
+</math>
+`
+    : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${result[1] * x2}x²</mn>
+            </mrow>
+                <mn>${result[0]}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${result[1] * y2}</mn>
+                <mo>(</mo>
+                <mi>y</mi>
+                <mo>${coeffYSign}</mo>
+                <mfrac>
+                    <mn>${Math.abs(coeffY)}</mn>
+                    <mn>${yExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+                
+            </mrow>
+                <mn>${result[0]}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mn>1</mn>
+    </mrow>
+    </msup>
+</math>
+`;
     } else if(coeffY == 0) {
         given.textContent = `${x2}x² ${coeffXSign} ${Math.abs(coeffX)}x + ${y2}y² ${constantSign} ${Math.abs(constant)} = 0`;
         step1Container.innerHTML = `(${x2}x² ${coeffXSign} ${Math.abs(coeffX)}x) + ${y2}y² = ${constant / -1}`;
-        step2Container.innerHTML = `${x2} (x² ${coeffXSign} ${Math.abs(centerX)}x) + ${y2}y² = ${constant / -1}`;
-        step3Container.innerHTML = `${x2} (x² ${coeffXSign} ${Math.abs(centerX)}x +${xExpandedFraction}) + ${y2}y² = ${constant / -1}`;
-        step4Container.innerHTML = `${x2} (x² ${coeffXSign} ${Math.abs(centerX)}x +${constX}) + ${y2}y² = ${constant / -1} + ${constX}(${x2})`;
+        step2Container.innerHTML = `${x2} (x² ${coeffXSign} ${xCenterFraction}x) + ${y2}y² = ${constant / -1}`;
+        step3Container.innerHTML = `${x2} (x² ${coeffXSign} ${xCenterFraction}x + ${constX}) + ${y2}y² = ${constant / -1}`;
+        step4Container.innerHTML = `${x2} (x² ${coeffXSign} ${xCenterFraction}x + ${constX}) + ${y2}y² = ${constant / -1} + ${constX}(${x2})`;
         //STEP 5
-        aValue.innerHTML = `${x2} (x ${coeffXSign} ${Math.abs(centerX / 2)})²`;
-        aDeno.innerHTML = `${radiusY}`;
-        bValue.innerHTML = `${y2}y²`;
-        bDeno.innerHTML = `${radiusY}`;
-        constValue.innerHTML = radius;
-        constDeno.innerHTML = radius;
+        step5Container.innerHTML = Number.isInteger(radius) ? 
+        `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${x2}</mn>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mn>${Math.abs((coeffX / x2) / 2)}</mn>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${y2}y²</mn>
+                
+            </mrow>
+                <mn>${radius}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${radius}</mn>
+            </mrow>
+            <mn>${radius}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`
+        : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${x2}</mn>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mfrac>
+                    <mn>${coeffX}</mn>
+                    <mn>${xExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${y2}y²</mn>
+                
+            </mrow>
+                <mn>${calculateExpression()}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+            <mrow>
+                <mn>${calculateExpression()}</mn>
+            </mrow>
+            <mn>${calculateExpression()}</mn>
+        </mfrac>
+    </mrow>
+    </msup>
+</math>
+`;
         // FINAL
-        finalaValue.innerHTML = `(x ${coeffXSign} ${Math.abs(centerX / 2)})²`;
-        finalaDeno.innerHTML = Number.isInteger(radiusY / x2) ? `${radiusY / x2}` : (radiusY / x2).toFixed(2);
-        finalbValue.textContent = `y²`;
-        finalbDeno.innerHTML = Number.isInteger(radiusY / y2) ? `${radiusY / y2}` : (radiusY / y2).toFixed(2);
-        finalConstValue.innerHTML = radiusY / radiusY;
+        step6Container.innerHTML = Number.isInteger(radius) ? 
+    `<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mn>${Math.abs((coeffX / x2) / 2)}</mn>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${numeX}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mi>y²</mi>
+                
+            </mrow>
+                <mn>${numeY}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mn>1</mn>
+    </mrow>
+    </msup>
+</math>
+`
+    : `
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+    <mrow>
+        <mfrac>
+            <mrow>
+                <mn>${result[1] * x2}</mn>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>${coeffXSign}</mo>
+                <mfrac>
+                    <mn>${Math.abs(coeffX)}</mn>
+                    <mn>${xExpanded}</mn>
+                </mfrac>
+                <mo>)²</mo>
+            </mrow>
+                <mn>${result[0]}</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+            <mrow>
+                <mn>${result[1] * y2}y²</mn>
+                
+            </mrow>
+                <mn>${result[0]}</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mn>1</mn>
+    </mrow>
+    </msup>
+</math>
+`;
     } 
 };
 
