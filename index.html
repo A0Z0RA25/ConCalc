@@ -17,6 +17,7 @@
             <ul>
                 <li><a onclick="introduction()" href="#home">Home</a></li>
                 <li><a onclick="aboutUs()" href="#">About Us</a></li>
+                <li><a onclick="quiz()" href="#">Excercise Quiz</a></li>
             </ul>
         </nav>
     </header>  
@@ -166,7 +167,7 @@
                    </ul> 
                 </ul>
 
-                <div class="parabola-parts-images">
+                <div class="parabola-parts-images"> 
                   <div class="parts">
                     <h1 class="sub-title">Parts of Parabola:</h1>
                     <p class="definition"><strong>Vertex</strong> - the sharpest turn point of the parabola.</p>
@@ -915,12 +916,34 @@
             </div>
         </div>
 
+<!--About Section-->
     <div style="display: none;" id="about-us" class="about-page">
             <h2>About Us</h2>
-    </div>    
+    </div>  
+    
+<!--Quiz Section-->
+<div style="display: none;" class="quiz-container">
+  <h1 class="quiz-title">Exercise Quiz</h1>
+  <div class="quiz">
+      <h2 id="questions"></h2>
+      <h1 id="congratsText"></h1>
+      <div id="answer-buttons">
+          <button class="btn"></button>
+          <button class="btn"></button>
+          <button class="btn"></button>
+          <button class="btn"></button>  
+      </div>
+      
+  </div>
+  <button id="next-btn">Next</button>
+</div>
+
  </div>
 </div>
-<!--ABOUT US-->
+
+                    <audio id="wrongSound" src="https://a0z0ra25.github.io/ConCalc/conics-images/wrong.mp3"></audio>
+                    <audio id="correctSound" src="https://a0z0ra25.github.io/ConCalc/conics-images/correct.mp3"></audio>
+                    <audio id="startSound" src="https://a0z0ra25.github.io/ConCalc/conics-images/start.mp3"></audio>
 
     <script src="script.js"></script>
     <script src="GenForm - circle/circleGF.js"></script>
