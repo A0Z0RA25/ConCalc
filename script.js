@@ -387,6 +387,8 @@ const questions = [
 const question = document.querySelector("#questions");
 const answerBtn = document.querySelector("#answer-buttons");
 const nextBtn = document.querySelector("#next-btn");
+let currentNumber = document.querySelector(".current-number");
+let currentScore = document.querySelector(".current-score");
 let congratsText = document.querySelector("#congratsText");
 
 let currentQuestionIndex = 0;
@@ -413,6 +415,7 @@ function showQuestion() {
     resetQuiz();
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
+    currentNumber.innerHTML = `Questions: ${questionNo} / ${maxNumber}`; 
     question.innerHTML = questionNo + ". " + currentQuestion.questions; // Fixed typo here
     congratsText.innerHTML = "";
     
@@ -443,6 +446,7 @@ function selectAnswer(e) {
     if (isCorrect) {
         selectBtn.classList.add("correct");
         score++;
+        currentScore.innerHTML = `Score: ${score}`;
         correctSound();
     } else {
         selectBtn.classList.add("incorrect");
@@ -455,6 +459,7 @@ function selectAnswer(e) {
         button.disabled = true;
     });
     nextBtn.style.display = "block";
+
 }
 
 function showScore() {
@@ -482,7 +487,7 @@ function handleNextBtn() {
         showQuestion();
         startSound();
     } else {
-        showScore();
+        showScore(); 
     }
 }
 
