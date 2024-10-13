@@ -18,6 +18,7 @@
                 <li><a onclick="introduction()" href="#home">Home</a></li>
                 <li><a onclick="aboutUs()" href="#">About Us</a></li>
                 <li><a onclick="quiz()" href="#">Excercise Quiz</a></li>
+                <li><a onclick="factoring()" href="#">Factoring</a></li>
             </ul>
         </nav>
     </header>  
@@ -691,7 +692,7 @@
                   </div> 
                 </div>
                   
-                </div>
+                </div> 
 
                 <h1 class="main-title">Standard Form of Hyperbola</h1>
                 <div class="definition">
@@ -940,6 +941,26 @@
       
   </div>
   <button id="next-btn">Next</button>
+</div>
+
+<!--Factor-->
+
+<div style="display: none;" class="factoring-container">
+  <h1>Factoring polynomials</h1>
+  <p>Use '^' to indicate the power of a variable.</p>
+  <p><strong>Example: x² + 5x + 6, should be input like this x^2 + 5x + 6</strong></p>
+  <form id="polynomialForm">
+      <label for="polynomialInput">Enter a polynomial (Binomial or Trinomial):</label>
+      <input type="text" id="polynomialInput" required>
+      <button class="factor-btn" type="submit">Factor</button>
+  </form>
+  <div style="display: none;" class="answers-container">
+    <h1>Steps for factoring:</h1>
+      <div id="steps"></div>
+    <h1>Factor form:</h1>
+      <div id="result"></div>
+  </div>
+  
 </div>
 
  </div>
