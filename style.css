@@ -341,7 +341,7 @@ th {
 /*quiz-container*/
 .quiz-container{
     border: none;
-    padding: 10px 15px;
+    padding: 30px 50px;
     width: 500px;
     margin: 60px auto;
     height: fit-content;
@@ -356,12 +356,12 @@ th {
 #answer-buttons{
     display: inline-flex;
     flex-direction: column;
-    width: 100%;
+    width: 100%;  
     text-align: justify;
 }
 
 #answer-buttons .btn{
-    text-align: justify;
+    text-align: justify; 
     margin: 5px 0;
     font-size: 18px;
     padding: 10px 15px;
@@ -390,6 +390,15 @@ th {
     background-color: hsl(0, 85%, 72%);
 }
 
+/*Current*/
+.current-container{
+    display: flex;
+    justify-content: space-evenly;
+    border: solid 1px black;
+    padding: 8px 5px;
+    font-size: 15px;
+}
+
 @media only screen and (max-width: 643px) {
     body {
       color: var(--blk-color);
@@ -397,9 +406,11 @@ th {
     }
     .introduction, .about-page, .circle-container, .ellipse-container, .parabola-container, .hyperbola-container{
        color: var(--blk-color);
+
     }
     .container{
         height: 100%;
+        padding: 40px 0;
     }
     /*Table of contents*/
     .table-of-contents{
@@ -513,21 +524,28 @@ th {
         background-color: var(--blk-color);
         position: fixed;
         z-index: 2;
+        padding: 5px 10px;
+        display: flex;
+        justify-content: space-evenly;
+        top: 0;
     }
     header .logo{
         font-size: 16px;
         color: skyblue;
         margin: 0 20px;
+        
     }
     .nav-bar ul{
         display: flex;
         text-align: center;
         flex-wrap: wrap;
         justify-content: center;
+        width: 170px;    
     }
     .nav-bar ul li{
        margin: 10px 6px;
        font-size: 13px;
+       
     }
     .nav-bar ul li a{
         color: var(--color);
@@ -672,5 +690,9 @@ th {
     width: 50%;
     padding: 10px 0;
     border-radius: 8px;
+}
+/*Current*/
+.current-container{
+    font-size: 10px;
 }
 }
