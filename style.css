@@ -157,7 +157,7 @@ header ul li a {
     text-decoration: underline;
 }
 /*THE CONTENT*/
-.introduction, .about-page, .quiz-container, .circle-container, .ellipse-container, .parabola-container, .hyperbola-container{
+.introduction, .about-page, .quiz-container, .factoring-container, .circle-container, .ellipse-container, .parabola-container, .hyperbola-container{
     margin-bottom: 20px;
     background-color: #fff;
     padding: 20px 0;
@@ -399,6 +399,68 @@ th {
     font-size: 15px;
 }
 
+/*Factoring*/
+.factoring-container{
+    margin: 100px auto;
+    border: solid 1px black;
+    height: fit-content;
+    width: 50%;
+    text-align: center;
+    
+}
+.factoring-container input{
+    text-align: center;
+    padding: 6px 5px;
+    margin: 10px 0 0 0;
+    font-size: 18px;
+}
+.factor-btn{
+    width: 50%;
+    margin: 15px auto;
+    font-size: 18px;
+    padding: 5px 5px;
+    border: solid 1px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    background-color: hsl(120, 90%, 71%);
+}
+#polynomialForm{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+.answers-container{
+    text-align: justify;
+    margin: 0 auto;
+    width: 90%;
+   
+}
+.answers-container #steps{
+    margin: 5px 0;
+    line-height: 30px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 10px 8px;
+    border-radius: 8px;
+}
+.answers-container h1{
+    text-align: center;
+    margin: 10px 0;
+}
+.answers-container #steps p{
+    background-color: #e7edf2;
+    margin: 10px 0;
+    padding: 8px 10px;
+}
+.answers-container #result{
+    text-align: center;
+    background-color: hsl(120, 88%, 67%);
+    width: 50%;
+    margin: 0 auto;
+    padding: 8px 0;
+    border-radius: 8px;
+}
+
 @media only screen and (max-width: 643px) {
     body {
       color: var(--blk-color);
@@ -410,7 +472,7 @@ th {
     }
     .container{
         height: 100%;
-        padding: 40px 0;
+        padding: 80px 0;
     }
     /*Table of contents*/
     .table-of-contents{
@@ -694,5 +756,70 @@ th {
 /*Current*/
 .current-container{
     font-size: 10px;
+} 
+/*Factoring*/
+.factoring-container{
+    margin: 100px auto;
+    border: solid 1px black;
+    height: fit-content;
+    width: 90%;
+    text-align: center;
+    color: black;
+}
+.factoring-container input{
+    text-align: center;
+    padding: 6px 0px;
+    margin: 10px 0 0 0;
+    font-size: 13px;
+}
+.factor-btn{
+    width: 90%;
+    margin: 15px auto;
+    font-size: 15px;
+    padding: 5px 5px;
+    border: solid 1px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    background-color: hsl(120, 90%, 71%);
+}
+#polynomialForm{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+.answers-container{
+    text-align: justify;
+    margin: 0 auto;
+    width: 90%;
+   
+}
+.answers-container #steps{
+    margin: 5px 0;
+    line-height: 24px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 10px 8px;
+    border-radius: 8px;
+    text-wrap: wrap;
+    word-break: normal;
+}
+.answers-container h1{
+    text-align: center;
+    margin: 10px 0;
+    font-size: 18px;
+}
+.answers-container #steps p{
+    background-color: #e7edf2;
+    margin: 10px 0;
+    padding: 8px 5px;
+    font-size: 15px;
+}
+.answers-container #result{
+    text-align: center;
+    background-color: hsl(120, 88%, 67%);
+    width: 50%;
+    margin: 0 auto;
+    padding: 8px 0;
+    border-radius: 8px;
 }
 }
