@@ -1,6 +1,7 @@
 const intro = document.querySelector(".introduction");
 const about = document.querySelector(".about-page");
 const quizContainer = document.querySelector(".quiz-container");
+const factorContainer = document.querySelector(".factoring-container");
  
 const sideNav = document.querySelector(".side-nav");
 const hamburgerBar = document.querySelector(".side-nav-btn");
@@ -21,6 +22,7 @@ function introduction() {
         intro.style.display = "block";
         about.style.display = "none";
         quizContainer.style.display = "none";
+        factorContainer.style.display = "none";
     } else {
         intro.style.display = "block";
     }
@@ -31,6 +33,7 @@ function aboutUs() {
         about.style.display = "block";
         intro.style.display = "none";
         quizContainer.style.display = "none";
+        factorContainer.style.display = "none";
     } else {
         about.style.display = "block";
     }
@@ -41,8 +44,20 @@ function quiz() {
         quizContainer.style.display = "block";
         about.style.display = "none";
         intro.style.display = "none";
+        factorContainer.style.display = "none";
     } else {
         quizContainer.style.display = "block";
+    }
+}
+
+function factoring() {
+    if (factorContainer.style.display === "none") {
+        factorContainer.style.display = "block";
+        quizContainer.style.display = "none";
+        about.style.display = "none";
+        intro.style.display = "none";
+    } else {
+        factorContainer.style.display = "block";
     }
 }
 
@@ -500,3 +515,152 @@ nextBtn.addEventListener('click', () => {
 })
 
 startQuiz();
+
+//-----------Factoring
+
+// Listen for form submission
+document.getElementById('polynomialForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.querySelector(".answers-container").style.display = "block";
+    
+    const input = document.getElementById('polynomialInput').value;
+    const resultElement = document.getElementById('result');
+    const stepsElement = document.getElementById('steps');
+    stepsElement.innerHTML = ""; // Clear previous steps
+    
+    // Regex to determine polynomial type
+    const binomialRegex = /([+-]?\d*)\s*([a-z])\^2\s*([+-]?\s*\d+)?/; // For binomials
+    const trinomialRegex = /([+-]?\d*)\s*([a-z])[\^²]2\s*([+-]\s*\d+)?\s*\2\s*([+-]\s*\d+)?/; // For trinomials
+    
+    const binomialMatches = input.match(binomialRegex);  
+    const trinomialMatches = input.match(trinomialRegex);  
+    
+    if (trinomialMatches) {
+        // Trinomial case
+        const variable = trinomialMatches[2];
+        let A = trinomialMatches[1] ? parseInt(trinomialMatches[1].replace(/\s+/g, '')) : 1;
+        let B = trinomialMatches[3] ? parseInt(trinomialMatches[3].replace(/\s+/g, '')) : 0;
+        let C = trinomialMatches[4] ? parseInt(trinomialMatches[4].replace(/\s+/g, '')) : 0;
+
+        const factored = factorTrinomial(A, B, C, stepsElement, variable);
+        resultElement.textContent = factored;
+    } else if (binomialMatches) {
+        // Binomial case
+        const variable = binomialMatches[2];
+        const A = binomialMatches[1] ? parseInt(binomialMatches[1].replace(/\s+/g, '')) : null;
+        const C = binomialMatches[3] ? parseInt(binomialMatches[3].replace(/\s+/g, '')) : 0;
+
+        const factored = factorBinomial(A, C, stepsElement, variable);
+        resultElement.textContent = factored;
+    } else {
+        resultElement.textContent = 'Invalid polynomial format. Please enter in the form Ax² + C or Ax² + Bx + C.';
+    }
+});
+
+function factorBinomial(A, C, stepsElement, variable) {
+    // Helper function to show steps
+    function showStep(step) {
+        const p = document.createElement('p');
+        p.textContent = step;
+        stepsElement.appendChild(p);
+    }
+
+    // Case 1: Difference of squares
+    if (C < 0) {
+        showStep(`Step 1: This is a difference of squares: ${A !== null ? A : ''}${variable}² - ${Math.abs(C)}`);
+        const sqrtC = Math.sqrt(Math.abs(C));
+        showStep(`Step 2: Calculate the square root of ${Math.abs(C)}: √${Math.abs(C)} = ${sqrtC}`);
+        const factorization = `(${A !== null ? Math.sqrt(A) : ''}${variable} + ${sqrtC})(${A !== null ? Math.sqrt(A) : ''}${variable} - ${sqrtC})`;
+        showStep(`Step 3: Factorization result: ${factorization}`);
+        return factorization;
+    } 
+    
+    // Case 2: If there is no middle term and A is not provided (undefined or null)
+    if (C >= 0 && A === null) {
+        showStep(`Step 2: This is a sum of squares: ${variable}² + ${C}.`);
+        return "No real factorization possible.";
+    }
+
+    // If no real factorization is found
+    return "No real factorization possible.";
+}
+
+function factorTrinomial(A, B, C, stepsElement, variable) {
+    // Helper function to show steps
+    function showStep(step) {
+        const p = document.createElement('p');
+        p.innerHTML = `<strong>${step}</strong>`;
+        stepsElement.appendChild(p);
+    }
+
+    // Helper function to find factors of a number
+    function findFactors(num) {
+        let factors = [];
+        for (let i = 1; i <= Math.abs(num); i++) {
+            if (num % i === 0) {
+                factors.push([i, num / i]);
+                factors.push([-i, -(num / i)]);
+            }
+        }
+        return factors;
+    }
+
+    showStep(`Step 1: Identify the value of each: A = ${A}, B = ${B}, C = ${C}`);
+
+    // Case 1: If A = 1, use simple factoring
+    if (A === 1) {
+        showStep(`Step 2: Since A = 1, we need to find two numbers that if multiply, it should equal to C and the sum should equal to B.`);
+        const factors = findFactors(C);
+        for (let factor of factors) {
+            if (factor[0] + factor[1] === B) {
+                const BSign = factor[0] > 0 ? "+" : "-";
+                const CSign = factor[1] > 0 ? "+" : "-";
+                showStep(`Step 3: The factors that we found is C (${C}): ${factor[0]} and ${factor[1]} which add up to B (${B}) and the product is equal to C(${C}). Split the middle term: ${variable}² ${BSign} ${Math.abs(B)}${variable} ${CSign} ${Math.abs(C)}`);
+                const firstSign = factor[0] > 0 ? "+" : "-";
+                const secondSign = factor[1] > 0 ? "+" : "-";
+                return `(${variable} ${firstSign} ${Math.abs(factor[0])})(${variable} ${secondSign} ${Math.abs(factor[1])})`;
+            }
+        }
+    }
+
+    // Case 2: If A > 1, use factoring by splitting the middle term
+    if (A > 1) {
+        const AC = A * C;
+        showStep(`Step 2: Since A > 1, we will multiply A * C = ${AC}.`);
+        
+        const factors = findFactors(AC);
+        showStep(`Step 3: We need to find the factors of ${AC}, the sum should equal to B (${B}).`);
+        
+        for (let factor of factors) {
+            if (factor[0] + factor[1] === B) {
+                showStep(`Step 4: The factors of ${AC}: ${factor[0]} and ${factor[1]} which add up to B (${B}).`);
+                
+                // Rewrite middle term and factor by grouping
+                let factor1 = factor[0], factor2 = factor[1];
+                showStep(`Step 5: Split the middle term: ${A}${variable}² + (${factor1})${variable} + (${factor2})${variable} + ${C}`);
+                
+                const firstSign1 = factor1 > 0 ? "+" : "-";
+                const secondSign2 = (C / factor1) > 0 ? "+" : "-";
+                
+                showStep(`Step 6: Group and factor the expression: ${variable}(${A}${variable} ${firstSign1} ${Math.abs(factor1)}) ${firstSign1}${Math.abs(factor1)}(${A}${variable} ${secondSign2} ${Math.abs(C / factor1)}). Then group the variable and number that is outside the parenthesis.`);
+                
+                return `(${A}${variable} ${firstSign1} ${Math.abs(factor1)})(${variable} ${secondSign2} ${Math.abs(C / factor1)})`;
+            }
+        }
+    }
+
+    // If no simple factorization is found, use the quadratic formula
+    const discriminant = B * B - 4 * A * C;
+    showStep(`Step 7: If no factors found or no real roots found. We can use the quadratic formula.`);
+    
+    if (discriminant >= 0) {
+        const sqrtDisc = Math.sqrt(discriminant);
+        const root1 = (-B + sqrtDisc) / (2 * A);
+        const root2 = (-B - sqrtDisc) / (2 * A);
+        showStep(`Step 8: Using the quadratic formula, the roots are ${root1} and ${root2}.`);
+        const root1Sign = root1 > 0 ? "+" : "-";
+        const root2Sign = root2 > 0 ? "+" : "-";
+        return `(${variable} ${root1Sign} ${Math.abs(root1)})})(${variable} ${root2Sign} ${Math.abs(root2)})})`;
+    }
+    return "It is not factorable.";
+}
