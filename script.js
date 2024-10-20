@@ -609,11 +609,11 @@ function factorTrinomial(ATri, BTri, CTri, stepsElement, variableTri) {
 
     // Case 1: If A = 1, use simple factoring
     if (ATri === 1) {
-        showStep(`Step 2: Since A = 1, we need to find two numbers that multiply to give C (${CTri}) and add up to B (${BTri}).`);
+        showStep(`Step 2: Since A = 1, we need to find two numbers that when multiplied give us the value of C (${CTri}) and when added give us the value of B (${BTri}).`);
         const factors = findFactors(CTri);
         for (let factor of factors) {
             if (factor[0] + factor[1] === BTri) {
-                showStep(`Step 3: The factors found are: ${factor[0]} and ${factor[1]}. These add up to B (${BTri}) and multiply to give C (${CTri}).`);
+                showStep(`Step 3: The factors found are: ${factor[0]} and ${factor[1]}. These add up to the value of B (${BTri}) and when multiplied give us the value of C (${CTri}).`);
                 const firstSign = factor[0] > 0 ? "+" : "-";
                 const secondSign = factor[1] > 0 ? "+" : "-";
                 return `(${variableTri} ${firstSign} ${Math.abs(factor[0])})(${variableTri} ${secondSign} ${Math.abs(factor[1])})`;
@@ -640,15 +640,21 @@ function factorTrinomial(ATri, BTri, CTri, stepsElement, variableTri) {
                 const firstSign1 = factor1 > 0 ? "+" : "-";
                 const secondSign2 = (CTri / factor1) > 0 ? "+" : "-";
                 
-                showStep(`Step 6: Group and factor the expression: ${variableTri}(${ATri}${variableTri} ${firstSign1} ${Math.abs(factor1)}) ${firstSign1}${Math.abs(factor1)}(${ATri}${variableTri} ${secondSign2} ${Math.abs(CTri / factor1)}). Then group the variable and number that is outside the parenthesis.`);
                 
-                return `(${ATri}${variableTri} ${firstSign1} ${Math.abs(factor1)})(${variableTri} ${secondSign2} ${Math.abs(CTri / factor1)})`;
+
+                // Check for perfect square trinomial
+                if (factor[0] === factor[1]) {
+                    showStep(`Step 6: Group and factor the expression: ${ATri / 2}${variableTri}(${ATri / 2}${variableTri} ${firstSign1} ${Math.abs(factor1 / 2)}) ${firstSign1}${Math.abs(factor1 / 2)}(${ATri / 2}${variableTri} ${secondSign2} ${Math.abs(factor1 / 2)}). Then group the variable and number that is outside the parenthesis.`);
+                    return `(${ATri / 2}${variableTri} ${firstSign1} ${Math.abs(factor1 / 2)})²`;
+                } else {
+                    showStep(`Step 6: Group and factor the expression: ${variableTri}(${ATri}${variableTri} ${firstSign1} ${Math.abs(factor1)}) ${firstSign1}${Math.abs(CTri / factor1)}(${ATri}${variableTri} ${secondSign2} ${Math.abs(factor1)}). Then group the variable and number that is outside the parenthesis.`);
+                    return `(${ATri}${variableTri} ${firstSign1} ${Math.abs(factor1)})(${variableTri} ${secondSign2} ${Math.abs(CTri / factor1)})`;
+                }
             }
         }
     }
 
     // If no simple factorization is found, use the quadratic formula
-
     showStep(`Step 3: If no real roots found. We can use the quadratic formula which is <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow>
     <mi>x</mi>
@@ -679,8 +685,8 @@ function factorTrinomial(ATri, BTri, CTri, stepsElement, variableTri) {
   </mrow>
 </math>
 .`);
-
     
     return "Try using the quadratic formula to find the roots.";
 }
+
 
