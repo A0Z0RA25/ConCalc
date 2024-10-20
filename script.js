@@ -537,12 +537,12 @@ document.getElementById('polynomialForm').addEventListener('submit', function(ev
     
     if (trinomialMatches) {
         // Trinomial case
-        const variable = trinomialMatches[2];
-        let A = trinomialMatches[1] ? parseInt(trinomialMatches[1].replace(/\s+/g, '')) : 1;
-        let B = trinomialMatches[3] ? parseInt(trinomialMatches[3].replace(/\s+/g, '')) : 0;
-        let C = trinomialMatches[4] ? parseInt(trinomialMatches[4].replace(/\s+/g, '')) : 0;
+        const variableTri = trinomialMatches[2];
+        const ATri = trinomialMatches[1] ? parseInt(trinomialMatches[1].replace(/\s+/g, '')) : 1;
+        const BTri = trinomialMatches[3] ? parseInt(trinomialMatches[3].replace(/\s+/g, '')) : 0;
+        const CTri = trinomialMatches[4] ? parseInt(trinomialMatches[4].replace(/\s+/g, '')) : 0;
 
-        const factored = factorTrinomial(A, B, C, stepsElement, variable);
+        const factored = factorTrinomial(ATri, BTri, CTri, stepsElement, variableTri);
         resultElement.textContent = factored;
     } else if (binomialMatches) {
         // Binomial case
@@ -585,7 +585,7 @@ function factorBinomial(A, C, stepsElement, variable) {
     return "No real factorization possible.";
 }
 
-function factorTrinomial(A, B, C, stepsElement, variable) {
+function factorTrinomial(ATri, BTri, CTri, stepsElement, variableTri) {
     // Helper function to show steps
     function showStep(step) {
         const p = document.createElement('p');
@@ -598,69 +598,89 @@ function factorTrinomial(A, B, C, stepsElement, variable) {
         let factors = [];
         for (let i = 1; i <= Math.abs(num); i++) {
             if (num % i === 0) {
-                factors.push([i, num / i]);
-                factors.push([-i, -(num / i)]);
+                factors.push([i, num / i]);        // Add positive pair
+                factors.push([-i, -(num / i)]);    // Add negative pair
             }
         }
         return factors;
     }
 
-    showStep(`Step 1: Identify the value of each: A = ${A}, B = ${B}, C = ${C}`);
+    showStep(`Step 1: Identify the value of each: A = ${ATri}, B = ${BTri}, C = ${CTri}`);
 
     // Case 1: If A = 1, use simple factoring
-    if (A === 1) {
-        showStep(`Step 2: Since A = 1, we need to find two numbers that if multiply, it should equal to C and the sum should equal to B.`);
-        const factors = findFactors(C);
+    if (ATri === 1) {
+        showStep(`Step 2: Since A = 1, we need to find two numbers that multiply to give C (${CTri}) and add up to B (${BTri}).`);
+        const factors = findFactors(CTri);
         for (let factor of factors) {
-            if (factor[0] + factor[1] === B) {
-                const BSign = factor[0] > 0 ? "+" : "-";
-                const CSign = factor[1] > 0 ? "+" : "-";
-                showStep(`Step 3: The factors that we found is C (${C}): ${factor[0]} and ${factor[1]} which add up to B (${B}) and the product is equal to C(${C}). Split the middle term: ${variable}² ${BSign} ${Math.abs(B)}${variable} ${CSign} ${Math.abs(C)}`);
+            if (factor[0] + factor[1] === BTri) {
+                showStep(`Step 3: The factors found are: ${factor[0]} and ${factor[1]}. These add up to B (${BTri}) and multiply to give C (${CTri}).`);
                 const firstSign = factor[0] > 0 ? "+" : "-";
                 const secondSign = factor[1] > 0 ? "+" : "-";
-                return `(${variable} ${firstSign} ${Math.abs(factor[0])})(${variable} ${secondSign} ${Math.abs(factor[1])})`;
+                return `(${variableTri} ${firstSign} ${Math.abs(factor[0])})(${variableTri} ${secondSign} ${Math.abs(factor[1])})`;
             }
         }
     }
 
     // Case 2: If A > 1, use factoring by splitting the middle term
-    if (A > 1) {
-        const AC = A * C;
+    if (ATri > 1) {
+        const AC = ATri * CTri;
         showStep(`Step 2: Since A > 1, we will multiply A * C = ${AC}.`);
         
         const factors = findFactors(AC);
-        showStep(`Step 3: We need to find the factors of ${AC}, the sum should equal to B (${B}).`);
+        showStep(`Step 3: We need to find the factors of ${AC}, where the sum should equal B (${BTri}).`);
         
         for (let factor of factors) {
-            if (factor[0] + factor[1] === B) {
-                showStep(`Step 4: The factors of ${AC}: ${factor[0]} and ${factor[1]} which add up to B (${B}).`);
+            if (factor[0] + factor[1] === BTri) {
+                showStep(`Step 4: The factors of ${AC}: ${factor[0]} and ${factor[1]} which add up to B (${BTri}).`);
                 
                 // Rewrite middle term and factor by grouping
                 let factor1 = factor[0], factor2 = factor[1];
-                showStep(`Step 5: Split the middle term: ${A}${variable}² + (${factor1})${variable} + (${factor2})${variable} + ${C}`);
+                showStep(`Step 5: Split the middle term: ${ATri}${variableTri}² + (${factor1})${variableTri} + (${factor2})${variableTri} + ${CTri}`);
                 
                 const firstSign1 = factor1 > 0 ? "+" : "-";
-                const secondSign2 = (C / factor1) > 0 ? "+" : "-";
+                const secondSign2 = (CTri / factor1) > 0 ? "+" : "-";
                 
-                showStep(`Step 6: Group and factor the expression: ${variable}(${A}${variable} ${firstSign1} ${Math.abs(factor1)}) ${firstSign1}${Math.abs(factor1)}(${A}${variable} ${secondSign2} ${Math.abs(C / factor1)}). Then group the variable and number that is outside the parenthesis.`);
+                showStep(`Step 6: Group and factor the expression: ${variableTri}(${ATri}${variableTri} ${firstSign1} ${Math.abs(factor1)}) ${firstSign1}${Math.abs(factor1)}(${ATri}${variableTri} ${secondSign2} ${Math.abs(CTri / factor1)}). Then group the variable and number that is outside the parenthesis.`);
                 
-                return `(${A}${variable} ${firstSign1} ${Math.abs(factor1)})(${variable} ${secondSign2} ${Math.abs(C / factor1)})`;
+                return `(${ATri}${variableTri} ${firstSign1} ${Math.abs(factor1)})(${variableTri} ${secondSign2} ${Math.abs(CTri / factor1)})`;
             }
         }
     }
 
     // If no simple factorization is found, use the quadratic formula
-    const discriminant = B * B - 4 * A * C;
-    showStep(`Step 7: If no factors found or no real roots found. We can use the quadratic formula.`);
+
+    showStep(`Step 3: If no real roots found. We can use the quadratic formula which is <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi>x</mi>
+    <mo>=</mo>
+    <mfrac linethickness="1">
+      <mrow>
+        <mo>-</mo>
+        <mi>b</mi>
+        <mo>&#xB1;</mo>
+        <msqrt>
+          <mrow>
+            <msup><mi>b</mi><mn>2</mn></msup>
+            <mo>-</mo>
+            <mn>4</mn>
+            <mo>&#8290;</mo>
+            <mi>a</mi>
+            <mo>&#8290;</mo>
+            <mi>c</mi>
+          </mrow>
+        </msqrt>
+      </mrow>
+      <mrow>
+        <mn>2</mn>
+        <mo>&#8290;</mo>
+        <mi>a</mi>
+      </mrow>
+    </mfrac>
+  </mrow>
+</math>
+.`);
+
     
-    if (discriminant >= 0) {
-        const sqrtDisc = Math.sqrt(discriminant);
-        const root1 = (-B + sqrtDisc) / (2 * A);
-        const root2 = (-B - sqrtDisc) / (2 * A);
-        showStep(`Step 8: Using the quadratic formula, the roots are ${root1} and ${root2}.`);
-        const root1Sign = root1 > 0 ? "+" : "-";
-        const root2Sign = root2 > 0 ? "+" : "-";
-        return `(${variable} ${root1Sign} ${Math.abs(root1)})})(${variable} ${root2Sign} ${Math.abs(root2)})})`;
-    }
-    return "It is not factorable.";
+    return "Try using the quadratic formula to find the roots.";
 }
+
