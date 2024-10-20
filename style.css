@@ -588,24 +588,32 @@ th {
         z-index: 2;
         padding: 5px 10px;
         display: flex;
+        flex-direction: column;
         justify-content: space-evenly;
         top: 0;
     }
+    .ceiling{
+        display: flex;
+        margin: 5px 0;
+        justify-content: center;
+        align-items: center;
+    }
     header .logo{
-        font-size: 16px;
+        font-size: 18px;
         color: skyblue;
         margin: 0 20px;
         
     }
     .nav-bar ul{
         display: flex;
-        text-align: center;
         flex-wrap: wrap;
-        justify-content: center;
-        width: 170px;    
+        text-align: center;
+        margin: 0 0px;
+        height: 100%;
+        justify-content: center;    
     }
     .nav-bar ul li{
-       margin: 10px 6px;
+       margin: 15px 6px;
        font-size: 13px;
        
     }
