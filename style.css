@@ -765,6 +765,7 @@ th {
     width: 90%;
     text-align: center;
     color: black;
+    padding: 20px 15px;
 }
 .factoring-container input{
     text-align: center;
@@ -791,8 +792,8 @@ th {
 .answers-container{
     text-align: justify;
     margin: 0 auto;
-    width: 90%;
-   
+    width: 100%;
+    padding: 0;
 }
 .answers-container #steps{
     margin: 5px 0;
@@ -817,7 +818,7 @@ th {
 .answers-container #result{
     text-align: center;
     background-color: hsl(120, 88%, 67%);
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     padding: 8px 0;
     border-radius: 8px;
